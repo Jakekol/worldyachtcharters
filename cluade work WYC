@@ -1,0 +1,10 @@
+cd /mnt/user-data/outputs
+mkdir -p worldyachtcharters
+cp worldyachtcharters.html worldyachtcharters/index.html
+cd worldyachtcharters
+git init
+git add .
+git commit -m "feat: initial worldyachtcharters.com website build"
+git branch -M main
+git remote add origin https://github.com/jakekol/worldyachtcharters.git
+git push -u origin main
