@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WYC | From the Marina to Your Inbox — May 2026</title>
+<style>
+/* ── EMAIL-SAFE RESET ── */
+body{margin:0;padding:0;background:#f2f0eb;font-family:Arial,Helvetica,sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}
+table{border-spacing:0;border-collapse:collapse;mso-table-lspace:0;mso-table-rspace:0}
+td{border-collapse:collapse;padding:0}
+img{border:0;height:auto;line-height:100%;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic}
+p{margin:0}
+
+/* ── MODAL OVERLAY ── */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(5,17,31,0.88);z-index:1000;align-items:center;justify-content:center;padding:20px}
+.modal-bg.open{display:flex}
+.modal{background:#fff;width:100%;max-width:520px;border-radius:4px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,0.3);position:relative;max-height:90vh;overflow-y:auto}
+.modal-header{background:#0d1b3e;padding:28px 32px 24px}
+.modal-header h3{font-family:Georgia,serif;font-size:22px;font-weight:400;color:#fff;margin:0 0 4px}
+.modal-header p{font-size:11px;color:rgba(255,255,255,0.55);letter-spacing:0.1em;text-transform:uppercase;margin:0}
+.modal-close{position:absolute;top:16px;right:18px;background:none;border:none;color:rgba(255,255,255,0.6);font-size:22px;cursor:pointer;line-height:1}
+.modal-close:hover{color:#fff}
+.modal-yacht-name{background:#C8A864;padding:10px 32px;font-family:Georgia,serif;font-size:14px;color:#0d1b3e;font-weight:400}
+.modal-body{padding:28px 32px}
+.mf{display:flex;flex-direction:column;gap:5px;margin-bottom:14px}
+.mf label{font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#555}
+.mf input,.mf select,.mf textarea{font-family:Arial,sans-serif;font-size:14px;color:#111;background:#f8f7f4;border:1px solid #ddd;border-radius:2px;padding:10px 12px;outline:none;transition:border-color 0.2s}
+.mf input:focus,.mf select:focus,.mf textarea:focus{border-color:#C8A864}
+.mf textarea{resize:vertical;min-height:72px}
+.mrow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.modal-broker{display:flex;align-items:center;gap:12px;background:#f2f0eb;padding:12px 14px;border-radius:3px;margin-bottom:20px}
+.broker-av{width:40px;height:40px;border-radius:50%;background:#0d1b3e;color:#C8A864;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;font-family:Arial,sans-serif}
+.broker-info .name{font-size:13px;font-weight:700;color:#0d1b3e}
+.broker-info .role{font-size:10px;color:#777;margin-top:2px}
+.broker-info .phone{font-size:10px;color:#C8A864;margin-top:2px}
+.send-note{font-size:10px;color:#999;margin-top:8px;line-height:1.5}
+</style>
+</head>
+<body>
+
+<!-- ENQUIRY MODAL -->
+<div class="modal-bg" id="enq-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeEnq()">&times;</button>
+    <div class="modal-header">
+      <h3>Charter Enquiry</h3>
+      <p>World Yacht Charters</p>
+    </div>
+    <div class="modal-yacht-name" id="enq-yacht-name">Lady Sorrento</div>
+    <div class="modal-body">
+      <div class="modal-broker">
+        <div class="broker-av" id="enq-broker-av">JH</div>
+        <div class="broker-info">
+          <div class="name" id="enq-broker-name">James Harlow</div>
+          <div class="role" id="enq-broker-role">Mediterranean Specialist</div>
+          <div class="phone" id="enq-broker-phone">+44 7700 900123</div>
+        </div>
+      </div>
+      <div class="mrow">
+        <div class="mf"><label>First name</label><input type="text" id="eq-fname" placeholder="Your first name"></div>
+        <div class="mf"><label>Last name</label><input type="text" id="eq-lname" placeholder="Your last name"></div>
+      </div>
+      <div class="mf"><label>Email address</label><input type="email" id="eq-email" placeholder="your@email.com"></div>
+      <div class="mf"><label>Phone number</label><input type="tel" id="eq-phone" placeholder="+44 ..."></div>
+      <div class="mrow">
+        <div class="mf"><label>Preferred dates</label><input type="text" id="eq-dates" placeholder="e.g. Aug 10–17"></div>
+        <div class="mf"><label>Number of guests</label>
+          <select id="eq-guests">
+            <option>2 guests</option><option>4 guests</option><option>6 guests</option>
+            <option>8 guests</option><option>10 guests</option><option>12+ guests</option>
+          </select>
+        </div>
+      </div>
+      <div class="mf"><label>Message (optional)</label><textarea id="eq-msg" placeholder="Any special requests or questions..."></textarea></div>
+      <button onclick="sendEnquiry()" style="width:100%;background:#0d1b3e;color:#fff;border:none;padding:14px;font-family:Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer;border-radius:2px;margin-top:4px">Send Enquiry &rarr;</button>
+      <p class="send-note">&#9679; Your enquiry will be sent directly to your broker by email and SMS for a rapid response — typically within 2 hours.</p>
+    </div>
+  </div>
+</div>
+
+<!-- EMAIL WRAPPER -->
+<table width="100%" bgcolor="#f2f0eb" cellpadding="0" cellspacing="0">
+<tr><td align="center" style="padding:32px 0 40px">
+
+<table width="600" cellpadding="0" cellspacing="0" style="max-width:600px">
+
+  <!-- ── HEADER ── -->
+  <tr>
+    <td bgcolor="#0d1b3e" style="padding:0">
+      <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:28px 36px 24px">
+            <!-- Logo row -->
+            <table width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td>
+                  <table cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td style="padding-right:10px">
+                        <!-- WYC SVG icon -->
+                        <svg width="28" height="22" viewBox="0 0 40 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M2 24 L7 24 L8 21 L11 13 L15 8 L19 6 L24 5.5 L29 5.5 L33 6.5 L36 9 L37 16 L37 24 Z" stroke="#C8A864" stroke-width="1.3" fill="none" opacity=".9"/>
+                          <line x1="24" y1="5.5" x2="24" y2="1" stroke="#C8A864" stroke-width="1.3"/>
+                          <path d="M24 1.5 L35 13 L24 13 Z" fill="#C8A864" opacity=".35"/>
+                          <path d="M1 27 Q11 25 20 27 Q29 29 39 27" stroke="#C8A864" stroke-width=".9" fill="none" opacity=".45"/>
+                        </svg>
+                      </td>
+                      <td>
+                        <div style="font-family:Arial,sans-serif;font-size:15px;font-weight:700;letter-spacing:0.12em;color:#fff">WYC</div>
+                        <div style="font-family:Arial,sans-serif;font-size:7px;font-weight:400;letter-spacing:0.26em;color:#C8A864;text-transform:uppercase;margin-top:2px">World Yacht Charters</div>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+                <td align="right" style="font-family:Arial,sans-serif;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.4)">May 2026</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <!-- Gold rule -->
+        <tr><td style="height:1px;background:linear-gradient(90deg,#C8A864,rgba(200,168,100,0.3))"></td></tr>
+        <!-- Issue label -->
+        <tr>
+          <td style="padding:16px 36px 0">
+            <div style="font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:#C8A864">Monthly Charter Briefing</div>
+          </td>
+        </tr>
+        <!-- Headline -->
+        <tr>
+          <td style="padding:10px 36px 28px">
+            <div style="font-family:Georgia,serif;font-size:28px;font-weight:400;color:#fff;line-height:1.15">From the Marina<br>to Your Inbox</div>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- ── HERO IMAGE BAND ── -->
+  <tr>
+    <td style="height:6px;background:#C8A864"></td>
+  </tr>
+  <tr>
+    <td bgcolor="#0d1b3e" style="padding:0;height:200px;position:relative;overflow:hidden">
+      <!-- CSS gradient hero — no external image needed -->
+      <div style="background:linear-gradient(160deg,#060f1e 0%,#0d2040 40%,#1a3870 100%);width:100%;height:200px;position:relative">
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:24px 36px">
+          <div style="font-family:Georgia,serif;font-size:13px;font-style:italic;color:rgba(255,255,255,0.7);line-height:1.7;max-width:460px">"This month I have been on the ground at the Sanremo Boat Show reviewing yachts for the 2026 Mediterranean season. Here are my hand-picked selections for your consideration."</div>
+          <div style="margin-top:12px;display:flex;align-items:center;gap:10px">
+            <div style="width:32px;height:32px;border-radius:50%;background:#C8A864;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;font-size:11px;font-weight:700;color:#0d1b3e">JH</div>
+            <div>
+              <div style="font-family:Arial,sans-serif;font-size:12px;font-weight:700;color:#fff">James Harlow</div>
+              <div style="font-family:Arial,sans-serif;font-size:9px;color:rgba(255,255,255,0.5);letter-spacing:0.1em;text-transform:uppercase">Mediterranean Specialist · WYC London</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+
+  <!-- ── INTRO TEXT ── -->
+  <tr>
+    <td bgcolor="#ffffff" style="padding:32px 36px 24px">
+      <p style="font-family:Arial,sans-serif;font-size:15px;font-weight:700;color:#0d1b3e;letter-spacing:0.04em;margin-bottom:14px">Sourcing Your Next Charter</p>
+      <p style="font-family:Arial,sans-serif;font-size:14px;color:#444;line-height:1.75">This month's selection features our most-requested vessels for the 2026 Mediterranean season — personally reviewed by our broker team. Each listing below links directly to the yacht profile on our site. Click <strong>Enquire</strong> on any vessel to send a brief directly to your dedicated broker, who will respond by email and phone within 2 hours.</p>
+      <p style="font-family:Arial,sans-serif;font-size:14px;color:#444;line-height:1.75;margin-top:14px">If you are unsure where to start, reply to this email for a no-obligation charter consultation. We place your ideas into reality.</p>
+    </td>
+  </tr>
+  <tr><td style="height:1px;background:#e8e4dc"></td></tr>
+
+  <!-- ── SECTION HEADER: FEATURED MOTOR YACHTS ── -->
+  <tr>
+    <td bgcolor="#f8f7f4" style="padding:20px 36px 16px">
+      <div style="font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:0.26em;text-transform:uppercase;color:#C8A864;display:flex;align-items:center;gap:8px">
+        <span style="display:inline-block;width:20px;height:1px;background:#C8A864;vertical-align:middle;margin-right:6px"></span>
+        Featured Motor Yachts · May 2026
+      </div>
+    </td>
+  </tr>
+
+  <!-- ── YACHT CARD 1: LADY SORRENTO ── -->
+  <tr>
+    <td bgcolor="#ffffff" style="padding:0;border-bottom:1px solid #e8e4dc">
+      <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <!-- Photo column -->
+          <td width="200" style="padding:0;vertical-align:top">
+            <a href="https://worldyachtcharters.com/fleet/lady-sorrento" style="display:block;text-decoration:none">
+              <div style="width:200px;height:148px;background:linear-gradient(160deg,#060f1e 0%,#1a3870 100%);position:relative">
+                <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+                  <svg width="80" height="56" viewBox="0 0 160 100" fill="none"><path d="M10,10 L48,10 L48,18 L76,82 L64,96 L24,22 L10,22Z" fill="rgba(255,255,255,0.15)"/><path d="M64,96 L76,82 L96,36 L112,36 L112,46 L90,46 L74,96Z" fill="rgba(255,255,255,0.12)"/><path d="M112,10 L148,10 L148,22 L112,22Z" fill="rgba(255,255,255,0.1)"/></svg>
+                </div>
+                <div style="position:absolute;bottom:0;left:0;right:0;height:40px;background:linear-gradient(0deg,rgba(0,0,0,0.5),transparent)"></div>
+                <div style="position:absolute;bottom:8px;left:10px;font-family:Arial,sans-serif;font-size:9px;font-weight:700;color:#C8A864;letter-spacing:0.1em;text-transform:uppercase">Motor · 42m</div>
+                <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#C8A864"></div>
+              </div>
+            </a>
+          </td>
+          <!-- Info column -->
+          <td style="padding:18px 20px 18px 16px;vertical-align:top">
+            <div style="font-family:Georgia,serif;font-size:18px;font-weight:400;color:#0d1b3e;margin-bottom:4px">Lady Sorrento</div>
+            <div style="font-family:Arial,sans-serif;font-size:10px;color:#888;letter-spacing:0.06em;margin-bottom:10px">Amalfi Coast, Italy &nbsp;·&nbsp; 2022</div>
+            <div style="font-family:Arial,sans-serif;font-size:11px;color:#555;line-height:1.7;margin-bottom:10px">10 Guests &nbsp;·&nbsp; 5 Cabins &nbsp;·&nbsp; 7 Crew</div>
+            <div style="font-family:Georgia,serif;font-size:16px;color:#0d1b3e;font-weight:400;margin-bottom:12px">€28,000 <span style="font-family:Arial,sans-serif;font-size:10px;color:#999;font-weight:400">/ week</span></div>
+            <table cellpadding="0" cellspacing="0"><tr>
+              <td style="padding-right:6px">
+                <a href="https://worldyachtcharters.com/fleet/lady-sorrento" style="display:inline-block;background:#0d1b3e;color:#fff;font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:8px 14px;text-decoration:none;border-radius:2px">View Yacht</a>
+              </td>
+              <td>
+                <button onclick="openEnq('Lady Sorrento','JH','James Harlow','Mediterranean Specialist','+44 7700 900123')" style="display:inline-block;background:transparent;color:#C8A864;font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:7px 14px;text-decoration:none;border:1px solid #C8A864;border-radius:2px;cursor:pointer">Enquire</button>
+              </td>
+            </tr></table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- ── YACHT CARD 2: POSEIDON STAR ── -->
+  <tr>
+    <td bgcolor="#ffffff" style="padding:0;border-bottom:1px solid #e8e4dc">
+      <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="200" style="padding:0;vertical-align:top">
+            <a href="https://worldyachtcharters.com/fleet/poseidon-star" style="display:block;text-decoration:none">
+              <div style="width:200px;height:148px;background:linear-gradient(160deg,#020608 0%,#122040 100%);position:relative">
+                <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+                  <svg width="90" height="56" viewBox="0 0 180 100" fill="none"><path d="M8,12 L52,12 L52,22 L80,82 L66,94 L20,26 L8,26Z" fill="rgba(255,255,255,0.13)"/><path d="M66,94 L80,82 L104,30 L124,30 L124,42 L98,42 L80,94Z" fill="rgba(255,255,255,0.1)"/><circle cx="148" cy="30" r="16" fill="rgba(200,168,100,0.2)"/></svg>
+                </div>
+                <div style="position:absolute;bottom:0;left:0;right:0;height:40px;background:linear-gradient(0deg,rgba(0,0,0,0.5),transparent)"></div>
+                <div style="position:absolute;bottom:8px;left:10px;font-family:Arial,sans-serif;font-size:9px;font-weight:700;color:#C8A864;letter-spacing:0.1em;text-transform:uppercase">Superyacht · 58m</div>
+                <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#C8A864"></div>
+              </div>
+            </a>
+          </td>
+          <td style="padding:18px 20px 18px 16px;vertical-align:top">
+            <div style="font-family:Georgia,serif;font-size:18px;font-weight:400;color:#0d1b3e;margin-bottom:4px">Poseidon Star</div>
+            <div style="font-family:Arial,sans-serif;font-size:10px;color:#888;letter-spacing:0.06em;margin-bottom:10px">French Riviera &nbsp;·&nbsp; 2020</div>
+            <div style="font-family:Arial,sans-serif;font-size:11px;color:#555;line-height:1.7;margin-bottom:10px">12 Guests &nbsp;·&nbsp; 6 Cabins &nbsp;·&nbsp; 10 Crew</div>
+            <div style="font-family:Georgia,serif;font-size:16px;color:#0d1b3e;font-weight:400;margin-bottom:12px">€95,000 <span style="font-family:Arial,sans-serif;font-size:10px;color:#999;font-weight:400">/ week</span></div>
+            <table cellpadding="0" cellspacing="0"><tr>
+              <td style="padding-right:6px"><a href="https://worldyachtcharters.com/fleet/poseidon-star" style="display:inline-block;background:#0d1b3e;color:#fff;font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:8px 14px;text-decoration:none;border-radius:2px">View Yacht</a></td>
+              <td><button onclick="openEnq('Poseidon Star','JH','James Harlow','Mediterranean Specialist','+44 7700 900123')" style="display:inline-block;background:transparent;color:#C8A864;font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:7px 14px;text-decoration:none;border:1px solid #C8A864;border-radius:2px;cursor:pointer">Enquire</button></td>
+            </tr></table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- ── SECTION HEADER: SAILING & CATAMARANS ── -->
+  <tr><td style="height:3px;background:#0d1b3e"></td></tr>
+  <tr>
+    <td bgcolor="#f8f7f4" style="padding:20px 36px 16px">
+      <div style="font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:0.26em;text-transform:uppercase;color:#C8A864">
+        <span style="display:inline-block;width:20px;height:1px;background:#C8A864;vertical-align:middle;margin-right:6px"></span>
+        Sailing &amp; Catamarans · May 2026
+      </div>
+    </td>
+  </tr>
+
+  <!-- ── YACHT CARD 3: ZEPHYR BLUE ── -->
+  <tr>
+    <td bgcolor="#ffffff" style="padding:0;border-bottom:1px solid #e8e4dc">
+      <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="200" style="padding:0;vertical-align:top">
+            <a href="https://worldyachtcharters.com/fleet/zephyr-blue" style="display:block;text-decoration:none">
+              <div style="width:200px;height:148px;background:linear-gradient(160deg,#1e4a8a 0%,#4a90d0 100%);position:relative">
+                <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+                  <svg width="80" height="80" viewBox="0 0 100 100" fill="none"><line x1="50" y1="5" x2="50" y2="80" stroke="rgba(255,255,255,0.4)" stroke-width="2"/><path d="M50 10 L82 75 L50 75Z" fill="rgba(255,255,255,0.18)"/><path d="M50 20 L22 75 L50 75Z" fill="rgba(255,255,255,0.12)"/><path d="M18 80 Q50 87 82 80" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" fill="none"/></svg>
+                </div>
+                <div style="position:absolute;bottom:0;left:0;right:0;height:40px;background:linear-gradient(0deg,rgba(0,0,0,0.5),transparent)"></div>
+                <div style="position:absolute;bottom:8px;left:10px;font-family:Arial,sans-serif;font-size:9px;font-weight:700;color:#C8A864;letter-spacing:0.1em;text-transform:uppercase">Sailing · 28m</div>
+                <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#C8A864"></div>
+              </div>
+            </a>
+          </td>
+          <td style="padding:18px 20px 18px 16px;vertical-align:top">
+            <div style="font-family:Georgia,serif;font-size:18px;font-weight:400;color:#0d1b3e;margin-bottom:4px">Zephyr Blue</div>
+            <div style="font-family:Arial,sans-serif;font-size:10px;color:#888;letter-spacing:0.06em;margin-bottom:10px">Greek Islands &nbsp;·&nbsp; 2021</div>
+            <div style="font-family:Arial,sans-serif;font-size:11px;color:#555;line-height:1.7;margin-bottom:10px">8 Guests &nbsp;·&nbsp; 4 Cabins &nbsp;·&nbsp; 4 Crew</div>
+            <div style="font-family:Georgia,serif;font-size:16px;color:#0d1b3e;font-weight:400;margin-bottom:12px">€18,500 <span style="font-family:Arial,sans-serif;font-size:10px;color:#999;font-weight:400">/ week</span></div>
+            <table cellpadding="0" cellspacing="0"><tr>
+              <td style="padding-right:6px"><a href="https://worldyachtcharters.com/fleet/zephyr-blue" style="display:inline-block;background:#0d1b3e;color:#fff;font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:8px 14px;text-decoration:none;border-radius:2px">View Yacht</a></td>
+              <td><button onclick="openEnq('Zephyr Blue','MC','Marco Conti','Sailing Specialist','+44 7700 900456')" style="display:inline-block;background:transparent;color:#C8A864;font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:7px 14px;text-decoration:none;border:1px solid #C8A864;border-radius:2px;cursor:pointer">Enquire</button></td>
+            </tr></table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- ── YACHT CARD 4: SEA NOMAD (CAT) ── -->
+  <tr>
+    <td bgcolor="#ffffff" style="padding:0;border-bottom:1px solid #e8e4dc">
+      <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="200" style="padding:0;vertical-align:top">
+            <a href="https://worldyachtcharters.com/fleet/sea-nomad" style="display:block;text-decoration:none">
+              <div style="width:200px;height:148px;background:linear-gradient(160deg,#1060a0 0%,#40a8e0 100%);position:relative">
+                <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+                  <svg width="90" height="60" viewBox="0 0 120 80" fill="none"><rect x="10" y="40" width="40" height="16" rx="2" fill="rgba(255,255,255,0.18)"/><rect x="70" y="40" width="40" height="16" rx="2" fill="rgba(255,255,255,0.18)"/><rect x="40" y="30" width="40" height="18" rx="2" fill="rgba(255,255,255,0.22)"/><line x1="60" y1="30" x2="60" y2="4" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><path d="M60 6 L80 28 L60 28Z" fill="rgba(255,255,255,0.15)"/></svg>
+                </div>
+                <div style="position:absolute;bottom:0;left:0;right:0;height:40px;background:linear-gradient(0deg,rgba(0,0,0,0.5),transparent)"></div>
+                <div style="position:absolute;bottom:8px;left:10px;font-family:Arial,sans-serif;font-size:9px;font-weight:700;color:#C8A864;letter-spacing:0.1em;text-transform:uppercase">Catamaran · 22m</div>
+                <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#C8A864"></div>
+              </div>
+            </a>
+          </td>
+          <td style="padding:18px 20px 18px 16px;vertical-align:top">
+            <div style="font-family:Georgia,serif;font-size:18px;font-weight:400;color:#0d1b3e;margin-bottom:4px">Sea Nomad</div>
+            <div style="font-family:Arial,sans-serif;font-size:10px;color:#888;letter-spacing:0.06em;margin-bottom:10px">Caribbean &nbsp;·&nbsp; 2023</div>
+            <div style="font-family:Arial,sans-serif;font-size:11px;color:#555;line-height:1.7;margin-bottom:10px">8 Guests &nbsp;·&nbsp; 4 Cabins &nbsp;·&nbsp; 3 Crew</div>
+            <div style="font-family:Georgia,serif;font-size:16px;color:#0d1b3e;font-weight:400;margin-bottom:12px">€14,000 <span style="font-family:Arial,sans-serif;font-size:10px;color:#999;font-weight:400">/ week</span></div>
+            <table cellpadding="0" cellspacing="0"><tr>
+              <td style="padding-right:6px"><a href="https://worldyachtcharters.com/fleet/sea-nomad" style="display:inline-block;background:#0d1b3e;color:#fff;font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:8px 14px;text-decoration:none;border-radius:2px">View Yacht</a></td>
+              <td><button onclick="openEnq('Sea Nomad','SL','Sophie Laurent','Caribbean Specialist','+44 7700 900789')" style="display:inline-block;background:transparent;color:#C8A864;font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:7px 14px;text-decoration:none;border:1px solid #C8A864;border-radius:2px;cursor:pointer">Enquire</button></td>
+            </tr></table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- ── SECTION HEADER: GULETS ── -->
+  <tr><td style="height:3px;background:#0d1b3e"></td></tr>
+  <tr>
+    <td bgcolor="#f8f7f4" style="padding:20px 36px 16px">
+      <div style="font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:0.26em;text-transform:uppercase;color:#C8A864">
+        <span style="display:inline-block;width:20px;height:1px;background:#C8A864;vertical-align:middle;margin-right:6px"></span>
+        Traditional Gulets · May 2026
+      </div>
+    </td>
+  </tr>
+
+  <!-- ── YACHT CARD 5: ADRIATIC PEARL ── -->
+  <tr>
+    <td bgcolor="#ffffff" style="padding:0;border-bottom:1px solid #e8e4dc">
+      <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="200" style="padding:0;vertical-align:top">
+            <a href="https://worldyachtcharters.com/fleet/adriatic-pearl" style="display:block;text-decoration:none">
+              <div style="width:200px;height:148px;background:linear-gradient(160deg,#1a3870 0%,#3878b8 60%,#ffa030 100%);position:relative">
+                <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+                  <svg width="90" height="60" viewBox="0 0 120 80" fill="none"><path d="M20 50 Q60 58 100 50 L92 62 Q60 68 28 62Z" fill="rgba(139,94,60,0.6)"/><rect x="36" y="32" width="48" height="22" rx="4" fill="rgba(200,160,120,0.4)"/><line x1="44" y1="32" x2="44" y2="14" stroke="rgba(122,80,48,0.6)" stroke-width="2.5"/><line x1="64" y1="32" x2="64" y2="10" stroke="rgba(122,80,48,0.6)" stroke-width="2.5"/></svg>
+                </div>
+                <div style="position:absolute;bottom:0;left:0;right:0;height:40px;background:linear-gradient(0deg,rgba(0,0,0,0.5),transparent)"></div>
+                <div style="position:absolute;bottom:8px;left:10px;font-family:Arial,sans-serif;font-size:9px;font-weight:700;color:#C8A864;letter-spacing:0.1em;text-transform:uppercase">Gulet · 30m</div>
+                <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#C8A864"></div>
+              </div>
+            </a>
+          </td>
+          <td style="padding:18px 20px 18px 16px;vertical-align:top">
+            <div style="font-family:Georgia,serif;font-size:18px;font-weight:400;color:#0d1b3e;margin-bottom:4px">Adriatic Pearl</div>
+            <div style="font-family:Arial,sans-serif;font-size:10px;color:#888;letter-spacing:0.06em;margin-bottom:10px">Croatia &amp; Adriatic &nbsp;·&nbsp; 2019</div>
+            <div style="font-family:Arial,sans-serif;font-size:11px;color:#555;line-height:1.7;margin-bottom:10px">12 Guests &nbsp;·&nbsp; 6 Cabins &nbsp;·&nbsp; 5 Crew</div>
+            <div style="font-family:Georgia,serif;font-size:16px;color:#0d1b3e;font-weight:400;margin-bottom:12px">€16,500 <span style="font-family:Arial,sans-serif;font-size:10px;color:#999;font-weight:400">/ week</span></div>
+            <table cellpadding="0" cellspacing="0"><tr>
+              <td style="padding-right:6px"><a href="https://worldyachtcharters.com/fleet/adriatic-pearl" style="display:inline-block;background:#0d1b3e;color:#fff;font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:8px 14px;text-decoration:none;border-radius:2px">View Yacht</a></td>
+              <td><button onclick="openEnq('Adriatic Pearl','MC','Marco Conti','Sailing &amp; Gulets','+44 7700 900456')" style="display:inline-block;background:transparent;color:#C8A864;font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:7px 14px;text-decoration:none;border:1px solid #C8A864;border-radius:2px;cursor:pointer">Enquire</button></td>
+            </tr></table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- ── VIEW ALL CTA ── -->
+  <tr><td style="height:3px;background:#C8A864"></td></tr>
+  <tr>
+    <td bgcolor="#0d1b3e" style="padding:32px 36px;text-align:center">
+      <div style="font-family:Georgia,serif;font-size:20px;font-weight:400;color:#fff;margin-bottom:8px">Explore the Full Fleet</div>
+      <div style="font-family:Arial,sans-serif;font-size:12px;color:rgba(255,255,255,0.55);margin-bottom:20px">200+ vetted yachts · Mediterranean &amp; Caribbean</div>
+      <a href="https://worldyachtcharters.com/fleet" style="display:inline-block;background:#C8A864;color:#0d1b3e;font-family:Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;padding:14px 36px;text-decoration:none;border-radius:2px">View All Charter Yachts &rarr;</a>
+    </td>
+  </tr>
+
+  <!-- ── BROKERS ── -->
+  <tr><td style="height:1px;background:#1a2d52"></td></tr>
+  <tr>
+    <td bgcolor="#0d1b3e" style="padding:28px 36px">
+      <div style="font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:#C8A864;margin-bottom:18px">Your Charter Specialists</div>
+      <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <!-- Broker 1 -->
+          <td width="33%" style="vertical-align:top;padding-right:12px">
+            <table cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="padding-right:10px;vertical-align:top">
+                  <div style="width:36px;height:36px;border-radius:50%;background:#C8A864;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;font-size:12px;font-weight:700;color:#0d1b3e;text-align:center;line-height:36px">JH</div>
+                </td>
+                <td style="vertical-align:top">
+                  <div style="font-family:Arial,sans-serif;font-size:12px;font-weight:700;color:#fff">James Harlow</div>
+                  <div style="font-family:Arial,sans-serif;font-size:9px;color:rgba(255,255,255,0.5);margin-top:2px;letter-spacing:0.06em">Mediterranean</div>
+                  <div style="font-family:Arial,sans-serif;font-size:9px;color:#C8A864;margin-top:4px">james@wyc.com</div>
+                  <div style="font-family:Arial,sans-serif;font-size:9px;color:#C8A864;margin-top:2px">+44 7700 900123</div>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <!-- Broker 2 -->
+          <td width="33%" style="vertical-align:top;padding-right:12px">
+            <table cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="padding-right:10px;vertical-align:top">
+                  <div style="width:36px;height:36px;border-radius:50%;background:#C8A864;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;font-size:12px;font-weight:700;color:#0d1b3e;text-align:center;line-height:36px">SL</div>
+                </td>
+                <td style="vertical-align:top">
+                  <div style="font-family:Arial,sans-serif;font-size:12px;font-weight:700;color:#fff">Sophie Laurent</div>
+                  <div style="font-family:Arial,sans-serif;font-size:9px;color:rgba(255,255,255,0.5);margin-top:2px;letter-spacing:0.06em">Caribbean</div>
+                  <div style="font-family:Arial,sans-serif;font-size:9px;color:#C8A864;margin-top:4px">sophie@wyc.com</div>
+                  <div style="font-family:Arial,sans-serif;font-size:9px;color:#C8A864;margin-top:2px">+44 7700 900789</div>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <!-- Broker 3 -->
+          <td width="33%" style="vertical-align:top">
+            <table cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="padding-right:10px;vertical-align:top">
+                  <div style="width:36px;height:36px;border-radius:50%;background:#C8A864;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;font-size:12px;font-weight:700;color:#0d1b3e;text-align:center;line-height:36px">MC</div>
+                </td>
+                <td style="vertical-align:top">
+                  <div style="font-family:Arial,sans-serif;font-size:12px;font-weight:700;color:#fff">Marco Conti</div>
+                  <div style="font-family:Arial,sans-serif;font-size:9px;color:rgba(255,255,255,0.5);margin-top:2px;letter-spacing:0.06em">Sailing &amp; Gulets</div>
+                  <div style="font-family:Arial,sans-serif;font-size:9px;color:#C8A864;margin-top:4px">marco@wyc.com</div>
+                  <div style="font-family:Arial,sans-serif;font-size:9px;color:#C8A864;margin-top:2px">+44 7700 900456</div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- ── FOOTER ── -->
+  <tr><td style="height:3px;background:#C8A864"></td></tr>
+  <tr>
+    <td bgcolor="#060d1a" style="padding:24px 36px">
+      <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="font-family:Arial,sans-serif;font-size:10px;color:rgba(255,255,255,0.35);line-height:1.7">
+            <strong style="color:rgba(255,255,255,0.6)">World Yacht Charters</strong> &nbsp;·&nbsp; London, Mayfair<br>
+            &copy; 2026 WorldYachtCharters.com &mdash; All rights reserved<br><br>
+            <a href="https://worldyachtcharters.com/unsubscribe" style="color:rgba(200,168,100,0.5);text-decoration:none">Unsubscribe</a> &nbsp;&middot;&nbsp;
+            <a href="https://worldyachtcharters.com/privacy" style="color:rgba(200,168,100,0.5);text-decoration:none">Privacy Policy</a> &nbsp;&middot;&nbsp;
+            <a href="https://worldyachtcharters.com" style="color:rgba(200,168,100,0.5);text-decoration:none">worldyachtcharters.com</a>
+          </td>
+          <td align="right" style="vertical-align:top">
+            <div style="font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:0.12em;color:rgba(255,255,255,0.4)">WYC</div>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+</table><!-- /600px table -->
+
+</td></tr>
+</table><!-- /wrapper -->
+
+<script>
+// Broker data
+const BROKERS = {
+  JH: { name:'James Harlow', role:'Mediterranean Specialist', email:'james@wyc.com', phone:'+447700900123', initials:'JH' },
+  SL: { name:'Sophie Laurent', role:'Caribbean Specialist',   email:'sophie@wyc.com', phone:'+447700900789', initials:'SL' },
+  MC: { name:'Marco Conti',    role:'Sailing & Gulets',       email:'marco@wyc.com',  phone:'+447700900456', initials:'MC' },
+};
+
+let currentBroker = null;
+
+function openEnq(yachtName, brokerKey, bName, bRole, bPhone) {
+  const broker = BROKERS[brokerKey] || {name:bName,role:bRole,phone:bPhone,email:'info@wyc.com',initials:brokerKey};
+  currentBroker = broker;
+  document.getElementById('enq-yacht-name').textContent = yachtName;
+  document.getElementById('enq-broker-av').textContent = broker.initials;
+  document.getElementById('enq-broker-name').textContent = broker.name;
+  document.getElementById('enq-broker-role').textContent = broker.role;
+  document.getElementById('enq-broker-phone').textContent = broker.phone;
+  document.getElementById('enq-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeEnq() {
+  document.getElementById('enq-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function sendEnquiry() {
+  const fname  = document.getElementById('eq-fname').value.trim();
+  const lname  = document.getElementById('eq-lname').value.trim();
+  const email  = document.getElementById('eq-email').value.trim();
+  const phone  = document.getElementById('eq-phone').value.trim();
+  const dates  = document.getElementById('eq-dates').value.trim();
+  const guests = document.getElementById('eq-guests').value;
+  const msg    = document.getElementById('eq-msg').value.trim();
+  const yacht  = document.getElementById('enq-yacht-name').textContent;
+
+  if (!fname || !email) { alert('Please enter your name and email address.'); return; }
+
+  const broker = currentBroker;
+
+  // ── 1. EMAIL to broker ──────────────────────────────────────────
+  const subject = encodeURIComponent('Charter Enquiry: ' + yacht + ' — WYC');
+  const body = encodeURIComponent(
+    'CHARTER ENQUIRY — World Yacht Charters\n' +
+    '========================================\n\n' +
+    'Yacht: ' + yacht + '\n' +
+    'From: ' + fname + ' ' + lname + '\n' +
+    'Email: ' + email + '\n' +
+    'Phone: ' + (phone || 'Not provided') + '\n' +
+    'Dates: ' + (dates || 'Flexible') + '\n' +
+    'Guests: ' + guests + '\n\n' +
+    'Message:\n' + (msg || 'No additional message') + '\n\n' +
+    '— Sent via WorldYachtCharters.com'
+  );
+  // Open broker email
+  window.open('mailto:' + broker.email + '?subject=' + subject + '&body=' + body, '_blank');
+
+  // ── 2. SMS to broker via sms: link ─────────────────────────────
+  const smsText = encodeURIComponent(
+    'NEW ENQUIRY via WYC\n' +
+    'Yacht: ' + yacht + '\n' +
+    'Client: ' + fname + ' ' + lname + '\n' +
+    'Email: ' + email + '\n' +
+    'Phone: ' + (phone || 'not given') + '\n' +
+    'Dates: ' + (dates || 'flexible') + '\n' +
+    'Guests: ' + guests
+  );
+  // Delay SMS slightly so email opens first
+  setTimeout(() => {
+    window.open('sms:' + broker.phone + '?body=' + smsText, '_blank');
+  }, 500);
+
+  // ── 3. Also CC head office ──────────────────────────────────────
+  setTimeout(() => {
+    window.open('mailto:enquiries@wyc.com?subject=' + subject + '&body=' + body, '_blank');
+  }, 900);
+
+  // ── 4. Confirmation ────────────────────────────────────────────
+  closeEnq();
+  setTimeout(() => {
+    alert('Your enquiry for ' + yacht + ' has been sent to ' + broker.name + ' by email and SMS. Expect a response within 2 hours.');
+  }, 400);
+}
+
+// Close on background click
+document.getElementById('enq-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeEnq();
+});
+</script>
+
+</body>
+</html>

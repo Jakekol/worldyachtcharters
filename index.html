@@ -1,0 +1,3692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World Yacht Charters — Find Your Perfect Superyacht</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0B1834;
+  --navy-mid: #162040;
+  --navy-light: #1e2e52;
+  --charcoal: #2D2F33;
+  --charcoal-mid: #3a3c42;
+  --silver: #B4B8BE;
+  --silver-light: #d0d4da;
+  --silver-pale: #eceef0;
+  --white: #ffffff;
+  --off-white: #f4f5f6;
+  --light-bg: #EEF1F5;
+  --light-text: #1a2236;
+  --text-muted: #8a9098;
+  --border: rgba(180,184,190,0.25);
+  --border-light: rgba(180,184,190,0.12);
+  --font-display: 'Montserrat', sans-serif;
+  --font-body: 'Lato', sans-serif;
+  /* Warm gold accent for highlights */
+  --accent: #C4A35A;
+  --accent-light: #d9bc82;
+  --accent-pale: #f0e4c4;
+  /* Silver retained for structural elements */
+  --gold: #B4B8BE;
+  --gold-light: #d0d4da;
+  --gold-pale: #eceef0;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--navy);
+  color: var(--white);
+  overflow-x: hidden;
+  font-weight: 400;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px;
+  height: 72px;
+  background: rgba(11,24,52,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-light);
+  transition: all 0.3s;
+}
+
+.nav-logo {
+  text-decoration: none;
+  display: flex; align-items: center;
+}
+
+.nav-logo-img {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.nav-links {
+  display: flex; align-items: center; gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--silver); }
+
+.nav-cta {
+  background: transparent;
+  border: 1px solid var(--silver);
+  color: var(--silver);
+  padding: 10px 24px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.nav-cta:hover { background: var(--silver); color: var(--navy); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(160deg, #060f20 0%, #0B1834 40%, #132248 100%);
+}
+
+.hero-ocean {
+  position: absolute; inset: 0;
+  opacity: 0.15;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 60% 40%, rgba(201,169,110,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 20% 80%, rgba(26,90,140,0.3) 0%, transparent 50%);
+}
+
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(180,184,190,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(180,184,190,0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 30%, transparent 70%);
+}
+
+.hero-silhouette {
+  position: absolute;
+  bottom: 180px; right: -40px;
+  width: 65%;
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+.hero-silhouette svg { width: 100%; fill: var(--silver); }
+
+.hero-content {
+  position: relative; z-index: 2;
+  padding: 0 80px 80px;
+  max-width: 900px;
+}
+
+.hero-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--silver);
+  margin-bottom: 24px;
+  display: flex; align-items: center; gap: 12px;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  width: 40px; height: 1px;
+  background: var(--silver);
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(44px, 6vw, 84px);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.0;
+  color: var(--white);
+  margin-bottom: 32px;
+  letter-spacing: -0.02em;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--silver);
+}
+
+.hero-sub {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 480px;
+  margin-bottom: 48px;
+  font-weight: 300;
+}
+
+.hero-ctas {
+  display: flex; gap: 16px; align-items: center;
+}
+
+.btn-primary {
+  background: var(--silver);
+  color: var(--navy);
+  padding: 16px 36px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: all 0.25s;
+}
+
+.btn-primary:hover { background: var(--silver-light); transform: translateY(-1px); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--white);
+  padding: 16px 36px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: all 0.25s;
+}
+
+.btn-ghost:hover { border-color: rgba(255,255,255,0.5); }
+
+.hero-stats {
+  position: absolute; bottom: 80px; right: 80px;
+  display: flex; gap: 48px; z-index: 2;
+}
+
+.hero-stat {
+  text-align: right;
+}
+
+.hero-stat-num {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1;
+  display: block;
+}
+
+.hero-stat-label {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 4px;
+  display: block;
+}
+
+/* SEARCH PANEL */
+.search-section {
+  position: relative; z-index: 10;
+  background: var(--charcoal);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.search-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.search-tabs {
+  display: flex; gap: 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.search-tab {
+  padding: 20px 28px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+  background: none;
+  border-left: none; border-right: none; border-top: none;
+}
+
+.search-tab.active {
+  color: var(--silver);
+  border-bottom-color: var(--silver);
+}
+
+.search-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr auto;
+  gap: 0;
+  border-top: none;
+}
+
+.search-field {
+  padding: 24px 28px;
+  border-right: 1px solid var(--border-light);
+  position: relative;
+}
+
+.search-field:last-of-type { border-right: none; }
+
+.sf-label {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--silver);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.sf-select, .sf-input {
+  background: none;
+  border: none;
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 300;
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+}
+
+.sf-select option { background: var(--navy-mid); color: var(--white); }
+
+.search-submit {
+  background: var(--silver);
+  color: var(--navy);
+  border: none;
+  padding: 0 40px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.search-submit:hover { background: var(--silver-light); }
+
+/* VESSEL TYPE PILLS */
+.type-section {
+  background: var(--charcoal);
+  padding: 28px 48px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.type-scroll {
+  display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+}
+
+.type-label {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-right: 8px;
+  white-space: nowrap;
+}
+
+.type-pill {
+  padding: 8px 20px;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: transparent;
+  white-space: nowrap;
+}
+
+.type-pill:hover, .type-pill.active {
+  border-color: var(--silver);
+  color: var(--silver);
+  background: rgba(201,169,110,0.06);
+}
+
+/* FEATURED YACHTS */
+.featured-section {
+  padding: 100px 48px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.section-header {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  margin-bottom: 56px;
+}
+
+.section-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--silver);
+  margin-bottom: 12px;
+  display: flex; align-items: center; gap: 10px;
+}
+
+.section-eyebrow::before {
+  content: '';
+  width: 28px; height: 1px;
+  background: var(--silver);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--white);
+}
+
+.section-title em { font-style: italic; color: var(--silver); }
+
+.view-all {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 12px 24px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  margin-bottom: 8px;
+}
+
+.view-all:hover { border-color: var(--silver); color: var(--silver); }
+
+/* YACHT CARDS GRID */
+.yachts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.yacht-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--navy-light);
+}
+
+.yacht-card.featured {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+.yacht-card-img {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+  background: var(--navy-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.yacht-card.featured .yacht-card-img {
+  aspect-ratio: 16/9;
+}
+
+.yacht-card:hover .yacht-card-img-inner {
+  transform: scale(1.04);
+}
+
+.yacht-card-img-inner {
+  width: 100%; height: 100%;
+  transition: transform 0.6s ease;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.yacht-photo-area {
+  position: relative;
+  overflow: hidden;
+}
+
+.yacht-photo-area .photo-slides {
+  display: flex;
+  transition: transform 0.4s ease;
+  height: 100%;
+}
+
+.photo-slide {
+  min-width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+.photo-nav-dots {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex; gap: 5px;
+  z-index: 5;
+}
+
+.pnd {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.pnd.active { background: var(--silver); }
+
+.photo-arr-left, .photo-arr-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 34px; height: 34px;
+  background: rgba(10,22,40,0.6);
+  border: 1px solid rgba(201,169,110,0.3);
+  color: var(--silver);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s;
+  font-size: 14px;
+}
+
+.photo-arr-left { left: 12px; }
+.photo-arr-right { right: 12px; }
+.yacht-photo-area:hover .photo-arr-left,
+.yacht-photo-area:hover .photo-arr-right { opacity: 1; }
+
+.yacht-card-badge {
+  position: absolute;
+  top: 16px; left: 16px; z-index: 4;
+  background: rgba(10,22,40,0.85);
+  border: 1px solid var(--border);
+  color: var(--silver);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+}
+
+.yacht-card-body {
+  padding: 20px 24px 22px;
+  background: var(--charcoal);
+  border-top: 1px solid var(--border-light);
+}
+
+.yacht-card-name {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.yacht-card-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+  letter-spacing: 0.04em;
+}
+
+.yacht-card-specs {
+  display: flex; gap: 20px; flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.ycs {
+  display: flex; flex-direction: column; gap: 2px;
+}
+
+.ycs-val {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--white);
+}
+
+.ycs-label {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.yacht-card-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-light);
+}
+
+.yacht-price { font-family: var(--font-display); font-size: 20px; color: var(--silver); }
+.yacht-price small { font-size: 12px; color: var(--text-muted); font-family: var(--font-body); }
+
+.enquire-link {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s;
+  background: none; border-left: none; border-right: none; border-top: none;
+}
+
+.enquire-link:hover { color: var(--silver); border-bottom-color: var(--silver); }
+
+/* DESTINATIONS */
+.destinations-section {
+  padding: 100px 48px;
+  background: var(--charcoal);
+}
+
+.dest-inner { max-width: 1400px; margin: 0 auto; }
+
+.dest-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin-top: 56px;
+}
+
+.dest-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 3/4;
+}
+
+.dest-card:first-child {
+  grid-column: span 2;
+  aspect-ratio: 7/5;
+}
+
+.dest-bg {
+  position: absolute; inset: 0;
+  transition: transform 0.6s ease;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.dest-card:hover .dest-bg { transform: scale(1.05); }
+
+.dest-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(0deg, rgba(10,22,40,0.85) 0%, rgba(10,22,40,0.1) 60%);
+  z-index: 1;
+}
+
+.dest-content {
+  position: absolute; bottom: 24px; left: 24px; right: 24px;
+  z-index: 2;
+}
+
+.dest-region {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--silver);
+  margin-bottom: 6px;
+}
+
+.dest-name {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.1;
+}
+
+.dest-card:first-child .dest-name { font-size: 38px; }
+
+.dest-count {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* EXPERIENCE SECTION */
+.experience-section {
+  padding: 100px 48px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.exp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-top: 60px;
+}
+
+.exp-visual {
+  position: relative;
+}
+
+.exp-main-img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background: var(--navy-light);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.exp-accent-box {
+  position: absolute;
+  bottom: -24px; right: -24px;
+  width: 200px; padding: 24px;
+  background: var(--silver);
+  color: var(--navy);
+}
+
+.exp-accent-num {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 300;
+  line-height: 1;
+  display: block;
+}
+
+.exp-accent-label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-top: 4px;
+  display: block;
+}
+
+.exp-content { padding-right: 20px; }
+
+.exp-features { display: flex; flex-direction: column; gap: 28px; margin-top: 40px; }
+
+.exp-feature {
+  display: flex; gap: 20px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.exp-feature:last-child { border-bottom: none; }
+
+.exp-feature-icon {
+  width: 40px; height: 40px;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  color: var(--silver);
+  font-size: 16px;
+}
+
+.exp-feature-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+
+.exp-feature-text {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* BROKER STRIP */
+.broker-section {
+  background: var(--charcoal);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 60px 48px;
+}
+
+.broker-inner {
+  max-width: 1400px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 60px; align-items: center;
+}
+
+.broker-intro-title {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.broker-intro-text {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 500px;
+}
+
+.broker-cards {
+  display: flex; gap: 16px;
+}
+
+.broker-card {
+  text-align: center;
+  padding: 24px 20px;
+  border: 1px solid var(--border);
+  min-width: 140px;
+  transition: border-color 0.2s;
+}
+
+.broker-card:hover { border-color: var(--silver); }
+
+.broker-avatar {
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  margin: 0 auto 12px;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--silver);
+  background: var(--navy);
+}
+
+.broker-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 2px;
+}
+
+.broker-title {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.broker-contact {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--silver);
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+  background: none; border-left: none; border-right: none; border-top: none;
+}
+
+.broker-contact:hover { border-bottom-color: var(--silver); }
+
+/* TESTIMONIALS */
+.testimonials-section {
+  padding: 100px 48px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 56px;
+}
+
+.testimonial-card {
+  padding: 40px 36px;
+  background: var(--charcoal);
+  border: 1px solid var(--border-light);
+  position: relative;
+}
+
+.testimonial-quote-mark {
+  font-family: var(--font-display);
+  font-size: 80px;
+  line-height: 0.6;
+  color: var(--silver);
+  opacity: 0.3;
+  position: absolute;
+  top: 28px; left: 28px;
+}
+
+.testimonial-text {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--white);
+  line-height: 1.6;
+  margin-bottom: 28px;
+  position: relative; z-index: 1;
+  padding-top: 24px;
+}
+
+.testimonial-author {
+  display: flex; align-items: center; gap: 14px;
+}
+
+.t-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--navy-light);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: var(--silver);
+  flex-shrink: 0;
+}
+
+.t-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--white);
+}
+
+.t-detail {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.t-stars {
+  margin-left: auto;
+  color: var(--silver);
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+/* TRUST BAR */
+.trust-bar {
+  background: var(--charcoal);
+  border-top: 1px solid var(--border);
+  padding: 32px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.trust-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 0 48px;
+  border-right: 1px solid var(--border-light);
+}
+
+.trust-item:last-child { border-right: none; }
+
+.trust-num {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--white);
+}
+
+.trust-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+}
+
+/* CHARTER PLANNER CTA */
+.planner-section {
+  padding: 100px 48px;
+  position: relative;
+  overflow: hidden;
+  background: var(--navy);
+}
+
+.planner-bg-accent {
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,169,110,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.planner-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative; z-index: 1;
+}
+
+.planner-title {
+  font-family: var(--font-display);
+  font-size: 56px;
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.planner-title em { font-style: italic; color: var(--silver); }
+
+.planner-sub {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 48px;
+}
+
+.planner-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 48px;
+}
+
+.ps-step {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  flex: 1;
+}
+
+.ps-num {
+  width: 36px; height: 36px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--silver);
+}
+
+.ps-label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.ps-line {
+  width: 60px;
+  height: 1px;
+  background: var(--border);
+  margin-bottom: 28px;
+  flex-shrink: 0;
+}
+
+/* FOOTER */
+footer {
+  background: #060f1e;
+  border-top: 1px solid var(--border);
+  padding: 60px 48px 36px;
+}
+
+.footer-inner {
+  max-width: 1400px; margin: 0 auto;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+
+.footer-logo span { color: var(--silver); }
+
+.footer-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 24px;
+  font-weight: 300;
+}
+
+.footer-certifications {
+  display: flex; gap: 10px;
+}
+
+.cert-badge {
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.footer-col-title {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--silver);
+  margin-bottom: 20px;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 10px;
+}
+
+.footer-links a {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--white); }
+
+.footer-bottom {
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.footer-copy {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.footer-legal {
+  display: flex; gap: 24px;
+}
+
+.footer-legal a {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-legal a:hover { color: var(--white); }
+
+/* MODALS / OVERLAYS */
+.enquiry-modal-bg {
+  display: none;
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(6,15,30,0.92);
+  align-items: center; justify-content: center;
+}
+
+.enquiry-modal-bg.open { display: flex; }
+
+.enquiry-modal {
+  background: var(--charcoal);
+  border: 1px solid var(--border);
+  max-width: 560px;
+  width: 90%;
+  padding: 48px;
+  position: relative;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-close {
+  position: absolute; top: 20px; right: 20px;
+  background: none; border: none;
+  color: var(--text-muted); font-size: 20px;
+  cursor: pointer; transition: color 0.2s;
+}
+
+.modal-close:hover { color: var(--white); }
+
+.modal-eyebrow {
+  font-size: 10px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--silver); margin-bottom: 8px;
+}
+
+.modal-title {
+  font-family: var(--font-display);
+  font-size: 32px; font-weight: 300;
+  color: var(--white); margin-bottom: 28px;
+  line-height: 1.1;
+}
+
+.modal-form { display: flex; flex-direction: column; gap: 16px; }
+
+.modal-field label {
+  display: block;
+  font-size: 10px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--silver); margin-bottom: 8px;
+}
+
+.modal-field input,
+.modal-field select,
+.modal-field textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  color: var(--white);
+  padding: 12px 16px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 300;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.modal-field input:focus,
+.modal-field select:focus,
+.modal-field textarea:focus { border-color: var(--silver); }
+
+.modal-field select option { background: var(--navy-mid); }
+.modal-field textarea { height: 100px; resize: none; }
+
+.modal-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.modal-broker {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 16px;
+  background: rgba(201,169,110,0.06);
+  border: 1px solid var(--border);
+  margin-bottom: 4px;
+}
+
+.mb-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--navy);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 14px; color: var(--silver);
+  flex-shrink: 0;
+}
+
+.mb-info { flex: 1; }
+.mb-name { font-size: 13px; font-weight: 500; color: var(--white); }
+.mb-role { font-size: 11px; color: var(--text-muted); }
+.mb-avail { font-size: 10px; color: #4CAF50; letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* VESSEL DETAIL OVERLAY */
+.vessel-detail-bg {
+  display: none;
+  position: fixed; inset: 0; z-index: 150;
+  background: var(--navy);
+  overflow-y: auto;
+  animation: fadeIn 0.3s ease;
+}
+
+.vessel-detail-bg.open { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.vessel-detail-inner { max-width: 1200px; margin: 0 auto; padding: 40px 48px 80px; }
+
+.vd-back {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--text-muted);
+  cursor: pointer; margin-bottom: 32px; background: none; border: none;
+  transition: color 0.2s;
+}
+
+.vd-back:hover { color: var(--silver); }
+
+.vd-gallery {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2px;
+  margin-bottom: 40px;
+}
+
+.vd-main-photo {
+  aspect-ratio: 16/9;
+  background: var(--navy-light);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.vd-side-photos {
+  display: grid; grid-template-rows: 1fr 1fr; gap: 2px;
+}
+
+.vd-side-photo {
+  background: var(--navy-light);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.vd-photo-label {
+  position: absolute; bottom: 12px; right: 12px;
+  background: rgba(10,22,40,0.8);
+  color: var(--text-muted);
+  font-size: 11px; padding: 4px 10px;
+  cursor: pointer; transition: color 0.2s;
+}
+
+.vd-photo-label:hover { color: var(--silver); }
+
+.vd-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 48px;
+}
+
+.vd-name {
+  font-family: var(--font-display);
+  font-size: 52px; font-weight: 300;
+  color: var(--white); margin-bottom: 6px;
+}
+
+.vd-sub {
+  font-size: 14px; color: var(--text-muted);
+  margin-bottom: 28px; letter-spacing: 0.04em;
+}
+
+.vd-specs-row {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 0; margin-bottom: 32px;
+  border: 1px solid var(--border);
+}
+
+.vd-spec {
+  padding: 16px 20px;
+  border-right: 1px solid var(--border-light);
+}
+
+.vd-spec:last-child { border-right: none; }
+
+.vd-spec-val {
+  font-family: var(--font-display);
+  font-size: 22px; font-weight: 300;
+  color: var(--white); display: block; margin-bottom: 4px;
+}
+
+.vd-spec-label {
+  font-size: 10px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--text-muted);
+}
+
+.vd-description {
+  font-size: 15px; color: var(--text-muted);
+  line-height: 1.8; font-weight: 300; margin-bottom: 28px;
+}
+
+.vd-highlights { margin-bottom: 28px; }
+
+.vd-highlight-title {
+  font-size: 10px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--silver); margin-bottom: 14px;
+}
+
+.vd-highlight-list {
+  list-style: none; display: flex; flex-direction: column; gap: 8px;
+}
+
+.vd-highlight-list li {
+  font-size: 13px; color: var(--text-muted);
+  display: flex; gap: 10px; align-items: flex-start;
+  line-height: 1.5;
+}
+
+.vd-highlight-list li::before {
+  content: '—';
+  color: var(--silver); flex-shrink: 0;
+}
+
+/* Enquiry sidebar */
+.vd-sidebar {
+  position: sticky; top: 100px;
+}
+
+.vd-price-card {
+  background: var(--charcoal);
+  border: 1px solid var(--border);
+  padding: 32px;
+  margin-bottom: 16px;
+}
+
+.vd-price-label {
+  font-size: 10px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px;
+}
+
+.vd-price-val {
+  font-family: var(--font-display);
+  font-size: 38px; font-weight: 300; color: var(--silver);
+  margin-bottom: 4px;
+}
+
+.vd-price-note {
+  font-size: 12px; color: var(--text-muted); margin-bottom: 24px;
+}
+
+.vd-broker-mini {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px; margin-bottom: 16px;
+  background: rgba(201,169,110,0.04);
+  border: 1px solid var(--border-light);
+}
+
+/* ANIMATIONS */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Placeholder art for photos */
+.ocean-art {
+  width: 100%; height: 100%;
+  position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.ocean-wave {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 60%; opacity: 0.12;
+}
+
+.yacht-silhouette {
+  position: absolute;
+  bottom: 35%;
+  width: 60%; opacity: 0.15;
+}
+
+.availability-grid {
+  display: grid; grid-template-columns: repeat(7, 1fr);
+  gap: 3px; margin-bottom: 16px;
+}
+
+.av-cell {
+  aspect-ratio: 1;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; color: var(--text-muted);
+  border: 1px solid transparent;
+}
+
+.av-cell.avail { background: rgba(76,175,80,0.12); color: #4CAF50; border-color: rgba(76,175,80,0.2); }
+.av-cell.taken { background: rgba(201,169,110,0.06); color: var(--border); }
+.av-cell.header { color: var(--text-muted); font-size: 9px; letter-spacing: 0.08em; }
+
+/* scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 32px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  z-index: 2;
+}
+
+.scroll-line {
+  width: 1px; height: 48px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollPulse 2s infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+.scroll-text {
+  font-size: 9px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--text-muted);
+}
+
+  /* === WYC BRAND OVERRIDES === */
+
+  /* Hero background — deep navy gradient matching brand */
+  .hero-bg {
+    background: linear-gradient(160deg, #040c1a 0%, #0B1834 50%, #0f2040 100%) !important;
+  }
+
+  /* Radial ocean glow — silver toned */
+  .hero-ocean {
+    background-image:
+      radial-gradient(ellipse 80% 50% at 60% 40%, rgba(180,184,190,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 20% 80%, rgba(11,24,52,0.4) 0%, transparent 50%) !important;
+  }
+
+  /* Silhouette in silver */
+  .hero-silhouette svg { fill: var(--silver) !important; }
+
+  /* Eyebrow line accent */
+  .hero-eyebrow::before { background: var(--silver) !important; }
+  .section-eyebrow::before { background: var(--silver) !important; }
+
+  /* Search section — charcoal brand colour */
+  .search-section {
+    background: var(--charcoal) !important;
+    border-top: 1px solid rgba(180,184,190,0.15) !important;
+    border-bottom: 1px solid rgba(180,184,190,0.15) !important;
+  }
+  .search-inner { border: none !important; }
+
+  /* Yacht card footer price in silver */
+  .yacht-price { color: var(--silver) !important; }
+
+  /* Active pills — silver bg */
+  .type-pill.active, .search-tab.active {
+    background: var(--silver) !important;
+    color: var(--navy) !important;
+    border-color: var(--silver) !important;
+  }
+
+  /* Trust bar background — charcoal */
+  .trust-bar {
+    background: var(--charcoal) !important;
+    border-top: 1px solid rgba(180,184,190,0.15) !important;
+    border-bottom: 1px solid rgba(180,184,190,0.15) !important;
+  }
+  .trust-num { color: var(--silver) !important; }
+
+  /* Planner section */
+  .planner-section {
+    background: linear-gradient(135deg, #0B1834 0%, #162040 100%) !important;
+  }
+
+  /* Broker section */
+  .broker-section {
+    background: var(--charcoal) !important;
+  }
+
+  /* Broker card border */
+  .broker-card {
+    border: 1px solid rgba(180,184,190,0.2) !important;
+    background: rgba(11,24,52,0.5) !important;
+  }
+  .broker-avatar {
+    background: var(--navy) !important;
+    border: 1px solid var(--silver) !important;
+    color: var(--silver) !important;
+  }
+
+  /* CTA button consistent */
+  .broker-contact {
+    border-color: var(--silver) !important;
+    color: var(--silver) !important;
+  }
+  .broker-contact:hover {
+    background: var(--silver) !important;
+    color: var(--navy) !important;
+  }
+
+  /* Footer */
+  footer {
+    background: #060e1c !important;
+    border-top: 1px solid rgba(180,184,190,0.15) !important;
+  }
+  .footer-col-title { color: var(--silver) !important; }
+
+  /* Experience section accent */
+  .exp-accent-box {
+    background: var(--charcoal) !important;
+    border: 1px solid rgba(180,184,190,0.2) !important;
+  }
+  .exp-accent-num { color: var(--silver) !important; }
+
+  /* Enquiry modal */
+  .enquiry-modal {
+    background: var(--charcoal) !important;
+    border: 1px solid rgba(180,184,190,0.2) !important;
+  }
+
+  /* Availability grid */
+  .av-cell.avail { background: rgba(180,184,190,0.15) !important; color: var(--silver) !important; }
+
+  /* Testimonial card stars */
+  .t-stars { color: var(--silver) !important; }
+
+  /* Planner step numbers */
+  .ps-num {
+    background: var(--silver) !important;
+    color: var(--navy) !important;
+  }
+
+  /* Experience feature icons */
+  .exp-feature-icon { color: var(--silver) !important; }
+
+  /* Scroll indicator */
+  .scroll-line { background: var(--silver) !important; }
+
+  /* Vessel detail overlay */
+  .vd-price-val { color: var(--silver) !important; }
+
+  /* Hero stat numbers */
+  .hero-stat-num { color: var(--silver) !important; }
+
+  /* Montserrat for section eyebrows */
+  .section-eyebrow, .hero-eyebrow {
+    font-family: var(--font-display) !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.2em !important;
+  }
+
+  /* Section title font */
+  .section-title {
+    font-family: var(--font-display) !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.01em !important;
+  }
+
+  /* Nav links font */
+  .nav-links a {
+    font-family: var(--font-display) !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.1em !important;
+    font-size: 11px !important;
+  }
+
+  /* Nav CTA */
+  .nav-cta {
+    font-family: var(--font-display) !important;
+    font-weight: 600 !important;
+    border-color: var(--silver) !important;
+    color: var(--silver) !important;
+  }
+
+  /* Cert badges */
+  .cert-badge {
+    border-color: rgba(180,184,190,0.3) !important;
+    color: var(--silver) !important;
+  }
+
+  /* Modal eyebrow */
+  .modal-eyebrow { color: var(--silver) !important; }
+  .mb-avail { color: #4CAF50 !important; }
+
+
+  /* === DESIGN IMPROVEMENTS === */
+
+  /* Grain texture overlay for hero depth */
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    pointer-events: none;
+  }
+  .hero-content { z-index: 2; }
+  .hero-stats { z-index: 2; }
+  .scroll-indicator { z-index: 2; }
+
+  /* Warm gold accent on hero eyebrow line */
+  .hero-eyebrow { color: var(--accent) !important; }
+  .hero-eyebrow::before { background: var(--accent) !important; }
+
+  /* Hero title italic in warm gold */
+  .hero-title em {
+    color: var(--accent) !important;
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  /* Hero stat numbers — warm gold */
+  .hero-stat-num { color: var(--accent) !important; }
+
+  /* Primary button — warm gold */
+  .btn-primary {
+    background: var(--accent) !important;
+    color: #0B1834 !important;
+  }
+  .btn-primary:hover {
+    background: var(--accent-light) !important;
+    transform: translateY(-1px);
+  }
+
+  /* Nav CTA warm gold */
+  .nav-cta {
+    border-color: var(--accent) !important;
+    color: var(--accent) !important;
+  }
+  .nav-cta:hover {
+    background: var(--accent) !important;
+    color: var(--navy) !important;
+  }
+
+  /* Section eyebrow warm gold */
+  .section-eyebrow { color: var(--accent) !important; }
+  .section-eyebrow::before { background: var(--accent) !important; }
+
+  /* Yacht price in warm gold */
+  .yacht-price { color: var(--accent) !important; }
+
+  /* Trust bar numbers */
+  .trust-num { color: var(--accent) !important; }
+
+  /* Experience accent number */
+  .exp-accent-num { color: var(--accent) !important; }
+
+  /* Planner step numbers */
+  .ps-num {
+    background: var(--accent) !important;
+    color: var(--navy) !important;
+  }
+
+  /* Vessel detail price */
+  .vd-price-val { color: var(--accent) !important; }
+
+  /* Footer col titles warm gold */
+  .footer-col-title { color: var(--accent) !important; }
+
+  /* Modal eyebrow */
+  .modal-eyebrow { color: var(--accent) !important; }
+
+  /* Active pills & tabs */
+  .type-pill.active, .search-tab.active {
+    background: var(--accent) !important;
+    color: var(--navy) !important;
+    border-color: var(--accent) !important;
+  }
+
+  /* Enquire link */
+  .enquire-link { color: var(--accent) !important; }
+  .enquire-link:hover { color: var(--accent-light) !important; }
+
+  /* Ghost button */
+  .btn-ghost {
+    border-color: rgba(196,163,90,0.4) !important;
+    color: var(--accent) !important;
+  }
+  .btn-ghost:hover {
+    border-color: var(--accent) !important;
+    background: rgba(196,163,90,0.08) !important;
+  }
+
+  /* ============================================================
+     IMPROVEMENT 4: Light section for testimonials
+     ============================================================ */
+  .testimonials-section {
+    background: var(--light-bg) !important;
+    padding: 80px 0 !important;
+  }
+  .testimonials-section .section-eyebrow { color: var(--accent) !important; }
+  .testimonials-section .section-title { color: var(--light-text) !important; }
+  .testimonials-section .section-title em { color: var(--accent) !important; }
+
+  .testimonial-card {
+    background: #ffffff !important;
+    border: 1px solid rgba(196,163,90,0.15) !important;
+    box-shadow: 0 4px 24px rgba(11,24,52,0.08) !important;
+  }
+  .testimonial-text { color: #2a3550 !important; }
+  .testimonial-quote-mark { color: var(--accent) !important; opacity: 0.4; }
+  .t-name { color: var(--light-text) !important; }
+  .t-detail { color: #6a7590 !important; }
+  .t-stars { color: var(--accent) !important; }
+  .t-avatar {
+    background: var(--navy) !important;
+    color: var(--silver) !important;
+  }
+
+  /* ============================================================
+     IMPROVEMENT 5: Better horizontal nav logo lockup
+     ============================================================ */
+  .nav-logo-img {
+    height: 36px !important;
+    width: auto !important;
+    filter: brightness(0) invert(1) !important;
+  }
+
+  /* Improved hero background with richer gradient */
+  .hero-bg {
+    background: linear-gradient(160deg,
+      #030a14 0%,
+      #060f20 20%,
+      #0B1834 55%,
+      #0d1f3e 80%,
+      #111f40 100%) !important;
+  }
+
+  /* Richer ocean glow effect */
+  .hero-ocean {
+    opacity: 0.25 !important;
+    background-image:
+      radial-gradient(ellipse 90% 60% at 65% 35%, rgba(196,163,90,0.12) 0%, transparent 55%),
+      radial-gradient(ellipse 70% 90% at 15% 85%, rgba(11,40,80,0.5) 0%, transparent 50%),
+      radial-gradient(ellipse 50% 40% at 90% 70%, rgba(180,184,190,0.06) 0%, transparent 40%) !important;
+  }
+
+  /* Broker section light treatment */
+  .broker-section {
+    background: var(--charcoal) !important;
+    border-top: 1px solid rgba(196,163,90,0.12) !important;
+    border-bottom: 1px solid rgba(196,163,90,0.12) !important;
+  }
+  .broker-card {
+    border-color: rgba(196,163,90,0.15) !important;
+  }
+  .broker-avatar {
+    border-color: var(--accent) !important;
+    color: var(--accent) !important;
+  }
+  .broker-contact {
+    border-color: var(--accent) !important;
+    color: var(--accent) !important;
+  }
+  .broker-contact:hover {
+    background: var(--accent) !important;
+    color: var(--navy) !important;
+  }
+
+  /* Cert badges accent */
+  .cert-badge {
+    border-color: rgba(196,163,90,0.3) !important;
+    color: var(--accent) !important;
+  }
+
+  /* Wave SVG fills — warm gold */
+  .ocean-art path { fill: var(--accent) !important; }
+
+  /* Experience feature icon */
+  .exp-feature-icon { color: var(--accent) !important; }
+
+  /* Scroll line */
+  .scroll-line { background: var(--accent) !important; }
+
+  /* Search section subtle warm border */
+  .search-section {
+    border-top: 1px solid rgba(196,163,90,0.12) !important;
+    border-bottom: 1px solid rgba(196,163,90,0.12) !important;
+  }
+
+  /* Yacht card badge */
+  .yacht-card-badge {
+    background: rgba(196,163,90,0.15) !important;
+    border: 1px solid rgba(196,163,90,0.3) !important;
+    color: var(--accent) !important;
+  }
+
+  /* VD back button */
+  .vd-back { color: var(--accent) !important; }
+
+  /* Photo nav dots active */
+  .pnd.active { background: var(--accent) !important; }
+
+  /* Availability active cells */
+  .av-cell.avail {
+    background: rgba(196,163,90,0.12) !important;
+    color: var(--accent) !important;
+  }
+
+  /* Planner section */
+  .planner-title em { color: var(--accent) !important; }
+  .ps-line { background: rgba(196,163,90,0.3) !important; }
+
+  /* Footer bottom links */
+  .footer-legal a { color: var(--silver) !important; }
+  .footer-legal a:hover { color: var(--accent) !important; }
+
+  /* Nav links hover */
+  .nav-links a:hover { color: var(--accent) !important; }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#" class="nav-logo" style="display:flex;align-items:center;gap:12px;text-decoration:none">
+    <svg width="38" height="28" viewBox="0 0 38 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Yacht hull silhouette -->
+      <path d="M2 22 L6 22 L7 19 L10 12 L13 8 L17 6 L22 5.5 L27 5.5 L32 6 L35 8 L36 14 L36 22 L2 22 Z" stroke="#C4A35A" stroke-width="1.2" fill="none" opacity="0.9"/>
+      <!-- Mast -->
+      <line x1="22" y1="5.5" x2="22" y2="1" stroke="#C4A35A" stroke-width="1.2"/>
+      <!-- Sail -->
+      <path d="M22 1.5 L33 12 L22 12 Z" fill="#C4A35A" opacity="0.35"/>
+      <!-- Wake lines -->
+      <path d="M1 25 Q10 23 19 25 Q28 27 37 25" stroke="#C4A35A" stroke-width="0.8" fill="none" opacity="0.5"/>
+    </svg>
+    <div style="display:flex;flex-direction:column;line-height:1">
+      <span style="font-family:'Montserrat',sans-serif;font-size:18px;font-weight:800;letter-spacing:0.08em;color:#ffffff">WYC</span>
+      <span style="font-family:'Montserrat',sans-serif;font-size:7.5px;font-weight:500;letter-spacing:0.22em;color:#B4B8BE;text-transform:uppercase;margin-top:1px">World Yacht Charters</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#yachts" onclick="scrollTo('#yachts')">Charter fleet</a></li>
+    <li><a href="#destinations" onclick="scrollTo('#destinations')">Destinations</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta" onclick="openEnquiry()">Plan your charter</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-ocean"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-silhouette">
+    <svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,180 L50,180 L60,160 L80,100 L100,80 L120,70 L200,65 L300,60 L400,58 L500,60 L600,65 L700,70 L750,80 L770,120 L780,160 L800,180 L800,200 L0,200 Z"/>
+      <line x1="300" y1="58" x2="300" y2="5" stroke="currentColor" stroke-width="2"/>
+      <polygon points="280,5 300,5 290,30" fill="currentColor" opacity="0.5"/>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">World Yacht Charters — Where Luxury Meets the Horizon</div>
+    <h1 class="hero-title">
+      Where Luxury<br>
+      Meets the <em>Horizon.</em>
+    </h1>
+    <p class="hero-sub">
+      Handpicked superyachts across the Mediterranean and Caribbean.
+      From intimate sailing voyages to grand motor yacht odysseys — we find the perfect vessel for your journey.
+    </p>
+    <div class="hero-ctas">
+      <button class="btn-primary" onclick="document.getElementById('search-section').scrollIntoView({behavior:'smooth'})">Search charter yachts</button>
+      <button class="btn-ghost" onclick="openEnquiry()">Speak to a broker</button>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="hero-stat-num">200+</span>
+      <span class="hero-stat-label">Vetted vessels</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">34</span>
+      <span class="hero-stat-label">Destinations</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">4.9</span>
+      <span class="hero-stat-label">Client rating</span>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span class="scroll-text">Scroll</span>
+  </div>
+</section>
+
+<!-- SEARCH -->
+<div id="search-section" class="search-section">
+  <div class="search-inner">
+    <div class="search-tabs">
+      <button class="search-tab active" onclick="setTab(this,'motor')">Motor yachts</button>
+      <button class="search-tab" onclick="setTab(this,'sail')">Sailing yachts</button>
+      <button class="search-tab" onclick="setTab(this,'cat')">Catamarans</button>
+      <button class="search-tab" onclick="setTab(this,'gulet')">Gulets</button>
+    </div>
+    <div class="search-form">
+      <div class="search-field">
+        <span class="sf-label">Destination</span>
+        <select class="sf-select">
+          <option>All destinations</option>
+          <option>Mediterranean</option>
+          <option>Greek Islands</option>
+          <option>Croatia & Adriatic</option>
+          <option>French Riviera</option>
+          <option>Italy & Amalfi</option>
+          <option>Caribbean</option>
+          <option>British Virgin Islands</option>
+          <option>St Barts & Martinique</option>
+          <option>Antigua & Barbuda</option>
+        </select>
+      </div>
+      <div class="search-field">
+        <span class="sf-label">Vessel size</span>
+        <select class="sf-select" id="size-select">
+          <option>Any length</option>
+          <option>Under 15m</option>
+          <option>15m — 30m</option>
+          <option>30m — 50m (superyacht)</option>
+          <option>50m+ (megayacht)</option>
+        </select>
+      </div>
+      <div class="search-field">
+        <span class="sf-label">Guests</span>
+        <select class="sf-select">
+          <option>Any capacity</option>
+          <option>2 guests</option>
+          <option>4 guests</option>
+          <option>6 guests</option>
+          <option>8 guests</option>
+          <option>10 — 12 guests</option>
+          <option>12+ guests</option>
+        </select>
+      </div>
+      <div class="search-field">
+        <span class="sf-label">Charter type</span>
+        <select class="sf-select">
+          <option>Skippered charter</option>
+          <option>Self-skippered / bareboat</option>
+          <option>Fully crewed</option>
+        </select>
+      </div>
+      <button class="search-submit" onclick="filterYachts()">Search →</button>
+    </div>
+  </div>
+  <div class="type-section">
+    <div class="type-scroll">
+      <span class="type-label">Quick filter:</span>
+      <button class="type-pill active" onclick="filterType(this,'all')">All vessels</button>
+      <button class="type-pill" onclick="filterType(this,'motor-under')">Motor &lt;50m</button>
+      <button class="type-pill" onclick="filterType(this,'motor-over')">Motor 50m+</button>
+      <button class="type-pill" onclick="filterType(this,'sailing')">Sailing yacht</button>
+      <button class="type-pill" onclick="filterType(this,'catamaran')">Catamaran</button>
+      <button class="type-pill" onclick="filterType(this,'gulet')">Gulet</button>
+      <button class="type-pill" onclick="filterType(this,'skippered')">Skippered</button>
+      <button class="type-pill" onclick="filterType(this,'bareboat')">Self-skippered</button>
+      <button class="type-pill" onclick="filterType(this,'caribbean')">Caribbean</button>
+      <button class="type-pill" onclick="filterType(this,'med')">Mediterranean</button>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURED YACHTS -->
+<section id="yachts" class="featured-section">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">Our fleet</div>
+      <h2 class="section-title">Featured <em>charter yachts</em></h2>
+    </div>
+    <button class="view-all">View all 200+ vessels →</button>
+  </div>
+  <div class="yachts-grid" id="yachts-grid"></div>
+</section>
+
+<!-- DESTINATIONS -->
+<section id="destinations" class="destinations-section">
+  <div class="dest-inner">
+    <div class="section-header">
+      <div>
+        <div class="section-eyebrow">Where to charter</div>
+        <h2 class="section-title">Explore <em>the world's</em><br>finest waters</h2>
+      </div>
+      <button class="view-all">All destinations →</button>
+    </div>
+    <div class="dest-grid" id="dest-grid"></div>
+  </div>
+</section>
+
+<!-- EXPERIENCE SECTION -->
+<section id="experience" class="experience-section">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">The WYC difference</div>
+      <h2 class="section-title">White-glove <em>service,</em><br>extraordinary <em>voyages</em></h2>
+    </div>
+  </div>
+  <div class="exp-grid">
+    <div class="exp-visual">
+      <div class="exp-main-img">
+        <div class="ocean-art" style="background: linear-gradient(160deg,#062040 0%,#0a3060 60%,#0d4080 100%)">
+          <svg style="position:absolute;bottom:0;left:0;right:0;width:100%;opacity:0.2" viewBox="0 0 800 200"><path fill="#B4B8BE" d="M0,120 Q100,80 200,110 Q300,140 400,100 Q500,60 600,90 Q700,120 800,80 L800,200 L0,200 Z"/></svg>
+          <svg style="width:55%;opacity:0.12;position:absolute;bottom:32%" viewBox="0 0 400 100" fill="#B4B8BE"><path d="M20,80 L40,80 L45,65 L55,40 L65,28 L80,20 L140,18 L220,16 L300,16 L360,18 L380,24 L385,50 L390,80 L400,80 L400,100 L20,100 Z"/><line x1="220" y1="16" x2="220" y2="2" stroke="#B4B8BE" stroke-width="2"/></svg>
+        </div>
+      </div>
+      <div class="exp-accent-box">
+        <span class="exp-accent-num">200+</span>
+        <span class="exp-accent-label">Handpicked vessels</span>
+      </div>
+    </div>
+    <div class="exp-content">
+      <div class="exp-features">
+        <div class="exp-feature">
+          <div class="exp-feature-icon">✦</div>
+          <div>
+            <div class="exp-feature-title">Expert charter brokers</div>
+            <p class="exp-feature-text">Every charter is guided by a specialist broker with first-hand knowledge of the fleet and destinations. We match you to the perfect vessel, not just any available yacht.</p>
+          </div>
+        </div>
+        <div class="exp-feature">
+          <div class="exp-feature-icon">◈</div>
+          <div>
+            <div class="exp-feature-title">Curated & vetted fleet</div>
+            <p class="exp-feature-text">We personally inspect every yacht on our platform. Safety certifications, crew qualifications and vessel condition are verified before listing.</p>
+          </div>
+        </div>
+        <div class="exp-feature">
+          <div class="exp-feature-icon">◇</div>
+          <div>
+            <div class="exp-feature-title">End-to-end concierge</div>
+            <p class="exp-feature-text">From airport transfers and provisioning to custom itineraries and port clearances — our concierge team handles every detail before and during your charter.</p>
+          </div>
+        </div>
+        <div class="exp-feature">
+          <div class="exp-feature-icon">⬡</div>
+          <div>
+            <div class="exp-feature-title">24/7 on-charter support</div>
+            <p class="exp-feature-text">A dedicated charter manager is reachable around the clock during your voyage. Whatever you need, wherever you are — we're there.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BROKER STRIP -->
+<div id="contact" class="broker-section">
+  <div class="broker-inner">
+    <div>
+      <h3 class="broker-intro-title">Speak directly<br>with a specialist</h3>
+      <p class="broker-intro-text">Our charter brokers have sailed these waters and know every yacht personally. Tell us what you're looking for and we'll curate the perfect shortlist — usually within 24 hours.</p>
+      <button class="btn-primary" style="margin-top:24px" onclick="openEnquiry()">Send a charter brief</button>
+    </div>
+    <div class="broker-cards">
+      <div class="broker-card">
+        <div class="broker-avatar">JH</div>
+        <div class="broker-name">James Harlow</div>
+        <div class="broker-title">Mediterranean specialist</div>
+        <div class="mb-avail" style="font-size:10px;margin-bottom:10px">● Available now</div>
+        <button class="broker-contact" onclick="openEnquiry()">Contact</button>
+      </div>
+      <div class="broker-card">
+        <div class="broker-avatar">SL</div>
+        <div class="broker-name">Sophie Laurent</div>
+        <div class="broker-title">Caribbean specialist</div>
+        <div class="mb-avail" style="font-size:10px;margin-bottom:10px">● Available now</div>
+        <button class="broker-contact" onclick="openEnquiry()">Contact</button>
+      </div>
+      <div class="broker-card">
+        <div class="broker-avatar">MC</div>
+        <div class="broker-name">Marco Conti</div>
+        <div class="broker-title">Sailing & gulets</div>
+        <div style="font-size:10px;color:var(--text-muted);margin-bottom:10px">● Back in 2 hours</div>
+        <button class="broker-contact" onclick="openEnquiry()">Contact</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">Client stories</div>
+      <h2 class="section-title">Moments that <em>last forever</em></h2>
+    </div>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-quote-mark">"</div>
+      <p class="testimonial-text">From the first enquiry to dropping anchor in Capri, the WYC team made everything feel effortless. The yacht was flawless, the crew outstanding. We're already planning our next charter.</p>
+      <div class="testimonial-author">
+        <div class="t-avatar">RW</div>
+        <div>
+          <div class="t-name">Richard & Wendy T.</div>
+          <div class="t-detail">Motor yacht · Amalfi Coast · July 2024</div>
+        </div>
+        <div class="t-stars">★★★★★</div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-quote-mark">"</div>
+      <p class="testimonial-text">Our broker Sophie found us the most extraordinary gulet in Croatia. She knew exactly what we needed — privacy, good sailing, stunning anchorages. A perfect 10 days.</p>
+      <div class="testimonial-author">
+        <div class="t-avatar">AM</div>
+        <div>
+          <div class="t-name">Anna M.</div>
+          <div class="t-detail">Gulet · Dalmatian Coast · August 2024</div>
+        </div>
+        <div class="t-stars">★★★★★</div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-quote-mark">"</div>
+      <p class="testimonial-text">We chartered a catamaran in the BVI for our family — three generations. The WYC team thought of everything. The kids are already asking when we're going back.</p>
+      <div class="testimonial-author">
+        <div class="t-avatar">PF</div>
+        <div>
+          <div class="t-name">The Fleming family</div>
+          <div class="t-detail">Catamaran · BVI · Christmas 2023</div>
+        </div>
+        <div class="t-stars">★★★★★</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <div>
+      <div class="trust-num">200+</div>
+      <div class="trust-label">Vetted charter yachts</div>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div>
+      <div class="trust-num">16</div>
+      <div class="trust-label">Years in business</div>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div>
+      <div class="trust-num">4,800+</div>
+      <div class="trust-label">Charters delivered</div>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div>
+      <div class="trust-num">4.9★</div>
+      <div class="trust-label">Average client rating</div>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div>
+      <div class="trust-num">MYBA</div>
+      <div class="trust-label">Member & accredited</div>
+    </div>
+  </div>
+</div>
+
+<!-- CHARTER PLANNER CTA -->
+<section class="planner-section">
+  <div class="planner-bg-accent"></div>
+  <div class="planner-inner">
+    <div class="section-eyebrow" style="justify-content:center;margin-bottom:20px">Build your charter brief</div>
+    <h2 class="planner-title">Tell us your<br><em>dream voyage</em></h2>
+    <p class="planner-sub">Our charter planner takes 3 minutes and gives our brokers everything they need to find your perfect yacht. No obligation — just expert, personalised results.</p>
+    <div class="planner-steps">
+      <div class="ps-step">
+        <div class="ps-num">1</div>
+        <div class="ps-label">Destination<br>& dates</div>
+      </div>
+      <div class="ps-line"></div>
+      <div class="ps-step">
+        <div class="ps-num">2</div>
+        <div class="ps-label">Vessel<br>preferences</div>
+      </div>
+      <div class="ps-line"></div>
+      <div class="ps-step">
+        <div class="ps-num">3</div>
+        <div class="ps-label">Budget<br>& extras</div>
+      </div>
+      <div class="ps-line"></div>
+      <div class="ps-step">
+        <div class="ps-num">4</div>
+        <div class="ps-label">Receive<br>shortlist</div>
+      </div>
+    </div>
+    <button class="btn-primary" style="padding:18px 48px;font-size:12px" onclick="openEnquiry()">Start your charter brief →</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px">
+  <svg width="50" height="37" viewBox="0 0 38 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2 22 L6 22 L7 19 L10 12 L13 8 L17 6 L22 5.5 L27 5.5 L32 6 L35 8 L36 14 L36 22 L2 22 Z" stroke="#C4A35A" stroke-width="1.2" fill="none" opacity="0.9"/>
+    <line x1="22" y1="5.5" x2="22" y2="1" stroke="#C4A35A" stroke-width="1.2"/>
+    <path d="M22 1.5 L33 12 L22 12 Z" fill="#C4A35A" opacity="0.35"/>
+    <path d="M1 25 Q10 23 19 25 Q28 27 37 25" stroke="#C4A35A" stroke-width="0.8" fill="none" opacity="0.5"/>
+  </svg>
+  <div style="line-height:1.2">
+    <div style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:800;letter-spacing:0.08em;color:#ffffff">WYC</div>
+    <div style="font-family:'Montserrat',sans-serif;font-size:8px;font-weight:500;letter-spacing:0.22em;color:#B4B8BE;text-transform:uppercase">World Yacht Charters</div>
+  </div>
+</div>
+        <p class="footer-desc">Specialist charter brokers connecting discerning guests with the world's finest yachts across the Mediterranean, Caribbean, and beyond. Every charter, personally curated.</p>
+        <div class="footer-certifications">
+          <div class="cert-badge">MYBA</div>
+          <div class="cert-badge">AYCA</div>
+          <div class="cert-badge">MCA</div>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Charter fleet</div>
+        <ul class="footer-links">
+          <li><a href="#">Motor yachts under 50m</a></li>
+          <li><a href="#">Motor yachts 50m+</a></li>
+          <li><a href="#">Sailing yachts</a></li>
+          <li><a href="#">Catamarans</a></li>
+          <li><a href="#">Gulets</a></li>
+          <li><a href="#">Skippered charters</a></li>
+          <li><a href="#">Bareboat charters</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Destinations</div>
+        <ul class="footer-links">
+          <li><a href="#">Mediterranean</a></li>
+          <li><a href="#">Greek Islands</a></li>
+          <li><a href="#">Croatia & Adriatic</a></li>
+          <li><a href="#">French Riviera</a></li>
+          <li><a href="#">Caribbean</a></li>
+          <li><a href="#">British Virgin Islands</a></li>
+          <li><a href="#">St Barts & Martinique</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Our brokers</a></li>
+          <li><a href="#">Charter guides</a></li>
+          <li><a href="#">Destination guides</a></li>
+          <li><a href="#">News & press</a></li>
+          <li><a href="#">Contact us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 WorldYachtCharters.com — All rights reserved</div>
+      <div class="footer-legal">
+        <a href="#">Privacy policy</a>
+        <a href="#">Terms & conditions</a>
+        <a href="#">Cookie policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ENQUIRY MODAL -->
+<div class="enquiry-modal-bg" id="enquiry-modal" onclick="closeIfBg(event)">
+  <div class="enquiry-modal">
+    <button class="modal-close" onclick="closeEnquiry()">✕</button>
+    <div class="modal-eyebrow">Charter brief</div>
+    <h3 class="modal-title">Start your<br>perfect voyage</h3>
+    <div class="modal-broker">
+      <div class="mb-avatar">JH</div>
+      <div class="mb-info">
+        <div class="mb-name">James Harlow</div>
+        <div class="mb-role">Your assigned broker · Mediterranean specialist</div>
+        <div class="mb-avail">● Available now — replies within 2 hours</div>
+      </div>
+    </div>
+    <div class="modal-form">
+      <div class="modal-row">
+        <div class="modal-field">
+          <label>First name</label>
+          <input type="text" placeholder="Alexander">
+        </div>
+        <div class="modal-field">
+          <label>Last name</label>
+          <input type="text" placeholder="Whitmore">
+        </div>
+      </div>
+      <div class="modal-field">
+        <label>Email address</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="modal-row">
+        <div class="modal-field">
+          <label>Destination</label>
+          <select>
+            <option>Mediterranean</option>
+            <option>Greek Islands</option>
+            <option>Croatia</option>
+            <option>French Riviera</option>
+            <option>Caribbean</option>
+            <option>BVI</option>
+          </select>
+        </div>
+        <div class="modal-field">
+          <label>Guests</label>
+          <select>
+            <option>2 guests</option>
+            <option>4 guests</option>
+            <option>6 guests</option>
+            <option>8 guests</option>
+            <option>10+ guests</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-row">
+        <div class="modal-field">
+          <label>Vessel type</label>
+          <select>
+            <option>Motor yacht &lt;50m</option>
+            <option>Motor yacht 50m+</option>
+            <option>Sailing yacht</option>
+            <option>Catamaran</option>
+            <option>Gulet</option>
+          </select>
+        </div>
+        <div class="modal-field">
+          <label>Weekly budget</label>
+          <select>
+            <option>€5,000 — €15,000</option>
+            <option>€15,000 — €40,000</option>
+            <option>€40,000 — €100,000</option>
+            <option>€100,000+</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-field">
+        <label>Tell us about your dream charter</label>
+        <textarea placeholder="Special occasions, interests, must-have destinations..."></textarea>
+      </div>
+      <button class="btn-primary" style="width:100%;padding:16px">Send charter brief →</button>
+    </div>
+  </div>
+</div>
+
+<!-- VESSEL DETAIL OVERLAY -->
+<div class="vessel-detail-bg" id="vessel-detail"></div>
+
+<script>
+const yachts = [
+
+  // ── MOTOR YACHTS UNDER 50m (5 vessels) ──────────────────────
+  {
+    id:0, name:"Lady Sorrento", type:"Motor yacht", dest:"Amalfi Coast, Italy",
+    badge:"Motor · 42m", specs:{guests:10,cabins:5,length:"42m",speed:"16 kts"},
+    price:"€28,000", desc:"An exquisitely crafted motor yacht offering five-star luxury across the Amalfi Coast and Capri. Her sleek naval architecture belies a spacious interior designed by a Milanese studio, featuring hand-stitched leathers and Calacatta marble throughout.",
+    highlights:["Swim platform with integrated sea stairs","Jacuzzi on sundeck with panoramic views","Water sports garage: jet ski, seabobs, paddleboards","Professional chef and full crew of 6","Al fresco dining aft deck seats all guests"],
+    color:"#0a2d4a", color2:"#0e3d60", color3:"#062040", color4:"#133050",
+    skippered:true, region:"med", cardtype:"motor-under"
+  },
+  {
+    id:1, name:"Adriatic Queen", type:"Motor yacht", dest:"Dubrovnik, Croatia",
+    badge:"Motor · 38m", specs:{guests:8,cabins:4,length:"38m",speed:"14 kts"},
+    price:"€22,000", desc:"A sleek and contemporary motor yacht built for Croatia's stunning coastline. Adriatic Queen offers four generous ensuite cabins, a vast sun deck with Jacuzzi, and a tender garage packed with water toys.",
+    highlights:["Full-beam master cabin with sea views","Stabilisers for smooth passages","Jet ski, paddleboards & snorkel gear","Gourmet galley with provisioning service","Air conditioning throughout"],
+    color:"#0d2540", color2:"#102e50", color3:"#081a30", color4:"#152840",
+    skippered:true, region:"med", cardtype:"motor-under"
+  },
+  {
+    id:2, name:"Stella Maris", type:"Motor yacht", dest:"Montenegro & Albania",
+    badge:"Motor · 35m", specs:{guests:8,cabins:4,length:"35m",speed:"13 kts"},
+    price:"€18,500", desc:"Stella Maris is a beautifully maintained flybridge motor yacht ideal for exploring the emerging luxury destinations of Montenegro and Albania. Her warm teak decks and modern interior make her a favourite for repeat guests.",
+    highlights:["Flybridge with 360° views","Hydraulic swim platform","Satellite TV & full entertainment system","Tender with 40hp outboard","Exceptional value in a rising destination"],
+    color:"#0a1e35", color2:"#0d2848", color3:"#071525", color4:"#102038",
+    skippered:true, region:"med", cardtype:"motor-under"
+  },
+  {
+    id:3, name:"Blue Horizon", type:"Motor yacht", dest:"Greek Islands",
+    badge:"Motor · 44m", specs:{guests:10,cabins:5,length:"44m",speed:"15 kts"},
+    price:"€32,000", desc:"Blue Horizon is a stunning displacement motor yacht designed for the discerning charterer who wants speed and space in equal measure. Built by a renowned Italian yard, her five cabins sleep ten guests in hotel-suite comfort.",
+    highlights:["Beach club with fold-down platform","Foredeck sunbathing area","Water sports: seabobs, wakeboards, kayaks","Dedicated crew of 7","Fully air-conditioned interior"],
+    color:"#082038", color2:"#0b2a4c", color3:"#051528", color4:"#0e2540",
+    skippered:true, region:"med", cardtype:"motor-under"
+  },
+  {
+    id:4, name:"Silver Cloud", type:"Motor yacht", dest:"French Riviera",
+    badge:"Motor · 46m", specs:{guests:10,cabins:5,length:"46m",speed:"16 kts"},
+    price:"€38,000", desc:"Silver Cloud epitomises Riviera elegance — a fast, contemporary motor yacht with exceptional outdoor entertaining spaces. Her sleek lines turn heads in every port from Monaco to Saint-Tropez.",
+    highlights:["Main deck aft terrace with custom seating","Garage with Jet Ski & Williams tender","Bose sound system throughout","Crew of 8 including private chef","Ideal for Monaco Grand Prix charters"],
+    color:"#0f1a30", color2:"#142240", color3:"#0a1225", color4:"#182a48",
+    skippered:true, region:"med", cardtype:"motor-under"
+  },
+
+  // ── MOTOR YACHTS OVER 50m (3 vessels) ───────────────────────
+  {
+    id:5, name:"Poseidon Star", type:"Motor yacht 50m+", dest:"French Riviera",
+    badge:"Motor · 58m", specs:{guests:12,cabins:6,length:"58m",speed:"18 kts"},
+    price:"€95,000", desc:"A masterpiece of modern naval architecture, Poseidon Star represents the pinnacle of the WYC fleet. Her 58 metres accommodate 12 guests in six opulent suites, with a crew of 14 ensuring flawless service from Monaco to Mykonos.",
+    highlights:["Cinema room, gym and spa treatment room","Helicopter pad (R44-class)","Tender garage with two limousine tenders","Private beach club with glass floor","Michelin-trained private chef on request"],
+    color:"#12102a", color2:"#1e1c40", color3:"#0c0a20", color4:"#282550",
+    skippered:true, region:"med", cardtype:"motor-over", featured:true
+  },
+  {
+    id:6, name:"Ocean Empress", type:"Motor yacht 50m+", dest:"Mediterranean & Caribbean",
+    badge:"Motor · 62m", specs:{guests:12,cabins:6,length:"62m",speed:"17 kts"},
+    price:"€115,000", desc:"Ocean Empress is among the finest charter yachts available globally. A transatlantic cruiser equally at home in the Mediterranean summer and Caribbean winter season, she offers unmatched range, style and crew expertise.",
+    highlights:["Zero-speed stabilisers for flat-sea comfort","11-metre pool on main deck","Full spa: sauna, hammam, treatment rooms","Crew of 16 including sommelier","Helipad and twin limousine tenders"],
+    color:"#0e0c28", color2:"#1a1838", color3:"#090720", color4:"#201e46",
+    skippered:true, region:"med", cardtype:"motor-over"
+  },
+  {
+    id:7, name:"Sovereign", type:"Motor yacht 50m+", dest:"Caribbean",
+    badge:"Motor · 55m", specs:{guests:12,cabins:6,length:"55m",speed:"16 kts"},
+    price:"€88,000", desc:"Sovereign is a majestic displacement superyacht, purpose-built for the Caribbean. Her classic lines and warm timber interiors evoke a golden era of yachting while delivering every modern luxury. Guests return year after year.",
+    highlights:["Master cabin spanning full beam of yacht","Alfresco cinema on upper deck","Beach club garage: kayaks, paddleboards, dive gear","Caribbean-specialist captain and crew of 12","Available Christmas & New Year season"],
+    color:"#101228", color2:"#181a38", color3:"#0c0e20", color4:"#202440",
+    skippered:true, region:"caribbean", cardtype:"motor-over"
+  },
+
+  // ── SAILING YACHTS (4 vessels) ───────────────────────────────
+  {
+    id:8, name:"Zephyr Blue", type:"Sailing yacht", dest:"Greek Islands",
+    badge:"Sail · 24m", specs:{guests:8,cabins:4,length:"24m",speed:"9 kts"},
+    price:"€9,500", desc:"A classic modern sailing yacht purpose-built for the Greek islands — fast, elegant, and beautifully appointed. Skippered by Petros, a third-generation Greek mariner with 20 years in the Cyclades.",
+    highlights:["Award-winning performance hull","Expert skipper — 20 years Cyclades experience","Retractable keel for shallow anchorages","Provisioned charter option available","Solar and wind power — truly off-grid capable"],
+    color:"#0a2a1a", color2:"#103520", color3:"#081e12", color4:"#0f2d1a",
+    skippered:true, region:"med", cardtype:"sailing"
+  },
+  {
+    id:9, name:"Wind Dancer", type:"Sailing yacht", dest:"St Barts, Caribbean",
+    badge:"Sail · 28m", specs:{guests:6,cabins:3,length:"28m",speed:"9 kts"},
+    price:"€7,800", desc:"A blue-water performance cruiser ideal for experienced sailors self-skipperng through the northern Caribbean islands. Three beautiful double cabins and a cavernous cockpit made for sundowner sailing.",
+    highlights:["Ocean-class safety equipment","Watermaker, generator, full solar array","AIS, radar and full navigation suite","Self-furling headsail — single-handed capable","Caribbean safety gear and EPIRB included"],
+    color:"#0a1e2a", color2:"#102a3d", color3:"#081520", color4:"#153040",
+    skippered:false, region:"caribbean", cardtype:"sailing"
+  },
+  {
+    id:10, name:"Dalmatia Star", type:"Sailing yacht", dest:"Split & Hvar, Croatia",
+    badge:"Sail · 22m", specs:{guests:8,cabins:4,length:"22m",speed:"8 kts"},
+    price:"€6,800", desc:"Dalmatia Star is a beautifully maintained Jeanneau Sun Odyssey, perfectly sized for Croatia's island-studded coastline. Her four double cabins comfortably sleep eight, with a brilliant cockpit for island-hopping days.",
+    highlights:["Skippered & bareboat options available","Full chart plotter and AIS fitted","Electric windlass and electric winches","Bimini shade over cockpit","WYC recommended provisioning at ACI marinas"],
+    color:"#082030", color2:"#0c2a40", color3:"#051825", color4:"#102838",
+    skippered:true, region:"med", cardtype:"sailing"
+  },
+  {
+    id:11, name:"Mistral", type:"Sailing yacht", dest:"Sardinia & Corsica",
+    badge:"Sail · 32m", specs:{guests:8,cabins:4,length:"32m",speed:"10 kts"},
+    price:"€14,500", desc:"Mistral is an exceptional performance cruiser-racer ideal for tackling the strong winds between Sardinia and Corsica. A favourite with experienced sailors who want both speed and luxury in equal measure.",
+    highlights:["Carbon fibre rig for exceptional performance","Twin autopilots for offshore passages","Watermaker and full offshore safety gear","Interior refit 2023 — like new condition","Crew option available on request"],
+    color:"#0c1c2a", color2:"#102438", color3:"#08141e", color4:"#142030",
+    skippered:false, region:"med", cardtype:"sailing"
+  },
+
+  // ── CATAMARANS (4 vessels) ───────────────────────────────────
+  {
+    id:12, name:"Sea Nomad", type:"Catamaran", dest:"British Virgin Islands",
+    badge:"Cat · 18m", specs:{guests:8,cabins:4,length:"18m",speed:"11 kts"},
+    price:"€6,200", desc:"The perfect bareboat catamaran for the BVI. Stable, spacious and simple to handle — four private ensuite cabins and a vast cockpit for sundowners while anchored off Virgin Gorda.",
+    highlights:["RYA Day Skipper minimum qualification required","Full chartplotter & navigation suite","Island-hopping itinerary booklet included","BVI clearance handled by WYC","Snorkelling gear for all guests"],
+    color:"#2a180a", color2:"#3d2410", color3:"#1e1008", color4:"#4a2e14",
+    skippered:false, region:"caribbean", cardtype:"catamaran"
+  },
+  {
+    id:13, name:"Aquila", type:"Catamaran", dest:"Greek Islands",
+    badge:"Cat · 16m", specs:{guests:8,cabins:4,length:"16m",speed:"10 kts"},
+    price:"€5,400", desc:"Aquila is a Lagoon 52 catamaran in immaculate condition, ideally based in Athens for exploring the Cyclades and Saronic Gulf. Her wide beam and flush decks make her one of the most comfortable charter cats in Greece.",
+    highlights:["Lagoon 52 — one of the finest production cats","Massive flybridge helm & lounge area","Watermaker and generator fitted","Skippered or bareboat options","AC in all cabins"],
+    color:"#1a280a", color2:"#253510", color3:"#121e06", color4:"#2e3e16",
+    skippered:true, region:"med", cardtype:"catamaran"
+  },
+  {
+    id:14, name:"Horizon Cat", type:"Catamaran", dest:"Montenegro, Adriatic",
+    badge:"Cat · 17m", specs:{guests:8,cabins:4,length:"17m",speed:"10 kts"},
+    price:"€5,800", desc:"Horizon Cat is a superb Fountaine Pajot Alegria 67, based in Tivat Marina for exploring the Bay of Kotor and Montenegro's unspoiled coastline. A crewed or bareboat option in one of Europe's most beautiful yet undiscovered sailing grounds.",
+    highlights:["Fountaine Pajot Alegria 67 — 2022 build","Tivat-based — close to Kotor & Budva","Full watermaker and lithium battery bank","Electric dinghy with outboard","Crew of 2 available for crewed charter"],
+    color:"#1e2a08", color2:"#28380c", color3:"#141e04", color4:"#303e12",
+    skippered:true, region:"med", cardtype:"catamaran"
+  },
+  {
+    id:15, name:"Bluewater Dream", type:"Catamaran", dest:"St Martin, Caribbean",
+    badge:"Cat · 19m", specs:{guests:8,cabins:4,length:"19m",speed:"12 kts"},
+    price:"€7,200", desc:"Bluewater Dream is a premium Leopard 58 catamaran based in St Martin — perfect for island hopping from Anguilla to Guadeloupe. Her four cabins each have private heads and the huge cockpit is made for Caribbean living.",
+    highlights:["Leopard 58 — fast and spacious","St Martin base — tax-free provisioning","Full scuba & snorkel equipment","Watermaker, solar & generator","Skippered charter with experienced Caribbean captain"],
+    color:"#2a1a08", color2:"#3a2610", color3:"#1e1206", color4:"#483014",
+    skippered:true, region:"caribbean", cardtype:"catamaran"
+  },
+
+  // ── GULETS (4 vessels) ───────────────────────────────────────
+  {
+    id:16, name:"Gulet Aegean", type:"Gulet", dest:"Dalmatian Coast, Croatia",
+    badge:"Gulet · 32m", specs:{guests:10,cabins:5,length:"32m",speed:"8 kts"},
+    price:"€11,000", desc:"A lovingly restored traditional gulet combining the timeless character of Turkish wooden craftsmanship with modern comforts. Sail Croatia's islands under canvas or motor quietly into hidden coves.",
+    highlights:["Hand-crafted mahogany and teak interior","Traditional gulet rig","Five ensuite double cabins","Full water sports platform","MYBA-accredited Turkish captain and crew"],
+    color:"#2a1a0a", color2:"#3d2810", color3:"#1e1208", color4:"#5c3a1a",
+    skippered:true, region:"med", cardtype:"gulet"
+  },
+  {
+    id:17, name:"Adriatic Pearl", type:"Gulet", dest:"Hvar & Korčula, Croatia",
+    badge:"Gulet · 28m", specs:{guests:10,cabins:5,length:"28m",speed:"8 kts"},
+    price:"€9,200", desc:"Adriatic Pearl is a classic Croatian-built gulet finished in honey-coloured teak throughout. Sail the Dalmatian islands at a leisurely pace, anchoring in hidden bays only reachable by sea.",
+    highlights:["Built in Split — 100% Croatian craftsmanship","Five double cabins with ensuite bathrooms","Shaded aft deck for al fresco dining","Paddleboards, kayaks and snorkel gear included","Recommended island-hopping itinerary provided"],
+    color:"#281808", color2:"#3c2410", color3:"#1c1006", color4:"#503a1a",
+    skippered:true, region:"med", cardtype:"gulet"
+  },
+  {
+    id:18, name:"Luce del Mare", type:"Gulet", dest:"Turkish Riviera",
+    badge:"Gulet · 36m", specs:{guests:12,cabins:6,length:"36m",speed:"9 kts"},
+    price:"€13,500", desc:"Luce del Mare is a premium gulet offering a refined blend of traditional Turkish craftsmanship and contemporary luxury. Her six double cabins and expansive deck spaces make her the perfect platform for exploring Turkey's turquoise coast.",
+    highlights:["Six ensuite cabins — each individually designed","Vast shaded aft deck for group dining","Bodrum-based with full provisioning service","Turkish captain with 25 years Aegean experience","Water sports platform: paddleboards, kayaks, tubes"],
+    color:"#301c08", color2:"#442a10", color3:"#221408", color4:"#5a3a1e",
+    skippered:true, region:"med", cardtype:"gulet"
+  },
+  {
+    id:19, name:"Bora Bora", type:"Gulet", dest:"Montenegro & Albania",
+    badge:"Gulet · 30m", specs:{guests:10,cabins:5,length:"30m",speed:"8 kts"},
+    price:"€8,500", desc:"Bora Bora is a beautifully maintained gulet exploring the last great undiscovered coastlines of the Adriatic — Montenegro's Bay of Kotor and Albania's Riviera. Exceptional value in a destination that rewards the adventurous.",
+    highlights:["Tivat-based — inside Bay of Kotor","Early bookers: 10% discount available","Five double cabins with AC","Kayaks, paddleboards, snorkelling gear","Local guide aboard for Albanian stops"],
+    color:"#241408", color2:"#362010", color3:"#180e04", color4:"#4a2e16",
+    skippered:true, region:"med", cardtype:"gulet"
+  }
+];
+
+const destinations = [
+  {name:"Mediterranean", region:"Europe · Featured", count:"120+ yachts", color1:"#082040", color2:"#0d3060"},
+  {name:"Greek Islands", region:"Mediterranean", count:"48 yachts", color1:"#051830", color2:"#0a2848"},
+  {name:"Croatian Adriatic", region:"Mediterranean", count:"32 yachts", color1:"#051c20", color2:"#082830"},
+  {name:"Caribbean", region:"West Indies · Featured", count:"80+ yachts", color1:"#102808", color2:"#183c10"},
+  {name:"French Riviera", region:"Mediterranean", count:"28 yachts", color1:"#1a1020", color2:"#261830"},
+];
+
+
+function getVesselPhoto(id) {
+  const photos = {
+    0: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500' style='width:100%;height:100%;position:absolute;inset:0'>
+    <defs>
+      <linearGradient id='sky0' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#0a1e3c'/><stop offset='60%' stop-color='#1a3a6e'/><stop offset='100%' stop-color='#1e4a8a'/></linearGradient>
+      <linearGradient id='sea0' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#0d3060'/><stop offset='100%' stop-color='#061828'/></linearGradient>
+      <linearGradient id='hull0' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#e8e8e8'/><stop offset='100%' stop-color='#b0b0b0'/></linearGradient>
+    </defs>
+    <!-- Sky -->
+    <rect width='800' height='500' fill='url(#sky0)'/>
+    <!-- Stars -->
+    <circle cx='100' cy='40' r='1.2' fill='white' opacity='0.6'/><circle cx='240' cy='25' r='1' fill='white' opacity='0.5'/><circle cx='380' cy='55' r='1.4' fill='white' opacity='0.7'/><circle cx='520' cy='30' r='1' fill='white' opacity='0.4'/><circle cx='650' cy='50' r='1.2' fill='white' opacity='0.6'/><circle cx='720' cy='20' r='1' fill='white' opacity='0.5'/>
+    <!-- Moon glow -->
+    <ellipse cx='680' cy='70' rx='60' ry='50' fill='rgba(255,240,200,0.06)'/>
+    <circle cx='680' cy='68' r='22' fill='#fffde0' opacity='0.85'/>
+    <!-- Sea -->
+    <rect y='310' width='800' height='190' fill='url(#sea0)'/>
+    <!-- Wave lines -->
+    <path d='M0,320 Q100,312 200,322 Q300,332 400,318 Q500,306 600,318 Q700,330 800,316' stroke='rgba(255,255,255,0.12)' stroke-width='1.5' fill='none'/>
+    <path d='M0,340 Q80,330 180,342 Q320,356 440,338 Q560,322 700,340 Q750,346 800,336' stroke='rgba(255,255,255,0.08)' stroke-width='1' fill='none'/>
+    <path d='M0,365 Q120,355 250,368 Q400,382 550,360 Q660,344 800,358' stroke='rgba(255,255,255,0.06)' stroke-width='1' fill='none'/>
+    <!-- Moon reflection -->
+    <ellipse cx='680' cy='380' rx='12' ry='60' fill='rgba(255,240,180,0.12)'/>
+    <!-- Motor yacht hull -->
+    <path d='M180,300 L620,300 L640,318 L160,318 Z' fill='#1a1a2e'/>
+    <path d='M200,260 L600,260 L620,300 L180,300 Z' fill='url(#hull0)'/>
+    <!-- Superstructure -->
+    <rect x='230' y='210' width='280' height='52' rx='4' fill='#f0f0f0'/>
+    <rect x='260' y='170' width='200' height='42' rx='3' fill='#e8e8e8'/>
+    <rect x='290' y='142' width='140' height='30' rx='2' fill='#ddd'/>
+    <!-- Windows -->
+    <rect x='245' y='222' width='30' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/><rect x='285' y='222' width='30' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/><rect x='325' y='222' width='30' height='18' rx='2' fill='#C4A35A' opacity='0.6'/><rect x='365' y='222' width='30' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/><rect x='405' y='222' width='30' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/><rect x='445' y='222' width='30' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/>
+    <rect x='275' y='182' width='24' height='14' rx='2' fill='#1a3a6e' opacity='0.7'/><rect x='310' y='182' width='24' height='14' rx='2' fill='#C4A35A' opacity='0.5'/><rect x='345' y='182' width='24' height='14' rx='2' fill='#1a3a6e' opacity='0.7'/><rect x='380' y='182' width='24' height='14' rx='2' fill='#1a3a6e' opacity='0.7'/>
+    <!-- Mast/radar -->
+    <line x1='400' y1='142' x2='400' y2='90' stroke='#ccc' stroke-width='2.5'/>
+    <line x1='370' y1='100' x2='430' y2='100' stroke='#ccc' stroke-width='1.5'/>
+    <circle cx='400' cy='90' r='4' fill='#C4A35A'/>
+    <!-- Wake -->
+    <path d='M160,318 Q80,330 0,325' stroke='rgba(255,255,255,0.2)' stroke-width='2.5' fill='none'/>
+    <path d='M160,322 Q60,338 0,332' stroke='rgba(255,255,255,0.12)' stroke-width='1.5' fill='none'/>
+    <!-- Distant coastline -->
+    <path d='M0,285 Q80,270 160,278 Q240,286 280,272 Q340,255 380,268 Q440,282 500,265 Q560,248 620,260 Q700,274 800,262 L800,310 L0,310 Z' fill='rgba(10,25,50,0.5)'/>
+    <!-- WYC gold stripe on hull -->
+    <rect x='200' y='297' width='400' height='3' fill='#C4A35A' opacity='0.7'/>
+  </svg>`,
+    1: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500' style='width:100%;height:100%;position:absolute;inset:0'>
+    <defs>
+      <linearGradient id='sky1' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#1a3060'/><stop offset='50%' stop-color='#2a5090'/><stop offset='100%' stop-color='#3060a8'/></linearGradient>
+      <linearGradient id='sea1' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#1a4a80'/><stop offset='100%' stop-color='#081828'/></linearGradient>
+    </defs>
+    <rect width='800' height='500' fill='url(#sky1)'/>
+    <!-- Sun glare -->
+    <ellipse cx='650' cy='80' rx='120' ry='80' fill='rgba(255,220,120,0.08)'/>
+    <circle cx='650' cy='78' r='28' fill='#ffe090' opacity='0.9'/>
+    <circle cx='650' cy='78' r='18' fill='#fff5cc' opacity='0.95'/>
+    <!-- Sun rays -->
+    <line x1='650' y1='40' x2='650' y2='20' stroke='rgba(255,220,100,0.3)' stroke-width='2'/><line x1='688' y1='52' x2='706' y2='38' stroke='rgba(255,220,100,0.2)' stroke-width='1.5'/><line x1='700' y1='80' x2='726' y2='78' stroke='rgba(255,220,100,0.2)' stroke-width='1.5'/><line x1='612' y1='52' x2='594' y2='38' stroke='rgba(255,220,100,0.2)' stroke-width='1.5'/>
+    <rect y='300' width='800' height='200' fill='url(#sea1)'/>
+    <!-- Sparkling sea -->
+    <path d='M0,308 Q150,296 300,310 Q450,324 600,306 Q700,294 800,302' stroke='rgba(255,255,255,0.15)' stroke-width='1.5' fill='none'/>
+    <path d='M0,330 Q200,318 380,332 Q520,344 700,326 Q750,320 800,324' stroke='rgba(255,255,255,0.1)' stroke-width='1' fill='none'/>
+    <!-- Sun reflection -->
+    <path d='M580,300 Q620,310 660,300 Q680,330 660,360 Q620,370 580,360 Q560,330 580,300 Z' fill='rgba(255,220,100,0.08)'/>
+    <!-- Motor yacht -->
+    <path d='M170,295 L630,295 L650,315 L150,315 Z' fill='#0d1a30'/>
+    <path d='M195,252 L605,252 L630,295 L170,295 Z' fill='#e8eaee'/>
+    <rect x='225' y='200' width='290' height='54' rx='4' fill='#f0f2f5'/>
+    <rect x='258' y='162' width='210' height='40' rx='3' fill='#e8eaee'/>
+    <rect x='292' y='135' width='148' height='29' rx='2' fill='#dde0e6'/>
+    <!-- Windows row -->
+    <rect x='238' y='214' width='32' height='20' rx='2' fill='#1a3a6e' opacity='0.75'/><rect x='280' y='214' width='32' height='20' rx='2' fill='#C4A35A' opacity='0.6'/><rect x='322' y='214' width='32' height='20' rx='2' fill='#1a3a6e' opacity='0.75'/><rect x='364' y='214' width='32' height='20' rx='2' fill='#1a3a6e' opacity='0.75'/><rect x='406' y='214' width='32' height='20' rx='2' fill='#1a3a6e' opacity='0.75'/><rect x='448' y='214' width='32' height='20' rx='2' fill='#C4A35A' opacity='0.6'/>
+    <line x1='395' y1='135' x2='395' y2='82' stroke='#bbb' stroke-width='2.5'/>
+    <line x1='362' y1='92' x2='428' y2='92' stroke='#bbb' stroke-width='1.5'/>
+    <!-- WYC stripe -->
+    <rect x='195' y='292' width='435' height='3' fill='#C4A35A' opacity='0.8'/>
+    <!-- Wake -->
+    <path d='M150,315 Q60,328 0,322' stroke='rgba(255,255,255,0.22)' stroke-width='2.5' fill='none'/>
+    <path d='M150,320 Q50,336 0,330' stroke='rgba(255,255,255,0.12)' stroke-width='1.5' fill='none'/>
+    <!-- Distant cliffs -->
+    <path d='M0,270 Q40,250 90,258 Q130,266 160,248 Q200,228 240,240 Q280,252 320,236 Q380,216 420,230 Q480,246 540,228 Q600,210 650,225 Q720,242 800,230 L800,300 L0,300 Z' fill='rgba(8,20,45,0.55)'/>
+  </svg>`,
+    2: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500' style='width:100%;height:100%;position:absolute;inset:0'>
+    <defs>
+      <linearGradient id='sky1' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#1a3060'/><stop offset='50%' stop-color='#2a5090'/><stop offset='100%' stop-color='#3060a8'/></linearGradient>
+      <linearGradient id='sea1' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#1a4a80'/><stop offset='100%' stop-color='#081828'/></linearGradient>
+    </defs>
+    <rect width='800' height='500' fill='url(#sky1)'/>
+    <!-- Sun glare -->
+    <ellipse cx='650' cy='80' rx='120' ry='80' fill='rgba(255,220,120,0.08)'/>
+    <circle cx='650' cy='78' r='28' fill='#ffe090' opacity='0.9'/>
+    <circle cx='650' cy='78' r='18' fill='#fff5cc' opacity='0.95'/>
+    <!-- Sun rays -->
+    <line x1='650' y1='40' x2='650' y2='20' stroke='rgba(255,220,100,0.3)' stroke-width='2'/><line x1='688' y1='52' x2='706' y2='38' stroke='rgba(255,220,100,0.2)' stroke-width='1.5'/><line x1='700' y1='80' x2='726' y2='78' stroke='rgba(255,220,100,0.2)' stroke-width='1.5'/><line x1='612' y1='52' x2='594' y2='38' stroke='rgba(255,220,100,0.2)' stroke-width='1.5'/>
+    <rect y='300' width='800' height='200' fill='url(#sea1)'/>
+    <!-- Sparkling sea -->
+    <path d='M0,308 Q150,296 300,310 Q450,324 600,306 Q700,294 800,302' stroke='rgba(255,255,255,0.15)' stroke-width='1.5' fill='none'/>
+    <path d='M0,330 Q200,318 380,332 Q520,344 700,326 Q750,320 800,324' stroke='rgba(255,255,255,0.1)' stroke-width='1' fill='none'/>
+    <!-- Sun reflection -->
+    <path d='M580,300 Q620,310 660,300 Q680,330 660,360 Q620,370 580,360 Q560,330 580,300 Z' fill='rgba(255,220,100,0.08)'/>
+    <!-- Motor yacht -->
+    <path d='M170,295 L630,295 L650,315 L150,315 Z' fill='#0d1a30'/>
+    <path d='M195,252 L605,252 L630,295 L170,295 Z' fill='#e8eaee'/>
+    <rect x='225' y='200' width='290' height='54' rx='4' fill='#f0f2f5'/>
+    <rect x='258' y='162' width='210' height='40' rx='3' fill='#e8eaee'/>
+    <rect x='292' y='135' width='148' height='29' rx='2' fill='#dde0e6'/>
+    <!-- Windows row -->
+    <rect x='238' y='214' width='32' height='20' rx='2' fill='#1a3a6e' opacity='0.75'/><rect x='280' y='214' width='32' height='20' rx='2' fill='#C4A35A' opacity='0.6'/><rect x='322' y='214' width='32' height='20' rx='2' fill='#1a3a6e' opacity='0.75'/><rect x='364' y='214' width='32' height='20' rx='2' fill='#1a3a6e' opacity='0.75'/><rect x='406' y='214' width='32' height='20' rx='2' fill='#1a3a6e' opacity='0.75'/><rect x='448' y='214' width='32' height='20' rx='2' fill='#C4A35A' opacity='0.6'/>
+    <line x1='395' y1='135' x2='395' y2='82' stroke='#bbb' stroke-width='2.5'/>
+    <line x1='362' y1='92' x2='428' y2='92' stroke='#bbb' stroke-width='1.5'/>
+    <!-- WYC stripe -->
+    <rect x='195' y='292' width='435' height='3' fill='#C4A35A' opacity='0.8'/>
+    <!-- Wake -->
+    <path d='M150,315 Q60,328 0,322' stroke='rgba(255,255,255,0.22)' stroke-width='2.5' fill='none'/>
+    <path d='M150,320 Q50,336 0,330' stroke='rgba(255,255,255,0.12)' stroke-width='1.5' fill='none'/>
+    <!-- Distant cliffs -->
+    <path d='M0,270 Q40,250 90,258 Q130,266 160,248 Q200,228 240,240 Q280,252 320,236 Q380,216 420,230 Q480,246 540,228 Q600,210 650,225 Q720,242 800,230 L800,300 L0,300 Z' fill='rgba(8,20,45,0.55)'/>
+  </svg>`,
+    3: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500' style='width:100%;height:100%;position:absolute;inset:0'>
+    <defs>
+      <linearGradient id='sky0' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#0a1e3c'/><stop offset='60%' stop-color='#1a3a6e'/><stop offset='100%' stop-color='#1e4a8a'/></linearGradient>
+      <linearGradient id='sea0' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#0d3060'/><stop offset='100%' stop-color='#061828'/></linearGradient>
+      <linearGradient id='hull0' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#e8e8e8'/><stop offset='100%' stop-color='#b0b0b0'/></linearGradient>
+    </defs>
+    <!-- Sky -->
+    <rect width='800' height='500' fill='url(#sky0)'/>
+    <!-- Stars -->
+    <circle cx='100' cy='40' r='1.2' fill='white' opacity='0.6'/><circle cx='240' cy='25' r='1' fill='white' opacity='0.5'/><circle cx='380' cy='55' r='1.4' fill='white' opacity='0.7'/><circle cx='520' cy='30' r='1' fill='white' opacity='0.4'/><circle cx='650' cy='50' r='1.2' fill='white' opacity='0.6'/><circle cx='720' cy='20' r='1' fill='white' opacity='0.5'/>
+    <!-- Moon glow -->
+    <ellipse cx='680' cy='70' rx='60' ry='50' fill='rgba(255,240,200,0.06)'/>
+    <circle cx='680' cy='68' r='22' fill='#fffde0' opacity='0.85'/>
+    <!-- Sea -->
+    <rect y='310' width='800' height='190' fill='url(#sea0)'/>
+    <!-- Wave lines -->
+    <path d='M0,320 Q100,312 200,322 Q300,332 400,318 Q500,306 600,318 Q700,330 800,316' stroke='rgba(255,255,255,0.12)' stroke-width='1.5' fill='none'/>
+    <path d='M0,340 Q80,330 180,342 Q320,356 440,338 Q560,322 700,340 Q750,346 800,336' stroke='rgba(255,255,255,0.08)' stroke-width='1' fill='none'/>
+    <path d='M0,365 Q120,355 250,368 Q400,382 550,360 Q660,344 800,358' stroke='rgba(255,255,255,0.06)' stroke-width='1' fill='none'/>
+    <!-- Moon reflection -->
+    <ellipse cx='680' cy='380' rx='12' ry='60' fill='rgba(255,240,180,0.12)'/>
+    <!-- Motor yacht hull -->
+    <path d='M180,300 L620,300 L640,318 L160,318 Z' fill='#1a1a2e'/>
+    <path d='M200,260 L600,260 L620,300 L180,300 Z' fill='url(#hull0)'/>
+    <!-- Superstructure -->
+    <rect x='230' y='210' width='280' height='52' rx='4' fill='#f0f0f0'/>
+    <rect x='260' y='170' width='200' height='42' rx='3' fill='#e8e8e8'/>
+    <rect x='290' y='142' width='140' height='30' rx='2' fill='#ddd'/>
+    <!-- Windows -->
+    <rect x='245' y='222' width='30' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/><rect x='285' y='222' width='30' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/><rect x='325' y='222' width='30' height='18' rx='2' fill='#C4A35A' opacity='0.6'/><rect x='365' y='222' width='30' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/><rect x='405' y='222' width='30' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/><rect x='445' y='222' width='30' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/>
+    <rect x='275' y='182' width='24' height='14' rx='2' fill='#1a3a6e' opacity='0.7'/><rect x='310' y='182' width='24' height='14' rx='2' fill='#C4A35A' opacity='0.5'/><rect x='345' y='182' width='24' height='14' rx='2' fill='#1a3a6e' opacity='0.7'/><rect x='380' y='182' width='24' height='14' rx='2' fill='#1a3a6e' opacity='0.7'/>
+    <!-- Mast/radar -->
+    <line x1='400' y1='142' x2='400' y2='90' stroke='#ccc' stroke-width='2.5'/>
+    <line x1='370' y1='100' x2='430' y2='100' stroke='#ccc' stroke-width='1.5'/>
+    <circle cx='400' cy='90' r='4' fill='#C4A35A'/>
+    <!-- Wake -->
+    <path d='M160,318 Q80,330 0,325' stroke='rgba(255,255,255,0.2)' stroke-width='2.5' fill='none'/>
+    <path d='M160,322 Q60,338 0,332' stroke='rgba(255,255,255,0.12)' stroke-width='1.5' fill='none'/>
+    <!-- Distant coastline -->
+    <path d='M0,285 Q80,270 160,278 Q240,286 280,272 Q340,255 380,268 Q440,282 500,265 Q560,248 620,260 Q700,274 800,262 L800,310 L0,310 Z' fill='rgba(10,25,50,0.5)'/>
+    <!-- WYC gold stripe on hull -->
+    <rect x='200' y='297' width='400' height='3' fill='#C4A35A' opacity='0.7'/>
+  </svg>`,
+    4: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500' style='width:100%;height:100%;position:absolute;inset:0'>
+    <defs>
+      <linearGradient id='sky0' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#0a1e3c'/><stop offset='60%' stop-color='#1a3a6e'/><stop offset='100%' stop-color='#1e4a8a'/></linearGradient>
+      <linearGradient id='sea0' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#0d3060'/><stop offset='100%' stop-color='#061828'/></linearGradient>
+      <linearGradient id='hull0' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#e8e8e8'/><stop offset='100%' stop-color='#b0b0b0'/></linearGradient>
+    </defs>
+    <!-- Sky -->
+    <rect width='800' height='500' fill='url(#sky0)'/>
+    <!-- Stars -->
+    <circle cx='100' cy='40' r='1.2' fill='white' opacity='0.6'/><circle cx='240' cy='25' r='1' fill='white' opacity='0.5'/><circle cx='380' cy='55' r='1.4' fill='white' opacity='0.7'/><circle cx='520' cy='30' r='1' fill='white' opacity='0.4'/><circle cx='650' cy='50' r='1.2' fill='white' opacity='0.6'/><circle cx='720' cy='20' r='1' fill='white' opacity='0.5'/>
+    <!-- Moon glow -->
+    <ellipse cx='680' cy='70' rx='60' ry='50' fill='rgba(255,240,200,0.06)'/>
+    <circle cx='680' cy='68' r='22' fill='#fffde0' opacity='0.85'/>
+    <!-- Sea -->
+    <rect y='310' width='800' height='190' fill='url(#sea0)'/>
+    <!-- Wave lines -->
+    <path d='M0,320 Q100,312 200,322 Q300,332 400,318 Q500,306 600,318 Q700,330 800,316' stroke='rgba(255,255,255,0.12)' stroke-width='1.5' fill='none'/>
+    <path d='M0,340 Q80,330 180,342 Q320,356 440,338 Q560,322 700,340 Q750,346 800,336' stroke='rgba(255,255,255,0.08)' stroke-width='1' fill='none'/>
+    <path d='M0,365 Q120,355 250,368 Q400,382 550,360 Q660,344 800,358' stroke='rgba(255,255,255,0.06)' stroke-width='1' fill='none'/>
+    <!-- Moon reflection -->
+    <ellipse cx='680' cy='380' rx='12' ry='60' fill='rgba(255,240,180,0.12)'/>
+    <!-- Motor yacht hull -->
+    <path d='M180,300 L620,300 L640,318 L160,318 Z' fill='#1a1a2e'/>
+    <path d='M200,260 L600,260 L620,300 L180,300 Z' fill='url(#hull0)'/>
+    <!-- Superstructure -->
+    <rect x='230' y='210' width='280' height='52' rx='4' fill='#f0f0f0'/>
+    <rect x='260' y='170' width='200' height='42' rx='3' fill='#e8e8e8'/>
+    <rect x='290' y='142' width='140' height='30' rx='2' fill='#ddd'/>
+    <!-- Windows -->
+    <rect x='245' y='222' width='30' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/><rect x='285' y='222' width='30' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/><rect x='325' y='222' width='30' height='18' rx='2' fill='#C4A35A' opacity='0.6'/><rect x='365' y='222' width='30' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/><rect x='405' y='222' width='30' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/><rect x='445' y='222' width='30' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/>
+    <rect x='275' y='182' width='24' height='14' rx='2' fill='#1a3a6e' opacity='0.7'/><rect x='310' y='182' width='24' height='14' rx='2' fill='#C4A35A' opacity='0.5'/><rect x='345' y='182' width='24' height='14' rx='2' fill='#1a3a6e' opacity='0.7'/><rect x='380' y='182' width='24' height='14' rx='2' fill='#1a3a6e' opacity='0.7'/>
+    <!-- Mast/radar -->
+    <line x1='400' y1='142' x2='400' y2='90' stroke='#ccc' stroke-width='2.5'/>
+    <line x1='370' y1='100' x2='430' y2='100' stroke='#ccc' stroke-width='1.5'/>
+    <circle cx='400' cy='90' r='4' fill='#C4A35A'/>
+    <!-- Wake -->
+    <path d='M160,318 Q80,330 0,325' stroke='rgba(255,255,255,0.2)' stroke-width='2.5' fill='none'/>
+    <path d='M160,322 Q60,338 0,332' stroke='rgba(255,255,255,0.12)' stroke-width='1.5' fill='none'/>
+    <!-- Distant coastline -->
+    <path d='M0,285 Q80,270 160,278 Q240,286 280,272 Q340,255 380,268 Q440,282 500,265 Q560,248 620,260 Q700,274 800,262 L800,310 L0,310 Z' fill='rgba(10,25,50,0.5)'/>
+    <!-- WYC gold stripe on hull -->
+    <rect x='200' y='297' width='400' height='3' fill='#C4A35A' opacity='0.7'/>
+  </svg>`,
+    5: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500' style='width:100%;height:100%;position:absolute;inset:0'>
+    <defs>
+      <linearGradient id='sky2' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#080e20'/><stop offset='70%' stop-color='#0d1e3a'/><stop offset='100%' stop-color='#1a3060'/></linearGradient>
+      <linearGradient id='sea2' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#0e2850'/><stop offset='100%' stop-color='#040c1a'/></linearGradient>
+      <linearGradient id='shull' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#f5f5f5'/><stop offset='100%' stop-color='#c8c8c8'/></linearGradient>
+    </defs>
+    <rect width='800' height='500' fill='url(#sky2)'/>
+    <!-- Night sky stars -->
+    <circle cx='50' cy='30' r='1.5' fill='white' opacity='0.7'/><circle cx='130' cy='55' r='1' fill='white' opacity='0.5'/><circle cx='220' cy='20' r='1.2' fill='white' opacity='0.8'/><circle cx='310' cy='45' r='1' fill='white' opacity='0.4'/><circle cx='420' cy='15' r='1.5' fill='white' opacity='0.7'/><circle cx='490' cy='60' r='1' fill='white' opacity='0.5'/><circle cx='570' cy='28' r='1.3' fill='white' opacity='0.6'/><circle cx='660' cy='42' r='1' fill='white' opacity='0.4'/><circle cx='740' cy='18' r='1.5' fill='white' opacity='0.8'/><circle cx='780' cy='50' r='1' fill='white' opacity='0.6'/>
+    <!-- Milky way hint -->
+    <path d='M0,80 Q200,40 400,70 Q600,100 800,60' stroke='rgba(180,200,255,0.06)' stroke-width='25' fill='none'/>
+    <rect y='315' width='800' height='185' fill='url(#sea2)'/>
+    <!-- Superyacht - much larger and more elaborate -->
+    <path d='M80,308 L720,308 L745,330 L55,330 Z' fill='#0a1020'/>
+    <path d='M110,258 L690,258 L720,308 L80,308 Z' fill='url(#shull)'/>
+    <!-- Multi-deck superstructure -->
+    <rect x='145' y='195' width='400' height='65' rx='5' fill='#f0f0f0'/>
+    <rect x='180' y='142' width='330' height='55' rx='4' fill='#e8e8e8'/>
+    <rect x='215' y='100' width='260' height='44' rx='3' fill='#e0e0e0'/>
+    <rect x='250' y='70' width='190' height='32' rx='3' fill='#d8d8d8'/>
+    <rect x='285' y='48' width='120' height='24' rx='2' fill='#d0d0d0'/>
+    <!-- Lots of windows - deck 1 -->
+    <rect x='158' y='210' width='28' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/><rect x='196' y='210' width='28' height='18' rx='2' fill='#C4A35A' opacity='0.7'/><rect x='234' y='210' width='28' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/><rect x='272' y='210' width='28' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/><rect x='310' y='210' width='28' height='18' rx='2' fill='#C4A35A' opacity='0.7'/><rect x='348' y='210' width='28' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/><rect x='386' y='210' width='28' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/><rect x='424' y='210' width='28' height='18' rx='2' fill='#C4A35A' opacity='0.7'/><rect x='462' y='210' width='28' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/><rect x='500' y='210' width='28' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/>
+    <!-- Deck 2 windows -->
+    <rect x='195' y='156' width='24' height='15' rx='2' fill='#1a3a6e' opacity='0.7'/><rect x='229' y='156' width='24' height='15' rx='2' fill='#C4A35A' opacity='0.6'/><rect x='263' y='156' width='24' height='15' rx='2' fill='#1a3a6e' opacity='0.7'/><rect x='297' y='156' width='24' height='15' rx='2' fill='#1a3a6e' opacity='0.7'/><rect x='331' y='156' width='24' height='15' rx='2' fill='#1a3a6e' opacity='0.7'/><rect x='365' y='156' width='24' height='15' rx='2' fill='#C4A35A' opacity='0.6'/><rect x='399' y='156' width='24' height='15' rx='2' fill='#1a3a6e' opacity='0.7'/><rect x='433' y='156' width='24' height='15' rx='2' fill='#1a3a6e' opacity='0.7'/>
+    <!-- Helipad circle -->
+    <circle cx='620' cy='265' r='28' fill='none' stroke='#C4A35A' stroke-width='1.5' opacity='0.6'/>
+    <text x='620' y='270' text-anchor='middle' fill='#C4A35A' font-size='14' opacity='0.6' font-family='sans-serif'>H</text>
+    <!-- Mast -->
+    <line x1='400' y1='48' x2='400' y2='-5' stroke='#aaa' stroke-width='2.5'/>
+    <line x1='360' y1='10' x2='440' y2='10' stroke='#aaa' stroke-width='1.5'/>
+    <!-- WYC gold stripe -->
+    <rect x='110' y='305' width='610' height='3' fill='#C4A35A' opacity='0.9'/>
+    <!-- Tender on deck -->
+    <ellipse cx='175' cy='278' rx='35' ry='10' fill='#d0d0d0' opacity='0.7'/>
+    <!-- Wide wake -->
+    <path d='M55,330 Q0,346 0,338' stroke='rgba(255,255,255,0.25)' stroke-width='3' fill='none'/>
+    <path d='M55,336 Q0,354 0,348' stroke='rgba(255,255,255,0.15)' stroke-width='2' fill='none'/>
+    <path d='M55,343 Q0,362 0,356' stroke='rgba(255,255,255,0.08)' stroke-width='1.5' fill='none'/>
+    <!-- Marina lights reflection -->
+    <path d='M0,380 Q100,370 200,382 Q300,394 400,378 Q500,364 600,376 Q700,388 800,370' stroke='rgba(196,163,90,0.1)' stroke-width='1' fill='none'/>
+  </svg>`,
+    6: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500' style='width:100%;height:100%;position:absolute;inset:0'>
+    <defs>
+      <linearGradient id='sky2' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#080e20'/><stop offset='70%' stop-color='#0d1e3a'/><stop offset='100%' stop-color='#1a3060'/></linearGradient>
+      <linearGradient id='sea2' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#0e2850'/><stop offset='100%' stop-color='#040c1a'/></linearGradient>
+      <linearGradient id='shull' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#f5f5f5'/><stop offset='100%' stop-color='#c8c8c8'/></linearGradient>
+    </defs>
+    <rect width='800' height='500' fill='url(#sky2)'/>
+    <!-- Night sky stars -->
+    <circle cx='50' cy='30' r='1.5' fill='white' opacity='0.7'/><circle cx='130' cy='55' r='1' fill='white' opacity='0.5'/><circle cx='220' cy='20' r='1.2' fill='white' opacity='0.8'/><circle cx='310' cy='45' r='1' fill='white' opacity='0.4'/><circle cx='420' cy='15' r='1.5' fill='white' opacity='0.7'/><circle cx='490' cy='60' r='1' fill='white' opacity='0.5'/><circle cx='570' cy='28' r='1.3' fill='white' opacity='0.6'/><circle cx='660' cy='42' r='1' fill='white' opacity='0.4'/><circle cx='740' cy='18' r='1.5' fill='white' opacity='0.8'/><circle cx='780' cy='50' r='1' fill='white' opacity='0.6'/>
+    <!-- Milky way hint -->
+    <path d='M0,80 Q200,40 400,70 Q600,100 800,60' stroke='rgba(180,200,255,0.06)' stroke-width='25' fill='none'/>
+    <rect y='315' width='800' height='185' fill='url(#sea2)'/>
+    <!-- Superyacht - much larger and more elaborate -->
+    <path d='M80,308 L720,308 L745,330 L55,330 Z' fill='#0a1020'/>
+    <path d='M110,258 L690,258 L720,308 L80,308 Z' fill='url(#shull)'/>
+    <!-- Multi-deck superstructure -->
+    <rect x='145' y='195' width='400' height='65' rx='5' fill='#f0f0f0'/>
+    <rect x='180' y='142' width='330' height='55' rx='4' fill='#e8e8e8'/>
+    <rect x='215' y='100' width='260' height='44' rx='3' fill='#e0e0e0'/>
+    <rect x='250' y='70' width='190' height='32' rx='3' fill='#d8d8d8'/>
+    <rect x='285' y='48' width='120' height='24' rx='2' fill='#d0d0d0'/>
+    <!-- Lots of windows - deck 1 -->
+    <rect x='158' y='210' width='28' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/><rect x='196' y='210' width='28' height='18' rx='2' fill='#C4A35A' opacity='0.7'/><rect x='234' y='210' width='28' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/><rect x='272' y='210' width='28' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/><rect x='310' y='210' width='28' height='18' rx='2' fill='#C4A35A' opacity='0.7'/><rect x='348' y='210' width='28' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/><rect x='386' y='210' width='28' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/><rect x='424' y='210' width='28' height='18' rx='2' fill='#C4A35A' opacity='0.7'/><rect x='462' y='210' width='28' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/><rect x='500' y='210' width='28' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/>
+    <!-- Deck 2 windows -->
+    <rect x='195' y='156' width='24' height='15' rx='2' fill='#1a3a6e' opacity='0.7'/><rect x='229' y='156' width='24' height='15' rx='2' fill='#C4A35A' opacity='0.6'/><rect x='263' y='156' width='24' height='15' rx='2' fill='#1a3a6e' opacity='0.7'/><rect x='297' y='156' width='24' height='15' rx='2' fill='#1a3a6e' opacity='0.7'/><rect x='331' y='156' width='24' height='15' rx='2' fill='#1a3a6e' opacity='0.7'/><rect x='365' y='156' width='24' height='15' rx='2' fill='#C4A35A' opacity='0.6'/><rect x='399' y='156' width='24' height='15' rx='2' fill='#1a3a6e' opacity='0.7'/><rect x='433' y='156' width='24' height='15' rx='2' fill='#1a3a6e' opacity='0.7'/>
+    <!-- Helipad circle -->
+    <circle cx='620' cy='265' r='28' fill='none' stroke='#C4A35A' stroke-width='1.5' opacity='0.6'/>
+    <text x='620' y='270' text-anchor='middle' fill='#C4A35A' font-size='14' opacity='0.6' font-family='sans-serif'>H</text>
+    <!-- Mast -->
+    <line x1='400' y1='48' x2='400' y2='-5' stroke='#aaa' stroke-width='2.5'/>
+    <line x1='360' y1='10' x2='440' y2='10' stroke='#aaa' stroke-width='1.5'/>
+    <!-- WYC gold stripe -->
+    <rect x='110' y='305' width='610' height='3' fill='#C4A35A' opacity='0.9'/>
+    <!-- Tender on deck -->
+    <ellipse cx='175' cy='278' rx='35' ry='10' fill='#d0d0d0' opacity='0.7'/>
+    <!-- Wide wake -->
+    <path d='M55,330 Q0,346 0,338' stroke='rgba(255,255,255,0.25)' stroke-width='3' fill='none'/>
+    <path d='M55,336 Q0,354 0,348' stroke='rgba(255,255,255,0.15)' stroke-width='2' fill='none'/>
+    <path d='M55,343 Q0,362 0,356' stroke='rgba(255,255,255,0.08)' stroke-width='1.5' fill='none'/>
+    <!-- Marina lights reflection -->
+    <path d='M0,380 Q100,370 200,382 Q300,394 400,378 Q500,364 600,376 Q700,388 800,370' stroke='rgba(196,163,90,0.1)' stroke-width='1' fill='none'/>
+  </svg>`,
+    7: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500' style='width:100%;height:100%;position:absolute;inset:0'>
+    <defs>
+      <linearGradient id='sky2' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#080e20'/><stop offset='70%' stop-color='#0d1e3a'/><stop offset='100%' stop-color='#1a3060'/></linearGradient>
+      <linearGradient id='sea2' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#0e2850'/><stop offset='100%' stop-color='#040c1a'/></linearGradient>
+      <linearGradient id='shull' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#f5f5f5'/><stop offset='100%' stop-color='#c8c8c8'/></linearGradient>
+    </defs>
+    <rect width='800' height='500' fill='url(#sky2)'/>
+    <!-- Night sky stars -->
+    <circle cx='50' cy='30' r='1.5' fill='white' opacity='0.7'/><circle cx='130' cy='55' r='1' fill='white' opacity='0.5'/><circle cx='220' cy='20' r='1.2' fill='white' opacity='0.8'/><circle cx='310' cy='45' r='1' fill='white' opacity='0.4'/><circle cx='420' cy='15' r='1.5' fill='white' opacity='0.7'/><circle cx='490' cy='60' r='1' fill='white' opacity='0.5'/><circle cx='570' cy='28' r='1.3' fill='white' opacity='0.6'/><circle cx='660' cy='42' r='1' fill='white' opacity='0.4'/><circle cx='740' cy='18' r='1.5' fill='white' opacity='0.8'/><circle cx='780' cy='50' r='1' fill='white' opacity='0.6'/>
+    <!-- Milky way hint -->
+    <path d='M0,80 Q200,40 400,70 Q600,100 800,60' stroke='rgba(180,200,255,0.06)' stroke-width='25' fill='none'/>
+    <rect y='315' width='800' height='185' fill='url(#sea2)'/>
+    <!-- Superyacht - much larger and more elaborate -->
+    <path d='M80,308 L720,308 L745,330 L55,330 Z' fill='#0a1020'/>
+    <path d='M110,258 L690,258 L720,308 L80,308 Z' fill='url(#shull)'/>
+    <!-- Multi-deck superstructure -->
+    <rect x='145' y='195' width='400' height='65' rx='5' fill='#f0f0f0'/>
+    <rect x='180' y='142' width='330' height='55' rx='4' fill='#e8e8e8'/>
+    <rect x='215' y='100' width='260' height='44' rx='3' fill='#e0e0e0'/>
+    <rect x='250' y='70' width='190' height='32' rx='3' fill='#d8d8d8'/>
+    <rect x='285' y='48' width='120' height='24' rx='2' fill='#d0d0d0'/>
+    <!-- Lots of windows - deck 1 -->
+    <rect x='158' y='210' width='28' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/><rect x='196' y='210' width='28' height='18' rx='2' fill='#C4A35A' opacity='0.7'/><rect x='234' y='210' width='28' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/><rect x='272' y='210' width='28' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/><rect x='310' y='210' width='28' height='18' rx='2' fill='#C4A35A' opacity='0.7'/><rect x='348' y='210' width='28' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/><rect x='386' y='210' width='28' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/><rect x='424' y='210' width='28' height='18' rx='2' fill='#C4A35A' opacity='0.7'/><rect x='462' y='210' width='28' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/><rect x='500' y='210' width='28' height='18' rx='2' fill='#1a3a6e' opacity='0.8'/>
+    <!-- Deck 2 windows -->
+    <rect x='195' y='156' width='24' height='15' rx='2' fill='#1a3a6e' opacity='0.7'/><rect x='229' y='156' width='24' height='15' rx='2' fill='#C4A35A' opacity='0.6'/><rect x='263' y='156' width='24' height='15' rx='2' fill='#1a3a6e' opacity='0.7'/><rect x='297' y='156' width='24' height='15' rx='2' fill='#1a3a6e' opacity='0.7'/><rect x='331' y='156' width='24' height='15' rx='2' fill='#1a3a6e' opacity='0.7'/><rect x='365' y='156' width='24' height='15' rx='2' fill='#C4A35A' opacity='0.6'/><rect x='399' y='156' width='24' height='15' rx='2' fill='#1a3a6e' opacity='0.7'/><rect x='433' y='156' width='24' height='15' rx='2' fill='#1a3a6e' opacity='0.7'/>
+    <!-- Helipad circle -->
+    <circle cx='620' cy='265' r='28' fill='none' stroke='#C4A35A' stroke-width='1.5' opacity='0.6'/>
+    <text x='620' y='270' text-anchor='middle' fill='#C4A35A' font-size='14' opacity='0.6' font-family='sans-serif'>H</text>
+    <!-- Mast -->
+    <line x1='400' y1='48' x2='400' y2='-5' stroke='#aaa' stroke-width='2.5'/>
+    <line x1='360' y1='10' x2='440' y2='10' stroke='#aaa' stroke-width='1.5'/>
+    <!-- WYC gold stripe -->
+    <rect x='110' y='305' width='610' height='3' fill='#C4A35A' opacity='0.9'/>
+    <!-- Tender on deck -->
+    <ellipse cx='175' cy='278' rx='35' ry='10' fill='#d0d0d0' opacity='0.7'/>
+    <!-- Wide wake -->
+    <path d='M55,330 Q0,346 0,338' stroke='rgba(255,255,255,0.25)' stroke-width='3' fill='none'/>
+    <path d='M55,336 Q0,354 0,348' stroke='rgba(255,255,255,0.15)' stroke-width='2' fill='none'/>
+    <path d='M55,343 Q0,362 0,356' stroke='rgba(255,255,255,0.08)' stroke-width='1.5' fill='none'/>
+    <!-- Marina lights reflection -->
+    <path d='M0,380 Q100,370 200,382 Q300,394 400,378 Q500,364 600,376 Q700,388 800,370' stroke='rgba(196,163,90,0.1)' stroke-width='1' fill='none'/>
+  </svg>`,
+    8: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500' style='width:100%;height:100%;position:absolute;inset:0'>
+    <defs>
+      <linearGradient id='sky3' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#1e4a8a'/><stop offset='40%' stop-color='#2e6ab0'/><stop offset='100%' stop-color='#4a90d0'/></linearGradient>
+      <linearGradient id='sea3' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#1560a0'/><stop offset='100%' stop-color='#082040'/></linearGradient>
+    </defs>
+    <rect width='800' height='500' fill='url(#sky3)'/>
+    <!-- Fluffy clouds -->
+    <ellipse cx='150' cy='80' rx='90' ry='35' fill='rgba(255,255,255,0.2)'/>
+    <ellipse cx='200' cy='68' rx='70' ry='28' fill='rgba(255,255,255,0.25)'/>
+    <ellipse cx='100' cy='72' rx='55' ry='22' fill='rgba(255,255,255,0.2)'/>
+    <ellipse cx='600' cy='60' rx='80' ry='30' fill='rgba(255,255,255,0.18)'/>
+    <ellipse cx='650' cy='50' rx='60' ry='24' fill='rgba(255,255,255,0.22)'/>
+    <rect y='305' width='800' height='195' fill='url(#sea3)'/>
+    <!-- Choppy waves -->
+    <path d='M0,315 Q60,305 130,318 Q200,330 280,312 Q360,296 450,312 Q540,328 630,308 Q720,290 800,305' stroke='rgba(255,255,255,0.18)' stroke-width='2' fill='none'/>
+    <path d='M0,338 Q80,325 170,340 Q280,356 390,334 Q500,314 620,330 Q720,344 800,328' stroke='rgba(255,255,255,0.12)' stroke-width='1.5' fill='none'/>
+    <path d='M0,362 Q100,350 210,364 Q340,380 480,356 Q600,336 750,354 L800,350' stroke='rgba(255,255,255,0.08)' stroke-width='1' fill='none'/>
+    <!-- Sailing yacht hull -->
+    <path d='M260,305 Q380,295 500,300 L490,322 Q380,316 270,320 Z' fill='#1a1a2e'/>
+    <path d='M270,290 L490,290 L500,305 Q380,295 260,305 Z' fill='#e0e4e8'/>
+    <!-- Main sail -->
+    <path d='M380,288 L380,80 L540,288 Z' fill='rgba(248,248,255,0.92)'/>
+    <path d='M380,288 L380,80' stroke='#888' stroke-width='2'/>
+    <!-- Sail batten lines -->
+    <line x1='380' y1='140' x2='518' y2='258' stroke='rgba(150,150,150,0.3)' stroke-width='1'/>
+    <line x1='380' y1='185' x2='510' y2='272' stroke='rgba(150,150,150,0.3)' stroke-width='1'/>
+    <line x1='380' y1='228' x2='500' y2='282' stroke='rgba(150,150,150,0.3)' stroke-width='1'/>
+    <!-- Headsail (genoa) -->
+    <path d='M380,288 L380,105 L270,288 Z' fill='rgba(240,245,255,0.85)'/>
+    <!-- Mast top accessories -->
+    <circle cx='380' cy='76' r='5' fill='#C4A35A'/>
+    <line x1='380' y1='76' x2='380' y2='65' stroke='#bbb' stroke-width='1.5'/>
+    <!-- Boom -->
+    <line x1='380' y1='288' x2='540' y2='295' stroke='#888' stroke-width='2'/>
+    <!-- Cockpit hint -->
+    <ellipse cx='420' cy='308' rx='35' ry='8' fill='rgba(255,255,255,0.15)'/>
+    <!-- Wake -->
+    <path d='M265,318 Q180,330 100,326 Q50,326 0,322' stroke='rgba(255,255,255,0.2)' stroke-width='2' fill='none'/>
+    <!-- Greek island silhouette -->
+    <path d='M0,280 Q50,268 100,275 Q150,282 190,265 Q240,246 290,255 Q350,265 400,248 Q460,228 510,240 Q580,256 640,238 Q700,220 760,232 Q780,236 800,228 L800,305 L0,305 Z' fill='rgba(8,20,50,0.45)'/>
+    <!-- White village dots on island -->
+    <circle cx='220' cy='258' r='3' fill='rgba(255,255,255,0.6)'/><circle cx='240' cy='252' r='2.5' fill='rgba(255,255,255,0.5)'/><circle cx='260' cy='256' r='2' fill='rgba(255,255,255,0.5)'/><circle cx='480' cy='243' r='3' fill='rgba(255,255,255,0.6)'/><circle cx='500' cy='238' r='2' fill='rgba(255,255,255,0.4)'/>
+  </svg>`,
+    9: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500' style='width:100%;height:100%;position:absolute;inset:0'>
+    <defs>
+      <linearGradient id='sky4' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#1a5090'/><stop offset='45%' stop-color='#3080c0'/><stop offset='100%' stop-color='#50a8e0'/></linearGradient>
+      <linearGradient id='sea4' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#1890b8'/><stop offset='50%' stop-color='#0d6090'/><stop offset='100%' stop-color='#083050'/></linearGradient>
+    </defs>
+    <rect width='800' height='500' fill='url(#sky4)'/>
+    <!-- Bright tropical sun -->
+    <ellipse cx='680' cy='85' rx='100' ry='75' fill='rgba(255,230,80,0.12)'/>
+    <circle cx='680' cy='82' r='32' fill='#ffe860' opacity='0.9'/>
+    <circle cx='680' cy='82' r='22' fill='#fff5a0' opacity='0.95'/>
+    <!-- Tropical clouds -->
+    <ellipse cx='120' cy='90' rx='100' ry='40' fill='rgba(255,255,255,0.3)'/>
+    <ellipse cx='180' cy='76' rx='80' ry='32' fill='rgba(255,255,255,0.35)'/>
+    <ellipse cx='60' cy='82' rx='60' ry='26' fill='rgba(255,255,255,0.28)'/>
+    <rect y='300' width='800' height='200' fill='url(#sea4)'/>
+    <!-- Turquoise shallows near shore -->
+    <path d='M0,300 Q200,295 400,302 Q600,308 800,298 L800,330 Q600,325 400,330 Q200,334 0,328 Z' fill='rgba(30,180,180,0.25)'/>
+    <!-- Wave sparkles -->
+    <path d='M0,310 Q100,298 220,312 Q360,328 500,308 Q640,290 800,306' stroke='rgba(255,255,255,0.22)' stroke-width='2' fill='none'/>
+    <path d='M0,335 Q150,320 310,338 Q460,354 640,330 Q730,318 800,325' stroke='rgba(255,255,255,0.14)' stroke-width='1.5' fill='none'/>
+    <!-- Catamaran/sailing hull -->
+    <path d='M250,302 Q380,292 510,298 L500,320 Q380,314 260,318 Z' fill='#ffffff' opacity='0.9'/>
+    <!-- Main sail - coloured like charter sail -->
+    <path d='M375,295 L375,72 L545,295 Z' fill='rgba(245,248,255,0.9)'/>
+    <path d='M375,295 L375,72' stroke='#999' stroke-width='2'/>
+    <!-- Coloured stripe on sail -->
+    <path d='M375,200 L500,280 L375,280 Z' fill='rgba(196,163,90,0.25)'/>
+    <!-- Genoa -->
+    <path d='M375,295 L375,90 L255,295 Z' fill='rgba(238,244,255,0.85)'/>
+    <circle cx='375' cy='68' r='5' fill='#C4A35A'/>
+    <line x1='375' y1='295' x2='545' y2='302' stroke='#999' stroke-width='2'/>
+    <!-- Wake - bright Caribbean -->
+    <path d='M255,318 Q160,332 80,328 Q30,326 0,322' stroke='rgba(255,255,255,0.28)' stroke-width='2.5' fill='none'/>
+    <!-- Tropical island -->
+    <path d='M-20,270 Q30,258 80,265 Q120,272 150,258 Q190,240 220,250 Q250,260 280,245 Q330,225 380,238 Q440,252 490,235 Q560,212 620,228 Q680,244 740,228 Q780,218 820,225 L820,300 L-20,300 Z' fill='rgba(10,30,20,0.55)'/>
+    <!-- Palm tree silhouettes -->
+    <line x1='130' y1='258' x2='138' y2='210' stroke='rgba(10,40,15,0.8)' stroke-width='3'/>
+    <ellipse cx='138' cy='208' rx='18' ry='10' fill='rgba(15,60,20,0.7)'/>
+    <ellipse cx='124' cy='213' rx='15' ry='8' fill='rgba(15,60,20,0.65)'/>
+    <ellipse cx='152' cy='211' rx='14' ry='7' fill='rgba(15,60,20,0.65)'/>
+    <line x1='480' y1='236' x2='488' y2='192' stroke='rgba(10,40,15,0.8)' stroke-width='3'/>
+    <ellipse cx='488' cy='190' rx='16' ry='9' fill='rgba(15,60,20,0.7)'/>
+    <ellipse cx='474' cy='196' rx='13' ry='7' fill='rgba(15,60,20,0.6)'/>
+  </svg>`,
+    10: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500' style='width:100%;height:100%;position:absolute;inset:0'>
+    <defs>
+      <linearGradient id='sky3' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#1e4a8a'/><stop offset='40%' stop-color='#2e6ab0'/><stop offset='100%' stop-color='#4a90d0'/></linearGradient>
+      <linearGradient id='sea3' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#1560a0'/><stop offset='100%' stop-color='#082040'/></linearGradient>
+    </defs>
+    <rect width='800' height='500' fill='url(#sky3)'/>
+    <!-- Fluffy clouds -->
+    <ellipse cx='150' cy='80' rx='90' ry='35' fill='rgba(255,255,255,0.2)'/>
+    <ellipse cx='200' cy='68' rx='70' ry='28' fill='rgba(255,255,255,0.25)'/>
+    <ellipse cx='100' cy='72' rx='55' ry='22' fill='rgba(255,255,255,0.2)'/>
+    <ellipse cx='600' cy='60' rx='80' ry='30' fill='rgba(255,255,255,0.18)'/>
+    <ellipse cx='650' cy='50' rx='60' ry='24' fill='rgba(255,255,255,0.22)'/>
+    <rect y='305' width='800' height='195' fill='url(#sea3)'/>
+    <!-- Choppy waves -->
+    <path d='M0,315 Q60,305 130,318 Q200,330 280,312 Q360,296 450,312 Q540,328 630,308 Q720,290 800,305' stroke='rgba(255,255,255,0.18)' stroke-width='2' fill='none'/>
+    <path d='M0,338 Q80,325 170,340 Q280,356 390,334 Q500,314 620,330 Q720,344 800,328' stroke='rgba(255,255,255,0.12)' stroke-width='1.5' fill='none'/>
+    <path d='M0,362 Q100,350 210,364 Q340,380 480,356 Q600,336 750,354 L800,350' stroke='rgba(255,255,255,0.08)' stroke-width='1' fill='none'/>
+    <!-- Sailing yacht hull -->
+    <path d='M260,305 Q380,295 500,300 L490,322 Q380,316 270,320 Z' fill='#1a1a2e'/>
+    <path d='M270,290 L490,290 L500,305 Q380,295 260,305 Z' fill='#e0e4e8'/>
+    <!-- Main sail -->
+    <path d='M380,288 L380,80 L540,288 Z' fill='rgba(248,248,255,0.92)'/>
+    <path d='M380,288 L380,80' stroke='#888' stroke-width='2'/>
+    <!-- Sail batten lines -->
+    <line x1='380' y1='140' x2='518' y2='258' stroke='rgba(150,150,150,0.3)' stroke-width='1'/>
+    <line x1='380' y1='185' x2='510' y2='272' stroke='rgba(150,150,150,0.3)' stroke-width='1'/>
+    <line x1='380' y1='228' x2='500' y2='282' stroke='rgba(150,150,150,0.3)' stroke-width='1'/>
+    <!-- Headsail (genoa) -->
+    <path d='M380,288 L380,105 L270,288 Z' fill='rgba(240,245,255,0.85)'/>
+    <!-- Mast top accessories -->
+    <circle cx='380' cy='76' r='5' fill='#C4A35A'/>
+    <line x1='380' y1='76' x2='380' y2='65' stroke='#bbb' stroke-width='1.5'/>
+    <!-- Boom -->
+    <line x1='380' y1='288' x2='540' y2='295' stroke='#888' stroke-width='2'/>
+    <!-- Cockpit hint -->
+    <ellipse cx='420' cy='308' rx='35' ry='8' fill='rgba(255,255,255,0.15)'/>
+    <!-- Wake -->
+    <path d='M265,318 Q180,330 100,326 Q50,326 0,322' stroke='rgba(255,255,255,0.2)' stroke-width='2' fill='none'/>
+    <!-- Greek island silhouette -->
+    <path d='M0,280 Q50,268 100,275 Q150,282 190,265 Q240,246 290,255 Q350,265 400,248 Q460,228 510,240 Q580,256 640,238 Q700,220 760,232 Q780,236 800,228 L800,305 L0,305 Z' fill='rgba(8,20,50,0.45)'/>
+    <!-- White village dots on island -->
+    <circle cx='220' cy='258' r='3' fill='rgba(255,255,255,0.6)'/><circle cx='240' cy='252' r='2.5' fill='rgba(255,255,255,0.5)'/><circle cx='260' cy='256' r='2' fill='rgba(255,255,255,0.5)'/><circle cx='480' cy='243' r='3' fill='rgba(255,255,255,0.6)'/><circle cx='500' cy='238' r='2' fill='rgba(255,255,255,0.4)'/>
+  </svg>`,
+    11: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500' style='width:100%;height:100%;position:absolute;inset:0'>
+    <defs>
+      <linearGradient id='sky3' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#1e4a8a'/><stop offset='40%' stop-color='#2e6ab0'/><stop offset='100%' stop-color='#4a90d0'/></linearGradient>
+      <linearGradient id='sea3' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#1560a0'/><stop offset='100%' stop-color='#082040'/></linearGradient>
+    </defs>
+    <rect width='800' height='500' fill='url(#sky3)'/>
+    <!-- Fluffy clouds -->
+    <ellipse cx='150' cy='80' rx='90' ry='35' fill='rgba(255,255,255,0.2)'/>
+    <ellipse cx='200' cy='68' rx='70' ry='28' fill='rgba(255,255,255,0.25)'/>
+    <ellipse cx='100' cy='72' rx='55' ry='22' fill='rgba(255,255,255,0.2)'/>
+    <ellipse cx='600' cy='60' rx='80' ry='30' fill='rgba(255,255,255,0.18)'/>
+    <ellipse cx='650' cy='50' rx='60' ry='24' fill='rgba(255,255,255,0.22)'/>
+    <rect y='305' width='800' height='195' fill='url(#sea3)'/>
+    <!-- Choppy waves -->
+    <path d='M0,315 Q60,305 130,318 Q200,330 280,312 Q360,296 450,312 Q540,328 630,308 Q720,290 800,305' stroke='rgba(255,255,255,0.18)' stroke-width='2' fill='none'/>
+    <path d='M0,338 Q80,325 170,340 Q280,356 390,334 Q500,314 620,330 Q720,344 800,328' stroke='rgba(255,255,255,0.12)' stroke-width='1.5' fill='none'/>
+    <path d='M0,362 Q100,350 210,364 Q340,380 480,356 Q600,336 750,354 L800,350' stroke='rgba(255,255,255,0.08)' stroke-width='1' fill='none'/>
+    <!-- Sailing yacht hull -->
+    <path d='M260,305 Q380,295 500,300 L490,322 Q380,316 270,320 Z' fill='#1a1a2e'/>
+    <path d='M270,290 L490,290 L500,305 Q380,295 260,305 Z' fill='#e0e4e8'/>
+    <!-- Main sail -->
+    <path d='M380,288 L380,80 L540,288 Z' fill='rgba(248,248,255,0.92)'/>
+    <path d='M380,288 L380,80' stroke='#888' stroke-width='2'/>
+    <!-- Sail batten lines -->
+    <line x1='380' y1='140' x2='518' y2='258' stroke='rgba(150,150,150,0.3)' stroke-width='1'/>
+    <line x1='380' y1='185' x2='510' y2='272' stroke='rgba(150,150,150,0.3)' stroke-width='1'/>
+    <line x1='380' y1='228' x2='500' y2='282' stroke='rgba(150,150,150,0.3)' stroke-width='1'/>
+    <!-- Headsail (genoa) -->
+    <path d='M380,288 L380,105 L270,288 Z' fill='rgba(240,245,255,0.85)'/>
+    <!-- Mast top accessories -->
+    <circle cx='380' cy='76' r='5' fill='#C4A35A'/>
+    <line x1='380' y1='76' x2='380' y2='65' stroke='#bbb' stroke-width='1.5'/>
+    <!-- Boom -->
+    <line x1='380' y1='288' x2='540' y2='295' stroke='#888' stroke-width='2'/>
+    <!-- Cockpit hint -->
+    <ellipse cx='420' cy='308' rx='35' ry='8' fill='rgba(255,255,255,0.15)'/>
+    <!-- Wake -->
+    <path d='M265,318 Q180,330 100,326 Q50,326 0,322' stroke='rgba(255,255,255,0.2)' stroke-width='2' fill='none'/>
+    <!-- Greek island silhouette -->
+    <path d='M0,280 Q50,268 100,275 Q150,282 190,265 Q240,246 290,255 Q350,265 400,248 Q460,228 510,240 Q580,256 640,238 Q700,220 760,232 Q780,236 800,228 L800,305 L0,305 Z' fill='rgba(8,20,50,0.45)'/>
+    <!-- White village dots on island -->
+    <circle cx='220' cy='258' r='3' fill='rgba(255,255,255,0.6)'/><circle cx='240' cy='252' r='2.5' fill='rgba(255,255,255,0.5)'/><circle cx='260' cy='256' r='2' fill='rgba(255,255,255,0.5)'/><circle cx='480' cy='243' r='3' fill='rgba(255,255,255,0.6)'/><circle cx='500' cy='238' r='2' fill='rgba(255,255,255,0.4)'/>
+  </svg>`,
+    12: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500' style='width:100%;height:100%;position:absolute;inset:0'>
+    <defs>
+      <linearGradient id='sky6' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#1060a0'/><stop offset='40%' stop-color='#2888cc'/><stop offset='100%' stop-color='#40a8e0'/></linearGradient>
+      <linearGradient id='sea6' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#10a0b0'/><stop offset='40%' stop-color='#0870a0'/><stop offset='100%' stop-color='#043060'/></linearGradient>
+    </defs>
+    <rect width='800' height='500' fill='url(#sky6)'/>
+    <circle cx='700' cy='75' r='35' fill='#ffe860' opacity='0.88'/>
+    <circle cx='700' cy='75' r='24' fill='#fff8b0' opacity='0.95'/>
+    <ellipse cx='700' cy='78' rx='80' ry='60' fill='rgba(255,230,80,0.1)'/>
+    <rect y='295' width='800' height='205' fill='url(#sea6)'/>
+    <!-- Turquoise shallows -->
+    <ellipse cx='400' cy='296' rx='500' ry='18' fill='rgba(40,210,210,0.2)'/>
+    <path d='M0,302 Q200,290 400,304 Q600,318 800,300' stroke='rgba(255,255,255,0.25)' stroke-width='2.5' fill='none'/>
+    <path d='M0,328 Q180,312 380,330 Q560,348 800,320' stroke='rgba(255,255,255,0.14)' stroke-width='1.5' fill='none'/>
+    <!-- Catamaran hulls - white for Caribbean -->
+    <path d='M160,295 Q250,285 330,290 L325,314 Q248,312 163,316 Z' fill='#ffffff' opacity='0.95'/>
+    <path d='M440,295 Q530,285 620,290 L616,314 Q530,312 438,316 Z' fill='#ffffff' opacity='0.95'/>
+    <!-- Bridgedeck -->
+    <rect x='315' y='274' width='150' height='30' rx='4' fill='#f5f8ff'/>
+    <rect x='330' y='248' width='120' height='28' rx='3' fill='#eef2ff'/>
+    <!-- Mast -->
+    <line x1='395' y1='275' x2='395' y2='62' stroke='#aaa' stroke-width='2.5'/>
+    <!-- Bright charter sail -->
+    <path d='M395,270 L395,70 L558,270 Z' fill='rgba(248,252,255,0.92)'/>
+    <path d='M395,270 L395,88 L265,270 Z' fill='rgba(240,248,255,0.87)'/>
+    <!-- Gold sail stripe -->
+    <path d='M395,180 L510,255 L395,255 Z' fill='rgba(196,163,90,0.2)'/>
+    <circle cx='395' cy='58' r='5' fill='#C4A35A'/>
+    <!-- Net tramps -->
+    <path d='M163,298 Q250,294 320,296 L315,308 Q248,310 166,308 Z' fill='rgba(100,180,220,0.2)'/>
+    <path d='M438,298 Q525,294 612,296 L608,308 Q524,310 436,308 Z' fill='rgba(100,180,220,0.2)'/>
+    <!-- Windows -->
+    <rect x='344' y='255' width='20' height='13' rx='2' fill='#0860a0' opacity='0.6'/><rect x='374' y='255' width='20' height='13' rx='2' fill='#C4A35A' opacity='0.5'/><rect x='404' y='255' width='20' height='13' rx='2' fill='#0860a0' opacity='0.6'/>
+    <!-- Wake -->
+    <path d='M163,316 Q75,330 0,324' stroke='rgba(255,255,255,0.25)' stroke-width='2.2' fill='none'/>
+    <!-- Tropical island with beach -->
+    <path d='M-10,268 Q30,255 70,262 Q110,270 140,255 Q180,236 215,248 Q260,262 290,246 Q350,222 400,236 Q460,252 510,234 Q580,210 640,226 Q720,244 810,228 L810,296 L-10,296 Z' fill='rgba(8,25,15,0.5)'/>
+    <!-- Beach strip -->
+    <path d='M50,274 Q100,270 150,275 Q175,278 165,282 Q110,284 55,280 Z' fill='rgba(240,210,140,0.4)'/>
+    <!-- Palms -->
+    <line x1='90' y1='262' x2='98' y2='218' stroke='rgba(8,35,12,0.85)' stroke-width='3'/><ellipse cx='98' cy='216' rx='16' ry='9' fill='rgba(12,55,18,0.75)'/><ellipse cx='84' cy='222' rx='13' ry='7' fill='rgba(12,55,18,0.65)'/>
+    <line x1='560' y1='236' x2='568' y2='196' stroke='rgba(8,35,12,0.85)' stroke-width='3'/><ellipse cx='568' cy='194' rx='15' ry='8' fill='rgba(12,55,18,0.75)'/><ellipse cx='554' cy='200' rx='12' ry='6' fill='rgba(12,55,18,0.65)'/>
+  </svg>`,
+    13: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500' style='width:100%;height:100%;position:absolute;inset:0'>
+    <defs>
+      <linearGradient id='sky5' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#1a4878'/><stop offset='50%' stop-color='#2a6aaa'/><stop offset='100%' stop-color='#3888cc'/></linearGradient>
+      <linearGradient id='sea5' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#1870b0'/><stop offset='100%' stop-color='#083060'/></linearGradient>
+    </defs>
+    <rect width='800' height='500' fill='url(#sky5)'/>
+    <!-- Clear sky with wispy clouds -->
+    <path d='M50,60 Q120,45 190,62 Q220,70 200,80 Q130,85 60,70 Q40,65 50,60 Z' fill='rgba(255,255,255,0.2)'/>
+    <path d='M550,40 Q640,28 720,44 Q750,52 730,62 Q645,66 555,52 Q535,46 550,40 Z' fill='rgba(255,255,255,0.18)'/>
+    <rect y='298' width='800' height='202' fill='url(#sea5)'/>
+    <path d='M0,305 Q120,293 260,308 Q400,322 560,302 Q680,286 800,298' stroke='rgba(255,255,255,0.16)' stroke-width='1.8' fill='none'/>
+    <path d='M0,328 Q140,314 300,330 Q460,346 640,322 Q730,309 800,316' stroke='rgba(255,255,255,0.1)' stroke-width='1.2' fill='none'/>
+    <!-- Catamaran: two hulls -->
+    <path d='M170,298 Q260,290 340,294 L335,316 Q258,314 172,318 Z' fill='#dde0e8'/>
+    <path d='M440,298 Q520,290 610,294 L606,316 Q522,314 438,318 Z' fill='#dde0e8'/>
+    <!-- Bridgedeck connecting the two hulls -->
+    <rect x='320' y='280' width='140' height='28' rx='4' fill='#e8eaee'/>
+    <rect x='335' y='255' width='110' height='26' rx='3' fill='#f0f2f4'/>
+    <!-- Mast from centre -->
+    <line x1='390' y1='280' x2='390' y2='70' stroke='#999' stroke-width='2.5'/>
+    <!-- Main sail -->
+    <path d='M390,275 L390,78 L540,275 Z' fill='rgba(245,248,255,0.9)'/>
+    <!-- Genoa -->
+    <path d='M390,275 L390,95 L268,275 Z' fill='rgba(238,244,255,0.85)'/>
+    <circle cx='390' cy='67' r='5' fill='#C4A35A'/>
+    <!-- Boom -->
+    <line x1='390' y1='275' x2='540' y2='283' stroke='#888' stroke-width='1.8'/>
+    <!-- Net/trampolines between hulls in front -->
+    <path d='M170,300 Q260,296 340,298 L330,308 Q255,310 175,308 Z' fill='rgba(180,190,200,0.3)'/>
+    <path d='M440,300 Q520,296 605,298 L598,308 Q518,310 438,308 Z' fill='rgba(180,190,200,0.3)'/>
+    <!-- Windows on bridgedeck -->
+    <rect x='348' y='260' width='22' height='14' rx='2' fill='#1a4a7a' opacity='0.7'/><rect x='380' y='260' width='22' height='14' rx='2' fill='#C4A35A' opacity='0.6'/><rect x='412' y='260' width='22' height='14' rx='2' fill='#1a4a7a' opacity='0.7'/>
+    <!-- Wake from both hulls -->
+    <path d='M172,318 Q90,330 30,326 Q10,325 0,322' stroke='rgba(255,255,255,0.2)' stroke-width='2' fill='none'/>
+    <path d='M438,318 Q356,330 290,325' stroke='rgba(255,255,255,0.15)' stroke-width='1.5' fill='none'/>
+    <!-- Distant coast -->
+    <path d='M0,275 Q100,260 200,268 Q320,278 400,262 Q520,242 640,256 Q730,268 800,252 L800,298 L0,298 Z' fill='rgba(6,16,42,0.45)'/>
+  </svg>`,
+    14: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500' style='width:100%;height:100%;position:absolute;inset:0'>
+    <defs>
+      <linearGradient id='sky5' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#1a4878'/><stop offset='50%' stop-color='#2a6aaa'/><stop offset='100%' stop-color='#3888cc'/></linearGradient>
+      <linearGradient id='sea5' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#1870b0'/><stop offset='100%' stop-color='#083060'/></linearGradient>
+    </defs>
+    <rect width='800' height='500' fill='url(#sky5)'/>
+    <!-- Clear sky with wispy clouds -->
+    <path d='M50,60 Q120,45 190,62 Q220,70 200,80 Q130,85 60,70 Q40,65 50,60 Z' fill='rgba(255,255,255,0.2)'/>
+    <path d='M550,40 Q640,28 720,44 Q750,52 730,62 Q645,66 555,52 Q535,46 550,40 Z' fill='rgba(255,255,255,0.18)'/>
+    <rect y='298' width='800' height='202' fill='url(#sea5)'/>
+    <path d='M0,305 Q120,293 260,308 Q400,322 560,302 Q680,286 800,298' stroke='rgba(255,255,255,0.16)' stroke-width='1.8' fill='none'/>
+    <path d='M0,328 Q140,314 300,330 Q460,346 640,322 Q730,309 800,316' stroke='rgba(255,255,255,0.1)' stroke-width='1.2' fill='none'/>
+    <!-- Catamaran: two hulls -->
+    <path d='M170,298 Q260,290 340,294 L335,316 Q258,314 172,318 Z' fill='#dde0e8'/>
+    <path d='M440,298 Q520,290 610,294 L606,316 Q522,314 438,318 Z' fill='#dde0e8'/>
+    <!-- Bridgedeck connecting the two hulls -->
+    <rect x='320' y='280' width='140' height='28' rx='4' fill='#e8eaee'/>
+    <rect x='335' y='255' width='110' height='26' rx='3' fill='#f0f2f4'/>
+    <!-- Mast from centre -->
+    <line x1='390' y1='280' x2='390' y2='70' stroke='#999' stroke-width='2.5'/>
+    <!-- Main sail -->
+    <path d='M390,275 L390,78 L540,275 Z' fill='rgba(245,248,255,0.9)'/>
+    <!-- Genoa -->
+    <path d='M390,275 L390,95 L268,275 Z' fill='rgba(238,244,255,0.85)'/>
+    <circle cx='390' cy='67' r='5' fill='#C4A35A'/>
+    <!-- Boom -->
+    <line x1='390' y1='275' x2='540' y2='283' stroke='#888' stroke-width='1.8'/>
+    <!-- Net/trampolines between hulls in front -->
+    <path d='M170,300 Q260,296 340,298 L330,308 Q255,310 175,308 Z' fill='rgba(180,190,200,0.3)'/>
+    <path d='M440,300 Q520,296 605,298 L598,308 Q518,310 438,308 Z' fill='rgba(180,190,200,0.3)'/>
+    <!-- Windows on bridgedeck -->
+    <rect x='348' y='260' width='22' height='14' rx='2' fill='#1a4a7a' opacity='0.7'/><rect x='380' y='260' width='22' height='14' rx='2' fill='#C4A35A' opacity='0.6'/><rect x='412' y='260' width='22' height='14' rx='2' fill='#1a4a7a' opacity='0.7'/>
+    <!-- Wake from both hulls -->
+    <path d='M172,318 Q90,330 30,326 Q10,325 0,322' stroke='rgba(255,255,255,0.2)' stroke-width='2' fill='none'/>
+    <path d='M438,318 Q356,330 290,325' stroke='rgba(255,255,255,0.15)' stroke-width='1.5' fill='none'/>
+    <!-- Distant coast -->
+    <path d='M0,275 Q100,260 200,268 Q320,278 400,262 Q520,242 640,256 Q730,268 800,252 L800,298 L0,298 Z' fill='rgba(6,16,42,0.45)'/>
+  </svg>`,
+    15: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500' style='width:100%;height:100%;position:absolute;inset:0'>
+    <defs>
+      <linearGradient id='sky6' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#1060a0'/><stop offset='40%' stop-color='#2888cc'/><stop offset='100%' stop-color='#40a8e0'/></linearGradient>
+      <linearGradient id='sea6' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#10a0b0'/><stop offset='40%' stop-color='#0870a0'/><stop offset='100%' stop-color='#043060'/></linearGradient>
+    </defs>
+    <rect width='800' height='500' fill='url(#sky6)'/>
+    <circle cx='700' cy='75' r='35' fill='#ffe860' opacity='0.88'/>
+    <circle cx='700' cy='75' r='24' fill='#fff8b0' opacity='0.95'/>
+    <ellipse cx='700' cy='78' rx='80' ry='60' fill='rgba(255,230,80,0.1)'/>
+    <rect y='295' width='800' height='205' fill='url(#sea6)'/>
+    <!-- Turquoise shallows -->
+    <ellipse cx='400' cy='296' rx='500' ry='18' fill='rgba(40,210,210,0.2)'/>
+    <path d='M0,302 Q200,290 400,304 Q600,318 800,300' stroke='rgba(255,255,255,0.25)' stroke-width='2.5' fill='none'/>
+    <path d='M0,328 Q180,312 380,330 Q560,348 800,320' stroke='rgba(255,255,255,0.14)' stroke-width='1.5' fill='none'/>
+    <!-- Catamaran hulls - white for Caribbean -->
+    <path d='M160,295 Q250,285 330,290 L325,314 Q248,312 163,316 Z' fill='#ffffff' opacity='0.95'/>
+    <path d='M440,295 Q530,285 620,290 L616,314 Q530,312 438,316 Z' fill='#ffffff' opacity='0.95'/>
+    <!-- Bridgedeck -->
+    <rect x='315' y='274' width='150' height='30' rx='4' fill='#f5f8ff'/>
+    <rect x='330' y='248' width='120' height='28' rx='3' fill='#eef2ff'/>
+    <!-- Mast -->
+    <line x1='395' y1='275' x2='395' y2='62' stroke='#aaa' stroke-width='2.5'/>
+    <!-- Bright charter sail -->
+    <path d='M395,270 L395,70 L558,270 Z' fill='rgba(248,252,255,0.92)'/>
+    <path d='M395,270 L395,88 L265,270 Z' fill='rgba(240,248,255,0.87)'/>
+    <!-- Gold sail stripe -->
+    <path d='M395,180 L510,255 L395,255 Z' fill='rgba(196,163,90,0.2)'/>
+    <circle cx='395' cy='58' r='5' fill='#C4A35A'/>
+    <!-- Net tramps -->
+    <path d='M163,298 Q250,294 320,296 L315,308 Q248,310 166,308 Z' fill='rgba(100,180,220,0.2)'/>
+    <path d='M438,298 Q525,294 612,296 L608,308 Q524,310 436,308 Z' fill='rgba(100,180,220,0.2)'/>
+    <!-- Windows -->
+    <rect x='344' y='255' width='20' height='13' rx='2' fill='#0860a0' opacity='0.6'/><rect x='374' y='255' width='20' height='13' rx='2' fill='#C4A35A' opacity='0.5'/><rect x='404' y='255' width='20' height='13' rx='2' fill='#0860a0' opacity='0.6'/>
+    <!-- Wake -->
+    <path d='M163,316 Q75,330 0,324' stroke='rgba(255,255,255,0.25)' stroke-width='2.2' fill='none'/>
+    <!-- Tropical island with beach -->
+    <path d='M-10,268 Q30,255 70,262 Q110,270 140,255 Q180,236 215,248 Q260,262 290,246 Q350,222 400,236 Q460,252 510,234 Q580,210 640,226 Q720,244 810,228 L810,296 L-10,296 Z' fill='rgba(8,25,15,0.5)'/>
+    <!-- Beach strip -->
+    <path d='M50,274 Q100,270 150,275 Q175,278 165,282 Q110,284 55,280 Z' fill='rgba(240,210,140,0.4)'/>
+    <!-- Palms -->
+    <line x1='90' y1='262' x2='98' y2='218' stroke='rgba(8,35,12,0.85)' stroke-width='3'/><ellipse cx='98' cy='216' rx='16' ry='9' fill='rgba(12,55,18,0.75)'/><ellipse cx='84' cy='222' rx='13' ry='7' fill='rgba(12,55,18,0.65)'/>
+    <line x1='560' y1='236' x2='568' y2='196' stroke='rgba(8,35,12,0.85)' stroke-width='3'/><ellipse cx='568' cy='194' rx='15' ry='8' fill='rgba(12,55,18,0.75)'/><ellipse cx='554' cy='200' rx='12' ry='6' fill='rgba(12,55,18,0.65)'/>
+  </svg>`,
+    16: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500' style='width:100%;height:100%;position:absolute;inset:0'>
+    <defs>
+      <linearGradient id='sky7' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#1a3870'/><stop offset='50%' stop-color='#2a5898'/><stop offset='100%' stop-color='#3878b8'/></linearGradient>
+      <linearGradient id='sea7' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#1458a0'/><stop offset='100%' stop-color='#06183a'/></linearGradient>
+      <linearGradient id='wood' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#8B5e3c'/><stop offset='100%' stop-color='#6b4428'/></linearGradient>
+    </defs>
+    <rect width='800' height='500' fill='url(#sky7)'/>
+    <!-- Golden hour sky -->
+    <ellipse cx='680' cy='100' rx='140' ry='100' fill='rgba(255,160,40,0.12)'/>
+    <circle cx='682' cy='96' r='38' fill='#ffa030' opacity='0.8'/>
+    <circle cx='682' cy='96' r='26' fill='#ffc060' opacity='0.9'/>
+    <!-- Horizon glow -->
+    <rect x='0' y='280' width='800' height='30' fill='rgba(255,140,30,0.08)'/>
+    <rect y='305' width='800' height='195' fill='url(#sea7)'/>
+    <!-- Golden sea shimmer -->
+    <path d='M500,305 Q600,295 700,308 Q760,316 800,306 L800,350 Q740,360 660,348 Q560,332 500,345 Z' fill='rgba(255,140,20,0.08)'/>
+    <path d='M0,312 Q100,300 220,314 Q360,330 500,308 Q640,288 800,302' stroke='rgba(255,255,255,0.14)' stroke-width='1.8' fill='none'/>
+    <path d='M0,338 Q150,324 320,340 Q500,358 700,332 L800,326' stroke='rgba(255,255,255,0.09)' stroke-width='1.2' fill='none'/>
+    <!-- Gulet distinctive wooden hull -->
+    <path d='M140,308 Q280,296 430,300 Q540,302 640,308 L630,330 Q530,324 420,322 Q272,318 148,328 Z' fill='url(#wood)'/>
+    <!-- Hull planking lines -->
+    <path d='M150,310 Q340,300 630,310' stroke='rgba(0,0,0,0.2)' stroke-width='1'/><path d='M152,315 Q340,306 628,315' stroke='rgba(0,0,0,0.15)' stroke-width='0.8'/><path d='M154,320 Q340,312 626,320' stroke='rgba(0,0,0,0.12)' stroke-width='0.8'/>
+    <!-- Deck superstructure - traditional low profile -->
+    <rect x='190' y='278' width='360' height='32' rx='6' fill='#c8a882'/>
+    <!-- Shade awning/bimini over aft deck -->
+    <path d='M380,278 L550,270 L555,278 L385,285 Z' fill='rgba(220,200,160,0.7)'/>
+    <!-- Canvas awning stripes -->
+    <path d='M395,277 L548,271' stroke='rgba(180,150,100,0.5)' stroke-width='1.5'/><path d='M415,277 L548,271.8' stroke='rgba(180,150,100,0.5)' stroke-width='1.5'/><path d='M435,277 L549,272.5' stroke='rgba(180,150,100,0.5)' stroke-width='1.5'/>
+    <!-- Portholes -->
+    <circle cx='215' cy='316' r='7' fill='none' stroke='#C4A35A' stroke-width='1.5'/><circle cx='215' cy='316' r='4' fill='#1a3868' opacity='0.6'/>
+    <circle cx='255' cy='314' r='7' fill='none' stroke='#C4A35A' stroke-width='1.5'/><circle cx='255' cy='314' r='4' fill='#1a3868' opacity='0.6'/>
+    <circle cx='295' cy='313' r='7' fill='none' stroke='#C4A35A' stroke-width='1.5'/><circle cx='295' cy='313' r='4' fill='#C4A35A' opacity='0.5'/>
+    <circle cx='335' cy='312' r='7' fill='none' stroke='#C4A35A' stroke-width='1.5'/><circle cx='335' cy='312' r='4' fill='#1a3868' opacity='0.6'/>
+    <!-- Two masts - traditional schooner rig -->
+    <line x1='280' y1='278' x2='280' y2='130' stroke='#7a5030' stroke-width='3'/>
+    <line x1='430' y1='278' x2='430' y2='110' stroke='#7a5030' stroke-width='3'/>
+    <!-- Sails furled on booms -->
+    <path d='M280,155 Q330,165 390,158' stroke='rgba(220,200,160,0.6)' stroke-width='8' stroke-linecap='round' fill='none'/>
+    <path d='M430,138 Q490,148 555,140' stroke='rgba(220,200,160,0.55)' stroke-width='7' stroke-linecap='round' fill='none'/>
+    <!-- Flags -->
+    <line x1='280' y1='130' x2='310' y2='120' stroke='rgba(200,160,80,0.8)' stroke-width='1'/>
+    <polygon points='310,120 310,128 295,124' fill='#C4A35A' opacity='0.8'/>
+    <!-- WYC teak deck trim -->
+    <rect x='190' y='276' width='360' height='3' fill='#C4A35A' opacity='0.6'/>
+    <!-- Wake - slower vessel, softer wake -->
+    <path d='M148,328 Q70,340 20,336 Q8,335 0,332' stroke='rgba(255,255,255,0.16)' stroke-width='2' fill='none'/>
+    <path d='M148,333 Q60,346 0,340' stroke='rgba(255,255,255,0.09)' stroke-width='1.5' fill='none'/>
+    <!-- Adriatic/Mediterranean coast -->
+    <path d='M0,278 Q60,264 120,272 Q180,280 220,264 Q280,244 340,256 Q400,268 460,250 Q540,228 600,244 Q660,260 720,242 Q770,228 800,236 L800,308 L0,308 Z' fill='rgba(6,14,36,0.48)'/>
+    <!-- Old town buildings silhouette -->
+    <rect x='230' y='248' width='8' height='16' fill='rgba(6,14,36,0.7)'/><rect x='245' y='244' width='10' height='20' fill='rgba(6,14,36,0.7)'/><rect x='260' y='250' width='8' height='14' fill='rgba(6,14,36,0.7)'/><rect x='272' y='245' width='7' height='19' fill='rgba(6,14,36,0.7)'/>
+    <rect x='460' y='242' width='8' height='16' fill='rgba(6,14,36,0.7)'/><rect x='474' y='238' width='10' height='20' fill='rgba(6,14,36,0.7)'/><rect x='490' y='244' width='8' height='14' fill='rgba(6,14,36,0.7)'/>
+  </svg>`,
+    17: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500' style='width:100%;height:100%;position:absolute;inset:0'>
+    <defs>
+      <linearGradient id='sky7' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#1a3870'/><stop offset='50%' stop-color='#2a5898'/><stop offset='100%' stop-color='#3878b8'/></linearGradient>
+      <linearGradient id='sea7' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#1458a0'/><stop offset='100%' stop-color='#06183a'/></linearGradient>
+      <linearGradient id='wood' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#8B5e3c'/><stop offset='100%' stop-color='#6b4428'/></linearGradient>
+    </defs>
+    <rect width='800' height='500' fill='url(#sky7)'/>
+    <!-- Golden hour sky -->
+    <ellipse cx='680' cy='100' rx='140' ry='100' fill='rgba(255,160,40,0.12)'/>
+    <circle cx='682' cy='96' r='38' fill='#ffa030' opacity='0.8'/>
+    <circle cx='682' cy='96' r='26' fill='#ffc060' opacity='0.9'/>
+    <!-- Horizon glow -->
+    <rect x='0' y='280' width='800' height='30' fill='rgba(255,140,30,0.08)'/>
+    <rect y='305' width='800' height='195' fill='url(#sea7)'/>
+    <!-- Golden sea shimmer -->
+    <path d='M500,305 Q600,295 700,308 Q760,316 800,306 L800,350 Q740,360 660,348 Q560,332 500,345 Z' fill='rgba(255,140,20,0.08)'/>
+    <path d='M0,312 Q100,300 220,314 Q360,330 500,308 Q640,288 800,302' stroke='rgba(255,255,255,0.14)' stroke-width='1.8' fill='none'/>
+    <path d='M0,338 Q150,324 320,340 Q500,358 700,332 L800,326' stroke='rgba(255,255,255,0.09)' stroke-width='1.2' fill='none'/>
+    <!-- Gulet distinctive wooden hull -->
+    <path d='M140,308 Q280,296 430,300 Q540,302 640,308 L630,330 Q530,324 420,322 Q272,318 148,328 Z' fill='url(#wood)'/>
+    <!-- Hull planking lines -->
+    <path d='M150,310 Q340,300 630,310' stroke='rgba(0,0,0,0.2)' stroke-width='1'/><path d='M152,315 Q340,306 628,315' stroke='rgba(0,0,0,0.15)' stroke-width='0.8'/><path d='M154,320 Q340,312 626,320' stroke='rgba(0,0,0,0.12)' stroke-width='0.8'/>
+    <!-- Deck superstructure - traditional low profile -->
+    <rect x='190' y='278' width='360' height='32' rx='6' fill='#c8a882'/>
+    <!-- Shade awning/bimini over aft deck -->
+    <path d='M380,278 L550,270 L555,278 L385,285 Z' fill='rgba(220,200,160,0.7)'/>
+    <!-- Canvas awning stripes -->
+    <path d='M395,277 L548,271' stroke='rgba(180,150,100,0.5)' stroke-width='1.5'/><path d='M415,277 L548,271.8' stroke='rgba(180,150,100,0.5)' stroke-width='1.5'/><path d='M435,277 L549,272.5' stroke='rgba(180,150,100,0.5)' stroke-width='1.5'/>
+    <!-- Portholes -->
+    <circle cx='215' cy='316' r='7' fill='none' stroke='#C4A35A' stroke-width='1.5'/><circle cx='215' cy='316' r='4' fill='#1a3868' opacity='0.6'/>
+    <circle cx='255' cy='314' r='7' fill='none' stroke='#C4A35A' stroke-width='1.5'/><circle cx='255' cy='314' r='4' fill='#1a3868' opacity='0.6'/>
+    <circle cx='295' cy='313' r='7' fill='none' stroke='#C4A35A' stroke-width='1.5'/><circle cx='295' cy='313' r='4' fill='#C4A35A' opacity='0.5'/>
+    <circle cx='335' cy='312' r='7' fill='none' stroke='#C4A35A' stroke-width='1.5'/><circle cx='335' cy='312' r='4' fill='#1a3868' opacity='0.6'/>
+    <!-- Two masts - traditional schooner rig -->
+    <line x1='280' y1='278' x2='280' y2='130' stroke='#7a5030' stroke-width='3'/>
+    <line x1='430' y1='278' x2='430' y2='110' stroke='#7a5030' stroke-width='3'/>
+    <!-- Sails furled on booms -->
+    <path d='M280,155 Q330,165 390,158' stroke='rgba(220,200,160,0.6)' stroke-width='8' stroke-linecap='round' fill='none'/>
+    <path d='M430,138 Q490,148 555,140' stroke='rgba(220,200,160,0.55)' stroke-width='7' stroke-linecap='round' fill='none'/>
+    <!-- Flags -->
+    <line x1='280' y1='130' x2='310' y2='120' stroke='rgba(200,160,80,0.8)' stroke-width='1'/>
+    <polygon points='310,120 310,128 295,124' fill='#C4A35A' opacity='0.8'/>
+    <!-- WYC teak deck trim -->
+    <rect x='190' y='276' width='360' height='3' fill='#C4A35A' opacity='0.6'/>
+    <!-- Wake - slower vessel, softer wake -->
+    <path d='M148,328 Q70,340 20,336 Q8,335 0,332' stroke='rgba(255,255,255,0.16)' stroke-width='2' fill='none'/>
+    <path d='M148,333 Q60,346 0,340' stroke='rgba(255,255,255,0.09)' stroke-width='1.5' fill='none'/>
+    <!-- Adriatic/Mediterranean coast -->
+    <path d='M0,278 Q60,264 120,272 Q180,280 220,264 Q280,244 340,256 Q400,268 460,250 Q540,228 600,244 Q660,260 720,242 Q770,228 800,236 L800,308 L0,308 Z' fill='rgba(6,14,36,0.48)'/>
+    <!-- Old town buildings silhouette -->
+    <rect x='230' y='248' width='8' height='16' fill='rgba(6,14,36,0.7)'/><rect x='245' y='244' width='10' height='20' fill='rgba(6,14,36,0.7)'/><rect x='260' y='250' width='8' height='14' fill='rgba(6,14,36,0.7)'/><rect x='272' y='245' width='7' height='19' fill='rgba(6,14,36,0.7)'/>
+    <rect x='460' y='242' width='8' height='16' fill='rgba(6,14,36,0.7)'/><rect x='474' y='238' width='10' height='20' fill='rgba(6,14,36,0.7)'/><rect x='490' y='244' width='8' height='14' fill='rgba(6,14,36,0.7)'/>
+  </svg>`,
+    18: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500' style='width:100%;height:100%;position:absolute;inset:0'>
+    <defs>
+      <linearGradient id='sky7' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#1a3870'/><stop offset='50%' stop-color='#2a5898'/><stop offset='100%' stop-color='#3878b8'/></linearGradient>
+      <linearGradient id='sea7' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#1458a0'/><stop offset='100%' stop-color='#06183a'/></linearGradient>
+      <linearGradient id='wood' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#8B5e3c'/><stop offset='100%' stop-color='#6b4428'/></linearGradient>
+    </defs>
+    <rect width='800' height='500' fill='url(#sky7)'/>
+    <!-- Golden hour sky -->
+    <ellipse cx='680' cy='100' rx='140' ry='100' fill='rgba(255,160,40,0.12)'/>
+    <circle cx='682' cy='96' r='38' fill='#ffa030' opacity='0.8'/>
+    <circle cx='682' cy='96' r='26' fill='#ffc060' opacity='0.9'/>
+    <!-- Horizon glow -->
+    <rect x='0' y='280' width='800' height='30' fill='rgba(255,140,30,0.08)'/>
+    <rect y='305' width='800' height='195' fill='url(#sea7)'/>
+    <!-- Golden sea shimmer -->
+    <path d='M500,305 Q600,295 700,308 Q760,316 800,306 L800,350 Q740,360 660,348 Q560,332 500,345 Z' fill='rgba(255,140,20,0.08)'/>
+    <path d='M0,312 Q100,300 220,314 Q360,330 500,308 Q640,288 800,302' stroke='rgba(255,255,255,0.14)' stroke-width='1.8' fill='none'/>
+    <path d='M0,338 Q150,324 320,340 Q500,358 700,332 L800,326' stroke='rgba(255,255,255,0.09)' stroke-width='1.2' fill='none'/>
+    <!-- Gulet distinctive wooden hull -->
+    <path d='M140,308 Q280,296 430,300 Q540,302 640,308 L630,330 Q530,324 420,322 Q272,318 148,328 Z' fill='url(#wood)'/>
+    <!-- Hull planking lines -->
+    <path d='M150,310 Q340,300 630,310' stroke='rgba(0,0,0,0.2)' stroke-width='1'/><path d='M152,315 Q340,306 628,315' stroke='rgba(0,0,0,0.15)' stroke-width='0.8'/><path d='M154,320 Q340,312 626,320' stroke='rgba(0,0,0,0.12)' stroke-width='0.8'/>
+    <!-- Deck superstructure - traditional low profile -->
+    <rect x='190' y='278' width='360' height='32' rx='6' fill='#c8a882'/>
+    <!-- Shade awning/bimini over aft deck -->
+    <path d='M380,278 L550,270 L555,278 L385,285 Z' fill='rgba(220,200,160,0.7)'/>
+    <!-- Canvas awning stripes -->
+    <path d='M395,277 L548,271' stroke='rgba(180,150,100,0.5)' stroke-width='1.5'/><path d='M415,277 L548,271.8' stroke='rgba(180,150,100,0.5)' stroke-width='1.5'/><path d='M435,277 L549,272.5' stroke='rgba(180,150,100,0.5)' stroke-width='1.5'/>
+    <!-- Portholes -->
+    <circle cx='215' cy='316' r='7' fill='none' stroke='#C4A35A' stroke-width='1.5'/><circle cx='215' cy='316' r='4' fill='#1a3868' opacity='0.6'/>
+    <circle cx='255' cy='314' r='7' fill='none' stroke='#C4A35A' stroke-width='1.5'/><circle cx='255' cy='314' r='4' fill='#1a3868' opacity='0.6'/>
+    <circle cx='295' cy='313' r='7' fill='none' stroke='#C4A35A' stroke-width='1.5'/><circle cx='295' cy='313' r='4' fill='#C4A35A' opacity='0.5'/>
+    <circle cx='335' cy='312' r='7' fill='none' stroke='#C4A35A' stroke-width='1.5'/><circle cx='335' cy='312' r='4' fill='#1a3868' opacity='0.6'/>
+    <!-- Two masts - traditional schooner rig -->
+    <line x1='280' y1='278' x2='280' y2='130' stroke='#7a5030' stroke-width='3'/>
+    <line x1='430' y1='278' x2='430' y2='110' stroke='#7a5030' stroke-width='3'/>
+    <!-- Sails furled on booms -->
+    <path d='M280,155 Q330,165 390,158' stroke='rgba(220,200,160,0.6)' stroke-width='8' stroke-linecap='round' fill='none'/>
+    <path d='M430,138 Q490,148 555,140' stroke='rgba(220,200,160,0.55)' stroke-width='7' stroke-linecap='round' fill='none'/>
+    <!-- Flags -->
+    <line x1='280' y1='130' x2='310' y2='120' stroke='rgba(200,160,80,0.8)' stroke-width='1'/>
+    <polygon points='310,120 310,128 295,124' fill='#C4A35A' opacity='0.8'/>
+    <!-- WYC teak deck trim -->
+    <rect x='190' y='276' width='360' height='3' fill='#C4A35A' opacity='0.6'/>
+    <!-- Wake - slower vessel, softer wake -->
+    <path d='M148,328 Q70,340 20,336 Q8,335 0,332' stroke='rgba(255,255,255,0.16)' stroke-width='2' fill='none'/>
+    <path d='M148,333 Q60,346 0,340' stroke='rgba(255,255,255,0.09)' stroke-width='1.5' fill='none'/>
+    <!-- Adriatic/Mediterranean coast -->
+    <path d='M0,278 Q60,264 120,272 Q180,280 220,264 Q280,244 340,256 Q400,268 460,250 Q540,228 600,244 Q660,260 720,242 Q770,228 800,236 L800,308 L0,308 Z' fill='rgba(6,14,36,0.48)'/>
+    <!-- Old town buildings silhouette -->
+    <rect x='230' y='248' width='8' height='16' fill='rgba(6,14,36,0.7)'/><rect x='245' y='244' width='10' height='20' fill='rgba(6,14,36,0.7)'/><rect x='260' y='250' width='8' height='14' fill='rgba(6,14,36,0.7)'/><rect x='272' y='245' width='7' height='19' fill='rgba(6,14,36,0.7)'/>
+    <rect x='460' y='242' width='8' height='16' fill='rgba(6,14,36,0.7)'/><rect x='474' y='238' width='10' height='20' fill='rgba(6,14,36,0.7)'/><rect x='490' y='244' width='8' height='14' fill='rgba(6,14,36,0.7)'/>
+  </svg>`,
+    19: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500' style='width:100%;height:100%;position:absolute;inset:0'>
+    <defs>
+      <linearGradient id='sky7' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#1a3870'/><stop offset='50%' stop-color='#2a5898'/><stop offset='100%' stop-color='#3878b8'/></linearGradient>
+      <linearGradient id='sea7' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#1458a0'/><stop offset='100%' stop-color='#06183a'/></linearGradient>
+      <linearGradient id='wood' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#8B5e3c'/><stop offset='100%' stop-color='#6b4428'/></linearGradient>
+    </defs>
+    <rect width='800' height='500' fill='url(#sky7)'/>
+    <!-- Golden hour sky -->
+    <ellipse cx='680' cy='100' rx='140' ry='100' fill='rgba(255,160,40,0.12)'/>
+    <circle cx='682' cy='96' r='38' fill='#ffa030' opacity='0.8'/>
+    <circle cx='682' cy='96' r='26' fill='#ffc060' opacity='0.9'/>
+    <!-- Horizon glow -->
+    <rect x='0' y='280' width='800' height='30' fill='rgba(255,140,30,0.08)'/>
+    <rect y='305' width='800' height='195' fill='url(#sea7)'/>
+    <!-- Golden sea shimmer -->
+    <path d='M500,305 Q600,295 700,308 Q760,316 800,306 L800,350 Q740,360 660,348 Q560,332 500,345 Z' fill='rgba(255,140,20,0.08)'/>
+    <path d='M0,312 Q100,300 220,314 Q360,330 500,308 Q640,288 800,302' stroke='rgba(255,255,255,0.14)' stroke-width='1.8' fill='none'/>
+    <path d='M0,338 Q150,324 320,340 Q500,358 700,332 L800,326' stroke='rgba(255,255,255,0.09)' stroke-width='1.2' fill='none'/>
+    <!-- Gulet distinctive wooden hull -->
+    <path d='M140,308 Q280,296 430,300 Q540,302 640,308 L630,330 Q530,324 420,322 Q272,318 148,328 Z' fill='url(#wood)'/>
+    <!-- Hull planking lines -->
+    <path d='M150,310 Q340,300 630,310' stroke='rgba(0,0,0,0.2)' stroke-width='1'/><path d='M152,315 Q340,306 628,315' stroke='rgba(0,0,0,0.15)' stroke-width='0.8'/><path d='M154,320 Q340,312 626,320' stroke='rgba(0,0,0,0.12)' stroke-width='0.8'/>
+    <!-- Deck superstructure - traditional low profile -->
+    <rect x='190' y='278' width='360' height='32' rx='6' fill='#c8a882'/>
+    <!-- Shade awning/bimini over aft deck -->
+    <path d='M380,278 L550,270 L555,278 L385,285 Z' fill='rgba(220,200,160,0.7)'/>
+    <!-- Canvas awning stripes -->
+    <path d='M395,277 L548,271' stroke='rgba(180,150,100,0.5)' stroke-width='1.5'/><path d='M415,277 L548,271.8' stroke='rgba(180,150,100,0.5)' stroke-width='1.5'/><path d='M435,277 L549,272.5' stroke='rgba(180,150,100,0.5)' stroke-width='1.5'/>
+    <!-- Portholes -->
+    <circle cx='215' cy='316' r='7' fill='none' stroke='#C4A35A' stroke-width='1.5'/><circle cx='215' cy='316' r='4' fill='#1a3868' opacity='0.6'/>
+    <circle cx='255' cy='314' r='7' fill='none' stroke='#C4A35A' stroke-width='1.5'/><circle cx='255' cy='314' r='4' fill='#1a3868' opacity='0.6'/>
+    <circle cx='295' cy='313' r='7' fill='none' stroke='#C4A35A' stroke-width='1.5'/><circle cx='295' cy='313' r='4' fill='#C4A35A' opacity='0.5'/>
+    <circle cx='335' cy='312' r='7' fill='none' stroke='#C4A35A' stroke-width='1.5'/><circle cx='335' cy='312' r='4' fill='#1a3868' opacity='0.6'/>
+    <!-- Two masts - traditional schooner rig -->
+    <line x1='280' y1='278' x2='280' y2='130' stroke='#7a5030' stroke-width='3'/>
+    <line x1='430' y1='278' x2='430' y2='110' stroke='#7a5030' stroke-width='3'/>
+    <!-- Sails furled on booms -->
+    <path d='M280,155 Q330,165 390,158' stroke='rgba(220,200,160,0.6)' stroke-width='8' stroke-linecap='round' fill='none'/>
+    <path d='M430,138 Q490,148 555,140' stroke='rgba(220,200,160,0.55)' stroke-width='7' stroke-linecap='round' fill='none'/>
+    <!-- Flags -->
+    <line x1='280' y1='130' x2='310' y2='120' stroke='rgba(200,160,80,0.8)' stroke-width='1'/>
+    <polygon points='310,120 310,128 295,124' fill='#C4A35A' opacity='0.8'/>
+    <!-- WYC teak deck trim -->
+    <rect x='190' y='276' width='360' height='3' fill='#C4A35A' opacity='0.6'/>
+    <!-- Wake - slower vessel, softer wake -->
+    <path d='M148,328 Q70,340 20,336 Q8,335 0,332' stroke='rgba(255,255,255,0.16)' stroke-width='2' fill='none'/>
+    <path d='M148,333 Q60,346 0,340' stroke='rgba(255,255,255,0.09)' stroke-width='1.5' fill='none'/>
+    <!-- Adriatic/Mediterranean coast -->
+    <path d='M0,278 Q60,264 120,272 Q180,280 220,264 Q280,244 340,256 Q400,268 460,250 Q540,228 600,244 Q660,260 720,242 Q770,228 800,236 L800,308 L0,308 Z' fill='rgba(6,14,36,0.48)'/>
+    <!-- Old town buildings silhouette -->
+    <rect x='230' y='248' width='8' height='16' fill='rgba(6,14,36,0.7)'/><rect x='245' y='244' width='10' height='20' fill='rgba(6,14,36,0.7)'/><rect x='260' y='250' width='8' height='14' fill='rgba(6,14,36,0.7)'/><rect x='272' y='245' width='7' height='19' fill='rgba(6,14,36,0.7)'/>
+    <rect x='460' y='242' width='8' height='16' fill='rgba(6,14,36,0.7)'/><rect x='474' y='238' width='10' height='20' fill='rgba(6,14,36,0.7)'/><rect x='490' y='244' width='8' height='14' fill='rgba(6,14,36,0.7)'/>
+  </svg>`
+  };
+  return photos[id] || photos[0];
+}
+
+function buildOceanArt(c1,c2,w,h,aspectClass){
+  return `<div class="ocean-art" style="background:linear-gradient(150deg,${c1} 0%,${c2} 100%);position:relative;width:100%;height:100%">
+    <svg style="position:absolute;bottom:0;left:0;right:0;width:100%;opacity:0.18" viewBox="0 0 800 200"><path fill="#B4B8BE" d="M0,140 Q80,100 200,130 Q350,160 500,120 Q650,80 800,110 L800,200 L0,200 Z"/></svg>
+    <svg style="width:50%;opacity:0.1;position:absolute;bottom:28%" viewBox="0 0 400 100" fill="#B4B8BE"><path d="M20,80 L40,80 L45,65 L55,38 L65,26 L80,18 L150,15 L240,13 L310,13 L360,15 L380,22 L385,48 L390,80 L400,80 L400,100 L20,100 Z"/><line x1="240" y1="13" x2="240" y2="0" stroke="#B4B8BE" stroke-width="2"/></svg>
+  </div>`;
+}
+ 0%,${c2} 100%)">
+    <svg style="position:absolute;bottom:0;left:0;right:0;width:100%;opacity:0.18" viewBox="0 0 800 200"><path fill="#B4B8BE" d="M0,140 Q80,100 200,130 Q350,160 500,120 Q650,80 800,110 L800,200 L0,200 Z"/></svg>
+    <svg style="width:50%;opacity:0.1;position:absolute;bottom:28%" viewBox="0 0 400 100" fill="#B4B8BE"><path d="M20,80 L40,80 L45,65 L55,38 L65,26 L80,18 L150,15 L240,13 L310,13 L360,15 L380,22 L385,48 L390,80 L400,80 L400,100 L20,100 Z"/><line x1="240" y1="13" x2="240" y2="0" stroke="#B4B8BE" stroke-width="2"/></svg>
+  </div>`;
+}
+
+function buildYachtsGrid(){
+  const grid = document.getElementById('yachts-grid');
+  grid.innerHTML = yachts.map((y,i)=>{
+    const isFeatured = y.featured===true;
+    const slides = [y.color,y.color2,y.color3,y.color4];
+    const dotsHtml = slides.map((_,j)=>`<div class="pnd ${j===0?'active':''}" onclick="setSlide(${y.id},${j},event)"></div>`).join('');
+    const slidesHtml = slides.map((c,j)=>`<div class="photo-slide" style="background:${c};position:relative;overflow:hidden">${j===0 ? getVesselPhoto(y.id) : buildOceanArt(c,y.color2,'100%','100%','')}</div>`).join('');
+    return `<div class="yacht-card ${isFeatured?'featured':''}" data-type="${y.cardtype||'sailing'}" data-region="${y.region}">
+      <div class="yacht-photo-area" id="photo-${y.id}" style="aspect-ratio:${isFeatured?'16/9':'16/10'};position:relative;overflow:hidden">
+        <div class="photo-slides" id="slides-${y.id}" style="display:flex;height:100%;transition:transform 0.4s ease">${slidesHtml}</div>
+        <div class="yacht-card-badge">${y.badge}</div>
+        <div class="photo-arr-left" onclick="navPhoto(${y.id},-1,event)">‹</div>
+        <div class="photo-arr-right" onclick="navPhoto(${y.id},1,event)">›</div>
+        <div class="photo-nav-dots">${dotsHtml}</div>
+      </div>
+      <div class="yacht-card-body">
+        <div class="yacht-card-name">${y.name}</div>
+        <div class="yacht-card-sub">${y.type} · ${y.dest}</div>
+        <div class="yacht-card-specs">
+          <div class="ycs"><span class="ycs-val">${y.specs.guests}</span><span class="ycs-label">guests</span></div>
+          <div class="ycs"><span class="ycs-val">${y.specs.cabins}</span><span class="ycs-label">cabins</span></div>
+          <div class="ycs"><span class="ycs-val">${y.specs.length}</span><span class="ycs-label">length</span></div>
+          <div class="ycs"><span class="ycs-val">${y.specs.speed}</span><span class="ycs-label">max speed</span></div>
+          <div class="ycs"><span class="ycs-val" style="color:${y.skippered?'#c9a96e':'#4CAF50'}">${y.skippered?'Skippered':'Bareboat'}</span><span class="ycs-label">type</span></div>
+        </div>
+        <div class="yacht-card-footer">
+          <div class="yacht-price">${y.price} <small>/ week + expenses</small></div>
+          <button class="enquire-link" onclick="openVesselDetail(${y.id})">View yacht →</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+const photoPositions = {};
+function navPhoto(id,dir,e){
+  e.stopPropagation();
+  if(!photoPositions[id]) photoPositions[id]=0;
+  const slides = document.getElementById('slides-'+id);
+  const total = 4;
+  photoPositions[id] = Math.max(0, Math.min(total-1, photoPositions[id]+dir));
+  slides.style.transform = `translateX(-${photoPositions[id]*100}%)`;
+  const dots = document.getElementById('photo-'+id).querySelectorAll('.pnd');
+  dots.forEach((d,j)=>d.classList.toggle('active',j===photoPositions[id]));
+}
+
+function setSlide(id,idx,e){
+  e.stopPropagation();
+  photoPositions[id]=idx;
+  const slides = document.getElementById('slides-'+id);
+  slides.style.transform = `translateX(-${idx*100}%)`;
+  const dots = document.getElementById('photo-'+id).querySelectorAll('.pnd');
+  dots.forEach((d,j)=>d.classList.toggle('active',j===idx));
+}
+
+function buildDestGrid(){
+  const grid = document.getElementById('dest-grid');
+  grid.innerHTML = destinations.map((d,i)=>{
+    const isFirst = i===0;
+    const isCaribb = i===3;
+    return `<div class="dest-card ${isFirst?'featured':''}">
+      <div class="dest-bg" style="position:absolute;inset:0;background:linear-gradient(150deg,${d.color1} 0%,${d.color2} 100%)">
+        <svg style="position:absolute;bottom:0;left:0;right:0;width:100%;opacity:0.15" viewBox="0 0 800 200"><path fill="#B4B8BE" d="M0,130 Q150,90 300,120 Q450,150 600,110 Q700,85 800,100 L800,200 L0,200 Z"/></svg>
+      </div>
+      <div class="dest-overlay"></div>
+      <div class="dest-content">
+        <div class="dest-region">${d.region}</div>
+        <div class="dest-name">${d.name}</div>
+        <div class="dest-count">${d.count} available</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function openVesselDetail(id){
+  const y = yachts[id];
+  const container = document.getElementById('vessel-detail');
+  const avDays = Array.from({length:28},(_,i)=>i+1);
+  const taken = [3,4,5,10,11,12,18,19,20];
+  const avHtml = ['Mo','Tu','We','Th','Fr','Sa','Su'].map(d=>`<div class="av-cell header">${d}</div>`).join('')
+    + avDays.map(d=>`<div class="av-cell ${taken.includes(d)?'taken':'avail'}">${d}</div>`).join('');
+  container.innerHTML = `
+    <div class="vessel-detail-inner">
+      <button class="vd-back" onclick="closeVesselDetail()">← Back to fleet</button>
+      <div class="vd-gallery">
+        <div class="vd-main-photo">${buildOceanArt(y.color,y.color2,'100%','100%','')}<div class="vd-photo-label">1 / 24 photos</div></div>
+        <div class="vd-side-photos">
+          <div class="vd-side-photo">${buildOceanArt(y.color2,y.color3,'100%','100%','')}</div>
+          <div class="vd-side-photo" style="position:relative">${buildOceanArt(y.color3,y.color4,'100%','100%','')}<div class="vd-photo-label">View all photos →</div></div>
+        </div>
+      </div>
+      <div class="vd-info-grid">
+        <div>
+          <div class="vd-name">${y.name}</div>
+          <div class="vd-sub">${y.type} · ${y.dest}</div>
+          <div class="vd-specs-row">
+            <div class="vd-spec"><span class="vd-spec-val">${y.specs.guests}</span><span class="vd-spec-label">Guests</span></div>
+            <div class="vd-spec"><span class="vd-spec-val">${y.specs.cabins}</span><span class="vd-spec-label">Cabins</span></div>
+            <div class="vd-spec"><span class="vd-spec-val">${y.specs.length}</span><span class="vd-spec-label">Length</span></div>
+            <div class="vd-spec"><span class="vd-spec-val">${y.specs.speed}</span><span class="vd-spec-label">Speed</span></div>
+          </div>
+          <p class="vd-description">${y.desc}</p>
+          <div class="vd-highlights">
+            <div class="vd-highlight-title">Highlights & features</div>
+            <ul class="vd-highlight-list">${y.highlights.map(h=>`<li>${h}</li>`).join('')}</ul>
+          </div>
+        </div>
+        <div class="vd-sidebar">
+          <div class="vd-price-card">
+            <div class="vd-price-label">Charter from</div>
+            <div class="vd-price-val">${y.price}</div>
+            <div class="vd-price-note">Per week · Plus APA (typically 25–30%)</div>
+            <div class="vd-broker-mini">
+              <div class="mb-avatar">JH</div>
+              <div class="mb-info">
+                <div class="mb-name" style="font-size:13px;font-weight:500;color:#fff">James Harlow</div>
+                <div class="mb-role" style="font-size:11px;color:#8a9ab5">Mediterranean specialist</div>
+                <div class="mb-avail" style="font-size:10px;color:#4CAF50">● Available now</div>
+              </div>
+            </div>
+            <button class="btn-primary" style="width:100%;margin-bottom:10px" onclick="openEnquiry()">Enquire about this yacht</button>
+            <button class="btn-ghost" style="width:100%;text-align:center" onclick="openEnquiry()">Request price & availability</button>
+          </div>
+          <div style="padding:20px;background:var(--navy-mid);border:1px solid var(--border)">
+            <div class="vd-highlight-title">Availability · July 2026</div>
+            <div class="availability-grid">${avHtml}</div>
+            <div style="display:flex;gap:12px;font-size:10px;color:var(--text-muted)">
+              <span style="color:#4CAF50">● Available</span>
+              <span>● Booked</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  container.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeVesselDetail(){
+  document.getElementById('vessel-detail').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+function openEnquiry(){
+  document.getElementById('enquiry-modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeEnquiry(){
+  document.getElementById('enquiry-modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+function closeIfBg(e){
+  if(e.target===document.getElementById('enquiry-modal')) closeEnquiry();
+}
+
+function setTab(el,type){
+  document.querySelectorAll('.search-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function filterType(el,type){
+  document.querySelectorAll('.type-pill').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  const cards = document.querySelectorAll('.yacht-card');
+  cards.forEach(c=>{
+    if(type==='all'){ c.style.display=''; return; }
+    const ctype = c.dataset.type||'';
+    const cregion = c.dataset.region||'';
+    const show = (type==='caribbean' && cregion==='caribbean')
+      || (type==='med' && cregion==='med')
+      || (type==='skippered' && c.innerHTML.includes('Skippered'))
+      || (type==='bareboat' && c.innerHTML.includes('Bareboat'))
+      || ctype===type;
+    c.style.display = show ? '' : 'none';
+  });
+}
+
+function filterYachts(){ }
+
+// Intersection observer for fade-ins
+const fadeEls = document.querySelectorAll('.section-header, .yacht-card, .dest-card, .testimonial-card, .exp-feature');
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+},{threshold:0.1});
+fadeEls.forEach(el=>{ el.classList.add('fade-in'); obs.observe(el); });
+
+// Nav scroll effect
+window.addEventListener('scroll',()=>{
+  const nav = document.getElementById('main-nav');
+  nav.style.background = window.scrollY>80
+    ? 'rgba(8,16,36,0.99)'
+    : 'rgba(11,24,52,0.95)';
+});
+
+buildYachtsGrid();
+buildDestGrid();
+</script>
+</body>
+</html>
